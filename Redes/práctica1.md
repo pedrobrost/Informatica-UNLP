@@ -67,3 +67,18 @@ En el caso de aplicaciones como voz o video, la conmutación de paquetes no es m
 
 Para poder tener acceso a internet desde un hogar lo que se suele hacer es contratar un servicio de internet a una empresa conocida como ISP (internet service provider), la cual nos garantiza una conexión a nuestro hogar a travez de difrentes tipos de conexiones. Éstas pueden ser por cable coaxial, fibra óptica, ADSL, etc. Normalmente se suele instalar un modem que convertirá las señales digitales en analógicas y viceversa. Éste permite así la comunicación entre las computadoras a través de las distintas conexiones. Finalemnte los dispositivos para poder tener acceso a Internet, se deben conectar al modem ya sea de forma directa por Ethernet, o utilizando un router o distintos dispositivos que permiten la conexión a éste (ya sea de manera cableada o wireless).
 
+> 10. ¿Qué ventajas tiene una implementación basada en capas o niveles?
+
+La cantidad de componentes de red a interactuar genera complejidad, se requiere una organización de las mismas.
+
+Un modelo en capas divide la complejidad en componentes reusables. Alguas de las ventajas que estos modelos proveen son:
+
+* Reduce complejidad en componente más pequeñas.
+* Las capas de abajo ocultan la complejidad a las de arriba abstracción.
+* Las capas de arriba utilizan servicios de las de abajo:
+Interfaces, similar a APIs.
+* Los cambios en una capa no deberían afectar a las demás
+si la interfaz se mantiene.
+* Facilita el desarrollo, evolución de las componentes de red
+asegurando interoperabilidad.
+* Facilita aprendizaje, diseño y administración de las redes.
