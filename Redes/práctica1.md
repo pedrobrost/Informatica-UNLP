@@ -30,3 +30,11 @@ Los componentes que permiten el funcionamiento de internet son:
 Request for Comments son una serie de publicaciones del grupo de trabajo de ingeniería de internet que describen diversos aspectos del funcionamiento de Internet y otras redes de computadoras, como protocolos, procedimientos, etc. y comentarios e ideas sobre estos. Cada RFC constituye un monográfico o memorando que ingenieros o expertos en la materia han hecho llegar al IETF, el consorcio de colaboración técnica más importante en Internet, para que éste sea valorado por el resto de la comunidad. De hecho, la traducción literal de RFC al español es "Petición de comentarios".
 
 Los protocolos más importantes de Internet están definidos por RFC, como el protocolo IP detallado en el RFC 791, el FTP en el RFC 959, o el HTTP —escrito por Tim Berners-Lee et al.— en el RFC 2616 (entre otros).
+
+> 4. ¿Qué es un protocolo?
+
+Un protocolo determina el conjunto de conductas y normas a conocer, respetar y cumplir no sólo en el medio oficial ya establecido, sino tambiñen en el medio social y laboral.
+
+Un protocolo define el formato, el orden de los mensajes intercambiados y las acciones que se llevan a cabo en la transmición y/o recepción de un mensaje u otro evento.
+
+Un protocolo de red define un conjunto de reglas que especifican el intercambio de datos u órdenes entre las entidades que forman parte de una red. Permiten la comunicación y están implementados en las componentes.
