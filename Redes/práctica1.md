@@ -13,3 +13,14 @@
  * Destino
  * Otros: Protocolos, Información, mensaje transmitido
  * Señan de Información, materialización del mensaje sobre el medio
+
+> 2. ¿Qué es Internet? Describa los principales componentes que permiten su funcionamiento.
+
+Internet es una red de redes de computadoras, descentralizada, pública, que ejecutan el conjunto abierto de protocolos (suite) TCP/IP. Integra diferentes protocolos de un nivel mas bajo: INTERNETWORKING.
+
+Los componentes que permiten el funcionamiento de internet son:
+
+* Servidores: Computadoras de altas prestaciones que ofrecen servicios a los usuarios.
+* Líneas de comunicación primarias entre nodos de internet: “autopistas de información”, junto con los servidores forman la columna vertebral de internet.
+* Clientes: Computadoras con los que los usuarios acceden a internet. Estos clientes pueden estar dentro o fuera de la red. Cuando el cliente está fuera, las líneas de comunicación secundarias permiten su conexión con los servidores de internet
+* Programas o software específico: está instalado en cada uno de los nodos y hará posible que la red funcione como un todo hablando un idioma común, este idioma se llama TCP/IP.
