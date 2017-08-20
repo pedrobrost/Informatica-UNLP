@@ -82,3 +82,16 @@ si la interfaz se mantiene.
 * Facilita el desarrollo, evolución de las componentes de red
 asegurando interoperabilidad.
 * Facilita aprendizaje, diseño y administración de las redes.
+
+> 11. ¿Cómo se llama la PDU de cada una de las siguientes capas: Aplicación, Transporte, Red y Enlace?
+
+Cada capa define su PDU: Protocol Data Unit.
+
+| Capa          | PDU           |
+| ------------- | ------------- |
+| Aplicación    | Datos         |
+| Transporte    | Segmento      |
+| Red           | Paquete       |
+| Enlace        | Trama         |
+| Física        | Bit           |
+
