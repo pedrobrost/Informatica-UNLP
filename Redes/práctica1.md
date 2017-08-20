@@ -24,3 +24,9 @@ Los componentes que permiten el funcionamiento de internet son:
 * Líneas de comunicación primarias entre nodos de internet: “autopistas de información”, junto con los servidores forman la columna vertebral de internet.
 * Clientes: Computadoras con los que los usuarios acceden a internet. Estos clientes pueden estar dentro o fuera de la red. Cuando el cliente está fuera, las líneas de comunicación secundarias permiten su conexión con los servidores de internet
 * Programas o software específico: está instalado en cada uno de los nodos y hará posible que la red funcione como un todo hablando un idioma común, este idioma se llama TCP/IP.
+
+> 3. ¿Qué son las RFCs?
+
+Request for Comments son una serie de publicaciones del grupo de trabajo de ingeniería de internet que describen diversos aspectos del funcionamiento de Internet y otras redes de computadoras, como protocolos, procedimientos, etc. y comentarios e ideas sobre estos. Cada RFC constituye un monográfico o memorando que ingenieros o expertos en la materia han hecho llegar al IETF, el consorcio de colaboración técnica más importante en Internet, para que éste sea valorado por el resto de la comunidad. De hecho, la traducción literal de RFC al español es "Petición de comentarios".
+
+Los protocolos más importantes de Internet están definidos por RFC, como el protocolo IP detallado en el RFC 791, el FTP en el RFC 959, o el HTTP —escrito por Tim Berners-Lee et al.— en el RFC 2616 (entre otros).
