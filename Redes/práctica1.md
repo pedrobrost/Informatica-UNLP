@@ -43,3 +43,27 @@ Un protocolo de red define un conjunto de reglas que especifican el intercambio 
 
 A principios de los 80', las compañias comenzaron a implementar redes propias (privadas y cerradas). Estas primeras redes propietarias trajeron como consecuencia problemas ya que cada red tenñia sus especificaciones propias (protocolos). Esto conllevó a tener problemas de incompatibilidad, por lo cual la comunicación entre redes era muy difícil, la evolución era muy lenta. Estos problemas de compatibilidad se fueron solucionando con la aparición de distintos estándares que facilitaron estas tareas. Por ejemplo se definieron modelos de organización divididos en capas, lo cual permite dividir la complejidad en componentes reusables. Estas estrategias de abstracción permitieron facilitar el desarrollo y evolución de las componentes de red asegurando interoperabilidad. Este tipo de estándares son los que permiten por ejemplo que dos máquinas con distintos sistemas operativos puedan formar parte de una misma red.
 
+> 6. ¿Cuáles son las 2 categorías en las que pueden clasificarse a los sistemas finales o End Systems? Dé un ejemplo del rol de cada uno en alguna aplicación distribuida que corra sobre Internet.
+
+Las dos categorías son: cliente y servidor. Un ejemplo del rol del lado del servidor es: un servidor Web y del lado del cliente un browser.
+
+> 7. ¿Cuál es la diferencia entre una red conmutada de paquetes de una red conmutada de circuitos?
+
+La conmutación se considera la acción de establecer una vía o camino de extremo a extremo entre dos puntos. Un emisor y un receptor, a través de nodos o equipos de transmisión. La conmutación permite la entrega de la señal desde el origen hasta el destino requerido.
+
+* Conmutación de circuitos: Los equipos de conmutación deben establecer un camino físico entre los medios de comunicación previo a la conexión entre usuarios. Este camino permanece activo durante la comunicación entre los usuarios, liberándose al terminar. ej: llamada telefónica. Son ideales para cuando se requiere que los datos sean transmitidos en tiempo real.
+
+* Conmutación de paquetes: El emisor divide los mensajes a enviar en un número arbitrario de paquetes del mismo tamaño, donde adjunta una cabecera, dirección de origen y dirección de destino, así como datos de control que luego serán transmitidos por diferentes medios de conexión entre nodos temporales hasta llegar a su destino donde los paquetes son reensamblados. Este método de comunicación es el que más se utiliza en las redes de computadoras actuales.
+
+Mientras que la conmutación de circuitos asigna un canal único para cada sesión, en los sistemas de conmutación de paquetes el canal es compartido por muchos usuarios simultáneamente. La conmutación de paquetes es más eficiente y robusta para datos que pueden ser enviados con retraso en la transmisión (no en tiempo real), tales como el correo electronico, paginas web, etc.
+En el caso de aplicaciones como voz o video, la conmutación de paquetes no es muy recomendable a menos que se garantice un ancho de banda adecuado para enviar la información. Pero el canal que se establece no garantiza esto, debido a que puede existir tráfico y nodos caídos durante el recorrido de los paquetes.
+
+> 8. Analice qué tipo de red es una red de telefonía y qué tipo de red es Internet
+
+* Red telefónica: Red conmutada de circuitos.
+* Internet: Red conmutada de paquetes.
+
+> 9. Describa brevemente las distintas alternativas que conoce para acceder a Internet en su hogar.
+
+Para poder tener acceso a internet desde un hogar lo que se suele hacer es contratar un servicio de internet a una empresa conocida como ISP (internet service provider), la cual nos garantiza una conexión a nuestro hogar a travez de difrentes tipos de conexiones. Éstas pueden ser por cable coaxial, fibra óptica, ADSL, etc. Normalmente se suele instalar un modem que convertirá las señales digitales en analógicas y viceversa. Éste permite así la comunicación entre las computadoras a través de las distintas conexiones. Finalemnte los dispositivos para poder tener acceso a Internet, se deben conectar al modem ya sea de forma directa por Ethernet, o utilizando un router o distintos dispositivos que permiten la conexión a éste (ya sea de manera cableada o wireless).
+
