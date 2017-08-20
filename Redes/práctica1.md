@@ -38,3 +38,8 @@ Un protocolo determina el conjunto de conductas y normas a conocer, respetar y c
 Un protocolo define el formato, el orden de los mensajes intercambiados y las acciones que se llevan a cabo en la transmición y/o recepción de un mensaje u otro evento.
 
 Un protocolo de red define un conjunto de reglas que especifican el intercambio de datos u órdenes entre las entidades que forman parte de una red. Permiten la comunicación y están implementados en las componentes.
+
+> 5. ¿Por qué dos máquinas con distintos sistemas operativos pueden formar parte de una misma red?
+
+A principios de los 80', Las compañias comenzaron a implementar redes propias (privadas y cerradas). Estas primeras redes propietarias trajeron como consecuencia problemas ya que cada red tenñia sus especificaciones propias (protocolos). Esto conllevó a tener problemas de incompatibilidad, por lo cual la comunicación entre redes era muy difícil, la evolución era muy lenta. Estos problemas de compatibilidad se fueron solucionando con la aparición de distintos estándares que facilitaron estas tareas. Por ejemplo se definieron modelos de organización divididos en capas, lo cual permite dividir la complejidad en componentes reusables. Estas estrategias de abstracción permitieron facilitar el desarrollo y evolución de las componentes de red asegurando interoperabilidad. Este tipo de estándares son los que permiten por ejemplo que dos máquinas con distintos sistemas operativos puedan formar parte de una misma red.
+
