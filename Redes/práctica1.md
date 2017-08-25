@@ -162,3 +162,20 @@ Los servicios provistos por la capa de enlace dependen en el protocolo especific
 **Capa Fisica**
 
 Mientras que el trabajo de la capa de enlace es mover frames enteros de un elemento de red a otro adyacente, el trabajo de la capa fisica es mover los bits individuales que estan dentro del frame de un nodo al proximo. Los protocolos en esta capa son dependientes al enlace y por ende tambien del medio actual de transmicion del enlace (por ejemplo cable de cobre, fibra optica, etc). Por ejemplo, Ethernet tiene muchos protocolos de la capa fisica: uno para cables de cobre, otro para cable coaxial, otro para fibra optica, etc. En cada caso, un bit es movido a traves del enlace de una manera distinta.
+
+---
+
+#### 14. Compare el modelo OSI con la implementación TCP/IP.
+
+El modelo OSI se compone de 7 capas: 
+
+* Capa de Presentación
+* Capa de Sesión 
+* Capa de Transporte
+* Capa de Red
+* Capa de Enlace de Datos
+* Capa Física
+
+La funcionalidad de cinco de estas capas es aproximadamente la misma que las que se ven en el stack TCP/IP. El rol de la capa de presentación es proveer servicios que permiten a aplicaciones de comunicacion interpretar el significado de datos intercambiados. Estos servicios incluyen compresión, encriptación y descripcion de datos. La capa de sesión provee proporciona los mecanismos para controlar el diálogo entre las aplicaciones de los sistemas finales. En muchos casos, los servicios de la capa de sesión son parcialmente, o incluso, totalmente prescindibles.
+
+Es responsabilidad del desarrollador de la aplicación decidir si un servicio es importante, y si lo es, depende del desarrollador contruir esa funcionalidad en la aplicación.
