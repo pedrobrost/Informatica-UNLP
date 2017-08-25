@@ -159,7 +159,7 @@ La capa de red rutea un datagrama a través de una serie de routers entre el ori
 
 Los servicios provistos por la capa de enlace dependen en el protocolo especifico que es empleado por el enlace. Por ejemplo, algunos protocolos de la capa de enlace proveen una distribución garantizada para la transición sobre un enlace. Vale aclarar que este servicio de distribución fiable es diferente a la fiabilidad del servicio TCP, el cual provee seguridad desde un sistema final a otro sistema. Ejemplos de protocolos de la capa de enlace son: Ethernet, WiFi, y PPP. Como los datagramas normalmente necesitan atravesar una gran cantidad de enlaces desde un origen a un destino, un datagrama puede llegar a ser manejado por diferentes protocolos de la capa de enlace en los diferentes enlaces a lo largo de la ruta. La capa de red recibirá diferentes servicios por cada uno de los diferentes protocolos de la capa de enlace. A menudo, en esta capa se referencian a los paquetes como frames.
 
-**Capa Fisica**
+**Capa Física**
 
 Mientras que el trabajo de la capa de enlace es mover frames enteros de un elemento de red a otro adyacente, el trabajo de la capa física es mover los bits individuales que están dentro del frame de un nodo al próximo. Los protocolos en esta capa son dependientes al enlace y por ende también del medio actual de transición del enlace (por ejemplo cable de cobre, fibra óptica, etc). Por ejemplo, Ethernet tiene muchos protocolos de la capa física: uno para cables de cobre, otro para cable coaxial, otro para fibra óptica, etc. En cada caso, un bit es movido a través del enlace de una manera distinta.
 
