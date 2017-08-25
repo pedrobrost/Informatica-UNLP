@@ -124,3 +124,41 @@ Encapsulación o encapsulamiento se refiere al proceso por el cual, cada capa de
 En cada capa, un paquete está formado por dos tipos de campos: un campo de cabecera y un campo de carga útil. Normalmente, la carga útil es un paquete de la capa superior.
 
 Si una capa X realiza el encapsulamiento en el nodo emisor. La misma capa X será la encargada de hacer el proceso inverso en el nodo receptor.
+
+---
+
+#### 13. Describa cuáles son las funciones de cada una de las capas del stack TCP/IP o protocolo de Internet.
+
+Capas del stack TCP/IP o protocolo de internet:
+
+* Capa de Aplicacion
+* Capa de Transporte
+* Capa de Red
+* Capa de Enlace
+* Capa Fisica
+
+* Capa de Aplicacion
+
+La capa de aplicacion es donde aplicaciones de red y sus protocolos de la capa de aplicacion residen. Esta capa incluye muchos protocolos, como el protocolo HTTP (el cual provee servicios para peticiones de documentos Web y transferencias,y FTP (el cual se utiliza para la transferencias de archivos entre dos sistemas finales). Otro ejemplo de protocolo que se ubica en esta capa es el de DNS, el cual sirve para traducir nombres de dominio. 
+
+Un protocolo de la capa de aplicacion es distribuido sobre multiples sistemas finales, con la aplicacion en un sistema final usando el protocolo para intercambiar paquetes de informacion con la aplicacion en otro sistema final. A menudo, en la capa de aplicacion se refiere a este paquete de informacion como 'mensaje'.
+
+* Capa de Transporte
+
+La capa de transporte de Internet transporta mensajes de la capa de aplicacion entre distintos puntos. En Internet hay dos protocolos de transporte, TCP y UDP, ambos de los cuales pueden transportar ensajes de la capa de aplicacion. TCP provee un servicio orientado a conecciones a sus aplicaciones. Este servicio incluye garantia en la distribucion de mensajes de la capa de aplicacion a sus destinos. TCP tambien 'rompe' mensajes largos en segmentos mas pequenos y provee un mecanismo de control de congestion. El protocolo UDP provee un servicio libre de conecciones a sus aplicaciones. Este es un servicio que no provee confiabilidad, ni control de flujo ni control de congestion. A menudo, en la capa de transporte se refiere a un paquete como un segmento.
+
+* Capa de Red
+
+La capa de red es responsable de mover paquetes de la capa de red, conocidos como datagramas, de un host a otro. El protocolo de la capa de transporte (TCP o UDP) en un host fuente, pasa un segmento de la capa de transporte y una direccion de destino a la capa de red. La capa de red luego provee el servicio de distribuir el segmento a la capa de transporte en el host destino.
+
+La capa de red incluye al protocolo IP, el cual define los campos en los datagramas, asi como tambien la forma en que los sistemas finales y los routers actuan sobre estos campos. Existe un unico protocolo IP, y todos los componentes de Internet que tienen una capa de red, deben correr el protocolo IP. La capa de red tambien contiene protocolos de ruteo que determinan las rutas que los datagramas toman entre origenes y destinos. Internet tiene muchos protocolos de ruteo. Como ya se sabe Internet es una red de redes, y dentro de una red el administrador de la red puede correr cualquier protocolo de ruteo deseado. Aunque la capa de red contiene tanto el ptorocolo IP como los protocolos de ruteo, a menudo simplemente se la refiere como la capa IP, reflejando el hecho de que IP es el 'pegamento' que une a Internet.
+
+* Capa de Enlace 
+
+La capa de red rutea un datagrama a traves de una serie de routers entre el origen y el destino. Para mover un paquete de un nodo (host o router) al siguiente nodo en la ruta, la capa de red depende de los servicios de la capa de enlace. En particular, en cada nodo, la capa de red pasa el datagrama a la capa de enlace, la cual distribuye el datagrama al siguiente nodo a lo largo de la ruta. En este siguiente nodo, la capa de enlace pasa el datagrama a la capa de red.
+
+Los servicios provistos por la capa de enlace dependen en el protocolo especifico que es empleado por el enlace. Por ejemplo, algunos protocolos de la capa de enlace proveen una distribucion garantizada para la transmicion sobre un enlace. Vale aclarar que este servicio de distribucion fiable es diferente a la fiabilidad del servicio TCP, el cual provee seguridad desde un sistema final a otro sistema. Ejemplos de protocolos de la capa de enlace son: Ethernet, WiFi, y PPP. Como los datagramas normalmente necesitan atravesar una gran cantidad de enlaces desde un origen a un destino, un datagrama puede llegar a ser manejado por diferentes protocolos de la capa de enlace en los diferentes enlaces a lo largo de la ruta. La capa de red recivira diferentes servicios por cada uno de los diferentes protocolos de la capa de enlace. A menudo, en esta capa se referencian a los paquetes como frames.
+
+* Capa Fisica
+
+Mientras que el trabajo de la capa de enlace es mover frames enteros de un elemento de red a otro adyacente, el trabajo de la capa fisica es mover los bits individuales que estan dentro del frame de un nodo al proximo. Los protocolos en esta capa son dependientes al enlace y por ende tambien del medio actual de transmicion del enlace (por ejemplo cable de cobre, fibra optica, etc). Por ejemplo, Ethernet tiene muchos protocolos de la capa fisica: uno para cables de cobre, otro para cable coaxial, otro para fibra optica, etc. En cada caso, un bit es movido a traves del enlace de una manera distinta.
