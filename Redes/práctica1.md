@@ -115,3 +115,12 @@ Cada capa define su PDU: Protocol Data Unit.
 | Enlace        | Trama         |
 | Física        | Bit           |
 
+---
+
+#### 12. . ¿Qué es la encapsulación? Si una capa realiza la encapsulación de datos, ¿qué capa del nodo receptor realizará el proceso inverso?
+
+Encapsulación o encapsulamiento se refiere al proceso por el cual, cada capa de la pila de protocolos (excepto la de aplicación), añade información adicional (denominada información de cabecera) al PDU recibido de la capa superior, formando así, el PDU correspondiente a la capa receptora. Los PDUs sirven para gobernar el comportamiento completo del protocolo en sus funciones de establecimiento y unión de la conexión, control de flujo, control de errores, etc.
+
+En cada capa, un paquete está formado por dos tipos de campos: un campo de cabecera y un campo de carga útil. Normalmente, la carga útil es un paquete de la capa superior.
+
+Si una capa X realiza el encapsulamiento en el nodo emisor. La misma capa X será la encargada de hacer el proceso inverso en el nodo receptor.
