@@ -96,4 +96,41 @@ Cuando ejecutamos el comando `curl www.redes.unlp.edu.ar` lo que hara el program
 
 ---
 
+#### 9. Ejecute a continuación los siguientes comandos:
+
+´curl -v -s www.redes.unlp.edu.ar > /dev/null
+´curl -I -v -s www.redes.unlp.edu.ar´
+
+##### a. ¿Qué diferencias nota entre cada uno?
+
+El primer comando esta haciendo un request a la URL con los atributos de verbose y silent, y luego está redireccionando la respuesta de la petición a /dev/null.
+
+El segundo comando hace un request a la misma URL con los mismoas atributos, ademas del ´-I´ el cual hara que solamente se muestren los headers. 
+
+Es por esto que ambos comandos devuelven salidas muy parecidas.
+
+##### b. ¿Qué ocurre si en el primer comando quita la redirección a /dev/null? ¿Por qué no es necesaria en el segundo comando?
+
+Si en el primer comando se quita la redirección a /dev/null lo que sucederá es que se mostrará en la consola el contenido de la respuesta obtenida luego de realizar el request. En el segundo comando no es necesaria esta redirección ya que el parámetro ´-I´ hace que curl devuelva solamente los headers.
+
+##### c. ¿Cuántas cabeceras viajaron en el requerimiento? ¿Y en la respuesta?
+
+Cabeceras del request:
+
+* User-Agent
+* Host
+* Accept
+
+Cabeceras del response:
+
+* Date
+* Server
+* Last-Modified
+* ETag
+* Accept-Ranges
+* Content-Length
+* Content-Type
+
+---
+
 
