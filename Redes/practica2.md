@@ -134,4 +134,43 @@ Cabeceras del response:
 
 ---
 
+#### 10. Ejecute una vez más el comando curl www.redes.unlp.edu.ar pero sólo muestre los encabezados y luego responda:
+
+##### a. ¿Es posible determinar qué servidor web se utiliza para servir la página?
+
+Si, es posible saber esto observando el header `Server`, el cual en este caso toma el valor `Apache/2.4.7 (Ubuntu)`.
+
+##### b. ¿Cuál es el código de respuesta que devolvió el servidor? ¿Qué otros códigos existen y qué significan? Investigue genéricamente los tipos de error 2XX, 3XX, 4XX y 5XX.
+
+El código de respuesta que devolvió el servidor es el 200.
+
+| Código | Significado          |
+|--------|----------------------|
+| 2XX    | Peticiones correctas |
+| 3XX    | Redirecciones        |
+| 4XX    | Errores del cliente  |
+| 5XX    | Errores del servidor |
+
+##### c. ¿Cuándo fue la última vez que se modificó la página?
+
+Esto se puede observar en el header `Last-Modified`, el cual en este caso toma el valor `Wed, 16 Mar 2016 20:41:34 GTM`.
+
+##### d. Solicite la página nuevamente con curl usando GET, pero esta vez indique que quiere obtenerla sólo si la misma fue modificada en una fecha posterior a la que efectivamente fue modificada. ¿Cómo lo hace? ¿Qué resultado obtuvo? ¿Puede explicar por qué y para qué sirve?
+
+`curl –z ‘Wed, 17 Sep 2017’ www.redes.unlp.edu.ar`
+
+Como era de esperar no se obtuvo resultado alguno.
+
+##### e. ¿Qué significa el encabezado ETag?
+
+Es uno de los varios mecanismos que HTTP proporciona para la validación de caché web, y que permite a un cliente realizar peticiones condicionales. Esto permite que las cachés sean más eficientes y ahorra ancho de banda, puesto que un servidor web no necesita enviar una respuesta completa si el contenido no ha cambiado. Los ETags también pueden ser usados para el control de concurrencia optimista, como una manera de ayudar a prevenir que actualizaciones simultáneas de un recurso se sobrescriban entre sí.
+
+##### f. Investigue el encabezado If-Modified-Since. ¿Para qué cree que pueden servir los tres encabezados anteriores?
+
+Un cache web, también denominada como servidor proxy, en una entidad de red que satisface solicitudes HTTP en nombre de un servidor web de origen. La caché web dispone de su propio almacenamiento en disco y mantiene en él copias de los objetos solicitados recientemente. La cache web es un servidor y un cliente. Esto permite reducir el tráfico y el trabajo del servidor web. Típicamente es un ISP quien adquiere e instala un cache web.
+
+Estos encabezados sirven para implementar el GET condicional, y de esta forma da lugar a la incorporación de un cache web.
+
+---
+
 
