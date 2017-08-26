@@ -61,4 +61,39 @@ Curl es una herramienta para transferir datos desde o hacia un servidor, usando 
 
 ---
 
+#### 8. Ejecute el comando curl sin ningún parámetro adicional y acceda a www.redes.unlp.edu.ar. Luego responda:
+
+##### a. ¿Cuántos requerimientos realizó y qué recibió? Pruebe redirigiendo la salida del comando curl a un archivo con extensión html y abrirlo con un navegador.
+
+Se realizó un único request y se recibió el contenido HTML de la página solicitada.
+
+##### b. ¿Cómo funcionan los atributos href de los tags link e img en html?
+
+* La etiqueta <link> define una relación entre un documento y un recurso externo.
+
+* La etiqueta <img> define una imagen en una página HTML.
+
+El atributo href del elemento link especifica la URL del recurso en cuestión.
+El atributo src del elemento img especifica la URL de la imagen.
+
+La mayoría de los navegadores cuando encuentran estos elementos en el documento HTML realizan una solicitud automática al servidor para obtenerlos.
+
+##### c. Para visualizar la página completa con imágenes como en un navegador, ¿alcanza con realizar un único requerimiento?
+
+No, no alcanza. Será necesario hacer las request de los recursos necesarios.
+
+##### ¿Cuántos requerimientos serían necesarios para obtener una página que tiene dos CSS, dos Javascript y tres imágenes? Diferencie como funcionaría un navegador respecto al comando curl ejecutado previamente.
+
+* Un request para la página.
+* 2 requests para los recursos CSS.
+* 2 requests para los recursos JS.
+* 3 requests para las imágenes.
+* 1 request para el favicon.
+
+Por ende se necesitarán 9 requests en total.
+
+Cuando ejecutamos el comando `curl www.redes.unlp.edu.ar` lo que hara el programa curl será hacer un único request al recurso especificado. En cambio un navegador hace varios requests a medida que se da cuenta que los necesita. El navegador detecta que la respuesta al primer request necesita otros recursos, como los archivos css, js, imagenes, etc. Ademas de hacer un request para estos recursos, se hacen otros request como por ejemplo el del favicon, el cual la mayoría de los navegadores modernos hacen este request por default para obtener el ícono que se muestra en el navegador, representando a la página visitada.
+
+---
+
 
