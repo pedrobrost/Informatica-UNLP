@@ -69,9 +69,9 @@ Se realizó un único request y se recibió el contenido HTML de la página soli
 
 ##### b. ¿Cómo funcionan los atributos href de los tags link e img en html?
 
-* La etiqueta <link> define una relación entre un documento y un recurso externo.
+* La etiqueta `<link>` define una relación entre un documento y un recurso externo.
 
-* La etiqueta <img> define una imagen en una página HTML.
+* La etiqueta `<img>` define una imagen en una página HTML.
 
 El atributo href del elemento link especifica la URL del recurso en cuestión.
 El atributo src del elemento img especifica la URL de la imagen.
