@@ -8,4 +8,12 @@ Cabe aclarar que el usuario normalmente no interactúa directamente con el nivel
 
 ---
 
+#### 3. ¿Cómo podrían comunicarse dos procesos si están en diferentes máquinas?
+
+Los procesos de dos sistemas terminales diferentes se comunican entre ellos intercambiando mensajes a través de la red de computadoras. Un proceso emisor crea y envía mensajes a la red; un proceso receptor recibe estos mensajes y posiblemente responda devolviendo mensajes.
+
+Ambos procesos hacen uso de la capa de aplicación para enviar y recibir datos.
+
+---
+
 
