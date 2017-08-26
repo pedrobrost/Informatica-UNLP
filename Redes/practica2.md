@@ -50,4 +50,15 @@ HTTP (HyperText Transfer Protocol) esun protocolo de la capa de aplicación de l
 
 ---
 
+#### 7. Investigue sobre el comando curl y analice para qué sirven los siguientes parámetros (-I, -H, -X, -s).
+
+Curl es una herramienta para transferir datos desde o hacia un servidor, usando uno de los protocolos soportados (FTP, FTPS, HTTP, HTTPS, SFTP, SMTP, TELNET, etc). El comando está diseñado para funcionar sin interacción del usuario.
+
+* -I, --head: Recupera únicamente el header de HTTP en el request.
+* -H, --header: Sirve para agregar información al header del request que se va a realizar (además sirve para reemplazar los valores por defecto que utilizará curl, de esta forma también se pueden limpiar algunos valores predeterminados. Ej. –H “Host:” ; así se limpia el dato Host del header).
+* -X, --request: Especifica un método de request específico para usar en la comunicación (el default es GET).
+* -s, --silent: Modo silencio. No muestra los mensajes de error.
+
+---
+
 
