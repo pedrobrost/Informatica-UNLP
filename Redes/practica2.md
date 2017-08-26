@@ -98,8 +98,9 @@ Cuando ejecutamos el comando `curl www.redes.unlp.edu.ar` lo que hara el program
 
 #### 9. Ejecute a continuación los siguientes comandos:
 
-´curl -v -s www.redes.unlp.edu.ar > /dev/null
-´curl -I -v -s www.redes.unlp.edu.ar´
+`curl -v -s www.redes.unlp.edu.ar > /dev/null`
+
+`curl -I -v -s www.redes.unlp.edu.ar`
 
 ##### a. ¿Qué diferencias nota entre cada uno?
 
