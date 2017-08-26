@@ -41,3 +41,13 @@ Un agente de usuario es una aplicación informática que funciona como cliente e
 Cuando un usuario accede a una página web, la aplicación generalmente envía una cadena de texto que identifica al agente de usuario ante el servidor. Este texto forma parte del pedido a través de HTTP, llevando como prefijo User-agent: o User-Agent: y generalmente incluye información como el nombre de la aplicación, la versión, el sistema operativo, y el idioma. Los bots, como los web crawlers, a veces incluyen también una URL o una dirección de correo electrónico para que el administrador del sitio web pueda contactarse con el operador del mismo.
 
 ---
+
+#### 6. ¿Qué son y en qué se diferencian HTML y HTTP?
+
+HTML, sigla en inglés de HyperTextMarkupLanguage (lenguaje de marcas de hipertexto), hace referencia al lenguaje de marcado para la elaboración de páginas web. Es un estándar que sirve de referencia del software que conecta con la elaboración de páginas web en sus diferentes versiones, define una estructura básica y un código (denominado código HTML) para la definición de contenido de una página web, como texto, imágenes, videos, juegos, entre otros.
+
+HTTP (HyperText Transfer Protocol) esun protocolo de la capa de aplicación de la Web para la transferencia de hipertexto. Está definido en los documentos [RFC 1945] y [RFC 2616]. HTTP se implementa en dos programas: un programa cliente y un programa servidor. Ambos se ejecutan en sistemas terminales diferentes, y se comunican entre sí intercambiando mensajes HTTP. HTTP define la estructura de estos mensajes, y cómo el cliente y el servidor los intercambian.
+
+---
+
+
