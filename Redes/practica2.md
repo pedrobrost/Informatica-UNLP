@@ -207,4 +207,16 @@ En cambio en HTTP 1.0 se debe abrir una nueva conexión por cada request. Y lueg
 
 ---
 
+#### 14. En el siguiente ejercicio veremos la diferencia entre los métodos POST y GET. Para ello, será necesario utilizar la VM y la herramienta Wireshark.
 
+##### d. ¿Qué diferencias detectó en los mensajes enviados por el cliente?
+
+El cliente permite el envio de un formulario tanto por el método GET como por POST.
+
+* GET: Pide una representación del recurso especificado. Por seguridad no debería ser usado por aplicaciones que causen efectos ya que transmite información a través de la URI agregando parámetros a la URL. La petición puede ser simple, es decir en una línea o compuesta de la manera que muestra el ejemplo.
+
+* POST: Envía los datos para que sean procesados por el recurso identificado. Los datos se incluirán en el cuerpo de la petición. Esto puede resultar en la creación de un nuevo recurso o de las actualizaciones de los recursos existentes o ambas cosas.
+
+##### e. ¿Observó alguna diferencia en el browser si se utiliza un mensaje u otro?
+
+Como GET hace uso de la URI para transferir los parámetros, estos son posibles de observar desde el navegador. En cambio como POST hace uso del cuerpo del request para el envio de los parámetros, estos no estan visibles a simple vista desde el navegador. 
