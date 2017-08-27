@@ -195,4 +195,16 @@ En cambio en HTTP 1.0 se debe abrir una nueva conexión por cada request. Y lueg
 
 ---
 
+#### 13. La página www.redes.unlp.edu.ar/http/idioma.php tiene soporte para visualizarse en inglés y en español. Manipule los encabezados de HTTP para visualizar la página en los diferentes idiomas.
+
+* Español:
+
+`curl -H "Accept-Language: es" www.redes.unlp.edu.ar/http/idioma.php`
+
+* Inglés:
+
+`curl -H "Accept-Language: en" www.redes.unlp.edu.ar/http/idioma.php`
+
+---
+
 
