@@ -173,4 +173,26 @@ Estos encabezados sirven para implementar el GET condicional, y de esta forma da
 
 ---
 
+#### 12. En base a lo obtenido en el ejercicio anterior, responda
+
+##### a. ¿Qué está haciendo al ejecutar el comando telnet?
+
+El comando Telnet es una interfaz de usuario para el protocolo Telnet. Este comando es usado para comunicarse interactivamente con otro host, usando el protocolo Telnet. Comienza en modo comando, donde se imprime un prompt Telnet. Si telnet es invocado con un host de argumento, se realiza un comando open de manera implícita.
+
+##### b. ¿Qué comando HTTP utilizó? ¿Qué recurso solicitó?
+
+Se utilizó el comando `GET`, y se solicitó el recurso `/http/HTTP-1.x/`.
+
+##### c. ¿Qué diferencias notó entre los dos casos? ¿Puede explicar por qué?
+
+...
+
+##### d. ¿Cuál de los dos casos le parece más eficiente? Piense en el ejercicio donde analizó la cantidad de requerimientos necesarios para obtener una página con estilos, javascripts e imágenes. El caso elegido, ¿puede traer asociado algún problema?
+
+HTTP 1.1 permite tener conexiones persistentes, lo cual significa que se puede realizar mas de un request en la misma conexión HTTP.
+
+En cambio en HTTP 1.0 se debe abrir una nueva conexión por cada request. Y luego de cada respuesta la conexión debería ser cerrada. Esto claramente llevó a claros problemas de eficiencia.
+
+---
+
 
