@@ -5,8 +5,26 @@
 #### Arrays
 
 * `array = [12, "hola", 44] => [12, "hola", 44]`
-* `array = Array.new(4, :sel)` => `el, :sel, :sel, :sel]`
-* `array = Array.new(4) { Hash.new }` => `[{}, {}, {}, {}]`
-* `Array({:a => "a", :b => "b"})` => `[[:a, "a"], [:b, "b"]]`
+* `array = Array.new(4, :sel) => el, :sel, :sel, :sel]`
+* `array = Array.new(4) { Hash.new } => [{}, {}, {}, {}]`
+* `Array({:a => "a", :b => "b"}) => [[:a, "a"], [:b, "b"]]`
 
+#### Hashes
+
+* `hash = { "pedro" => 44, "juan" => "hola" } => {"pedro"=>44, "juan"=>"hola"}`
+* `hash = { pedro: 44, juan: "hola" } => {:pedro=>44, :juan=>"hola"}`
+
+#### Strings
+
+* `string = "esto es un string" => "esto es un string"`
+* `string = 'esto es un string' => "esto es un string"`
+* `string = String.new("esto es un string") => "esto es un string"`
+
+#### Symbols
+
+* `symbol = :symbol => :symbol`
+* `symbol = :"symbol" => :symbol`
+* `symbol = "symbol".to_sym => :symbol`
+
+---
 
