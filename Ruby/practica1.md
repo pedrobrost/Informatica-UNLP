@@ -179,3 +179,17 @@ def rot string, num
     string.tr("a-zA-Z", range)
 end
 ```
+
+---
+
+### 13. Escribí un script en Ruby que le pida al usuario su nombre y lo utilice para saludarlo imprimiendo en pantalla ¡Hola, "nombre"!.
+
+```
+puts "Por favor, ingresa tu nombre: "
+name = gets.chomp
+puts "¡Hola, #{name}!"
+```
+
+---
+
+
