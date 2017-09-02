@@ -117,7 +117,7 @@ end
 
 #### Cambiá las vocales por números (a por 4, e por 3, i por 1, o por 0, u por 6).
 
-`puts "esto es un string".gsub /[aeiou]/, /[aA]/ => 4, "e" => 3, "E" => 3, "i" => 1, "I" => 1, "o" => 0, "O" => 0, "u" => 6, "U" => 6
+`puts "esto es un string".gsub /[aeiou]/, /[aA]/ => 4, "e" => 3, "E" => 3, "i" => 1, "I" => 1, "o" => 0, "O" => 0, "u" => 6, "U" => 6`
 
 ---
 
