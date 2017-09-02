@@ -38,10 +38,12 @@ Devuelve falso debido a que estamos creando dos Strings que por mas de que tiene
 
 ### 3. Escribí una función llamada reemplazar que reciba un String y que busque y reemplace en el mismo cualquier ocurrencia de { por do\n y cualquier ocurrencia de } por \nend, de modo que convierta los bloques escritos con llaves por bloques multilínea con do y end.
 
-`def reemplazar(string)
-	string.gsub! "{", "do\n"
-	string.gsub! "}", "\nend"
-end`
+```
+def reemplazar(string)
+    string.gsub! "{", "do\n"
+    string.gsub! "}", "\nend"	
+end
+```
 
 ---
 
