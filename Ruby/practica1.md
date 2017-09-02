@@ -1,6 +1,6 @@
 # Ruby: sintaxis y tipos básicos
 
-### 2. Investigá y probá en un intérprete de Ruby cómo crear objetos de los siguientes tipos básicos usando literales y usando el constructor new (cuando sea posible):
+### 1. Investigá y probá en un intérprete de Ruby cómo crear objetos de los siguientes tipos básicos usando literales y usando el constructor new (cuando sea posible):
 
 #### Arrays
 
@@ -27,4 +27,14 @@
 * `symbol = "symbol".to_sym => :symbol`
 
 ---
+
+### 2. ¿Qué devuelve la siguiente comparación? ¿Por qué?
+
+`'TTPS Ruby'.object_id == 'TTPS Ruby'.object_id`
+
+Devuelve falso debido a que estamos creando dos Strings que por mas de que tienen el mismo contenido, son instancias distintas, que por ende poseen un object id distinto.
+
+---
+
+
 
