@@ -77,4 +77,14 @@ end
 
 ---
 
+### 5. Escribí una función llamada contar que reciba como parámetro dos string y que retorne la cantidad de veces que aparece el segundo string en el primero, sin importar mayúsculas y minúsculas.
+
+```
+def contar(string1, string2)
+    string1.upcase.count string2.upcase
+end
+```
+
+---
+
 
