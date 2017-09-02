@@ -87,4 +87,14 @@ end
 
 ---
 
+### 6. Modificá la función anterior para que sólo considere como aparición del segundo string cuando se trate de palabras completas.
+
+```
+def contar_palabras universe, target
+    universe.scan(/\b#{target}\b/i).size
+end
+```
+
+---
+
 
