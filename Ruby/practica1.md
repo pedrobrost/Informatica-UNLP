@@ -161,7 +161,7 @@ end
 
 ```
 def rot13(value)
-    return value.tr("a-zA-Z", "n-za-mN-ZA-M")
+    value.tr("a-zA-Z", "n-za-mN-ZA-M")
 end
 ```
 
