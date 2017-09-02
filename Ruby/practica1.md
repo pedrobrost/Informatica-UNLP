@@ -167,4 +167,15 @@ end
 
 ---
 
+### 12. Escribí una función más genérica, parecida a la del ejercicio anterior, que reciba como parámetro un string y un número n, y que realice una rotación de n lugares de las letras del string y retorne el resultado.
 
+```
+def rot string, num
+    range = "n-za-mN-ZA-M"
+    alphabet = ('a'..'z').to_a
+    first = alphabet[num % alphabet.length]
+    last = alphabet[(alphabet.index("z") + num) % alphabet.length]
+    range.tr!("nNmM", first << first.upcase + last << last.upcase)
+    string.tr("a-zA-Z", range)
+end
+```
