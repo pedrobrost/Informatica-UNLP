@@ -36,4 +36,16 @@ Una respuesta autoritativa es cuando una consulta DNS es respondida por el servi
 
 ---
 
+### 4. ¿Qué diferencia una consulta DNS recursiva de una iterativa?
+
+La solicitud de una búsqueda recursiva hace solicitudes sucesivas de la dirección IP al dominio y si no la obtiene, hace nuevas solicitudes hasta encontrarla. La solicitud de búsqueda iterativa realiza una búsqueda en la base de datos de la dirección IP relacionada con el nombre de dominio, si no la obtiene pregunta al dominio donde realizar la próxima búsqueda. Si la consulta es recursiva, la resolución prevé la dirección de nuevo sin necesidad de realizar ningún otra consulta. Si es iterativa, el servidor DNS devuelve una dirección donde puede estar ubicada la dirección y si no, se conserva en la misma dirección. La resolución depende de la posibilidad de contactar la dirección o si se debe ubicar una ruta a través de su propia lista de servidores DNS.
+
+---
+
+### 5. ¿Qué es el resolver?
+
+El funcionamiento del DNS se realiza en un esquema cliente/servidor, siendo el cliente cualquier aplicación que requiera la resolución de nombres. El código (instrucciones de maquina) del cliente se lo agrupa en un módulo llamado Resolver. El Resolver se lo podría considerar como un agente encargado de resolver los nombres a solicitud del cliente, por ejemplo: un servidor web, el cliente telnet, un navegador web, un servidor de mail, etc. Este agente, generalmente, no se implementa como un servicio activo, sino como un conjunto de rutinas encapsuladas en una biblioteca de funciones que se link-edita conjuntamente con la aplicación.
+
+---
+
 
