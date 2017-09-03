@@ -192,4 +192,14 @@ puts "¡Hola, #{name}!"
 
 ---
 
+### 14.Dado un color expresado en notación RGB (https://es.wikipedia.org/wiki/RGB) , debés calcular su representación entera y hexadecimal, donde la notación entera se define como red + green.256 + blue.256.256 y la hexadecimal como el resultado de expresar en hexadecimal el valor de cada color y concatenarlos en orden. 
+
+```
+def notacion_hexadecimal array
+    array.reduce("#") { |hex, int| hex << int.to_s(16).rjust 2, '0' }
+end
+```
+
+---
+
 
