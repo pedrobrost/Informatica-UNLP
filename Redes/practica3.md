@@ -12,4 +12,22 @@ La asignación de nombres a direcciones IP es ciertamente la función más conoc
 
 ### 2. ¿Qué es un root server? ¿Qué es un generic top-level domain (gtld)?
 
+DNS utiliza un gran número de servidores, organizados de forma jerárquica y distribuidos alrededor del mundo. Ningún servidor DNS dispone de todas las correspondencias de todos los hosts de Intenet. En su lugar, las correspondencias están repartidas por los servidores DNS. Podemos decir que existe 3 clases de servidores DNS:
+
+* **Los servidores DNS raízu**: Existen 13 servidores DNS raíz (etiquetados de la A hasta la M), la mayoría de los cuales se localizan en América del Norte. Cada “servidor” es una agrupación (cluster) de servidores replicados (seguridad y fiabilidad).
+
+* **Los servidores DNS de dominio de nivel superior (TLD, Top-LevelDomain)**: Estos servidors son respondables de los dominios de nivel superior.
+
+1. **Generic TLD (gTLD)**: contienen dominios con propósitos particulares, de acuerdo a diferentes actividades, como son .com, .org, .net, .edu, y .gov, etc.
+
+2. **Country-Code TLD (ccTLD)**: son todos los dominios de nivel superior correspondientes a los distintos países, como por ejemplo, uk, fr, ca y jp.
+
+3. **.ARPA TLD**: es un dominio especial, usado internamente por los protocolos, creado para resolución de reversos de direcciones a nombres.
+
+* **Los servidores DNS autoritativos**: Albergan los registros DNS que establecen la correspondencia entre los nombres de host y las direcciones IP. Todas las organizaciones que tienen hosts accesibles públicamente a través de internet deben proporcionar dichos registros DNS. Una organización puede elegir implementar su propio servidor DNS autoritativo para almacenar estos registros o puede pagar por tener esos registros almacenados en un servidor DNS autoritativo de algún proveedor de servicios.
+
+También existe el servidor DNS local. Que actúa como proxy reenviando las consultas a la jerarquía de servidores DNS.Mantiene una cache con los nombres que va resolviendo. También puede ser un Servidor Autoritativo, en algunas organizaciones tienen sus propios servidores autoritativos (universidades y grandes empresas), así en la red local de estas, primero interactúan con un servidor DNS local, que a la vez es un servidor autoritativo.
+
+---
+
 
