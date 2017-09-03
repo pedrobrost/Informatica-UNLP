@@ -226,4 +226,14 @@ end
 
 ---
 
+### 16. Escribí una función que encuentre la suma de todos los números naturales múltiplos de 3 ó 5 menores que un número tope que reciba como parámetro.
+
+```
+def suma tope
+    ((1..tope - 1).select { |num| num % 3 == 0 or num % 5 == 0 }).sum
+end
+```
+
+---
+
 
