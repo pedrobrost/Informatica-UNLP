@@ -30,4 +30,10 @@ También existe el servidor DNS local. Que actúa como proxy reenviando las cons
 
 ---
 
+### 3. ¿Qué es una respuesta del tipo autoritativa?
+
+Una respuesta autoritativa es cuando una consulta DNS es respondida por el servidor autoritativo sobre un nombre de dominio en el cual tiene autoridad. Cuando la respuesta es emitida por un servidor DNS local, y este no oficia de servidor autoritativo para ese dominio es decir, que lo obtiene de cache), esta respuesta es NO-Autoritativa.
+
+---
+
 
