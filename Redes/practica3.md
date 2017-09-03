@@ -48,4 +48,40 @@ El funcionamiento del DNS se realiza en un esquema cliente/servidor, siendo el c
 
 ---
 
+### 6. Describa para qué se utilizan los siguientes tipos de registros de DNS:
+
+#### A y AAAA
+
+El registro "A" hace referencia a la Dirección y es el tipo más básico de sintaxis de DNS.  Indica la dirección de IP real de un dominio.  El registro "AAAA" (también conocida como dirección IPV6) indica el nombre de alojamiento a una dirección IPv6 de 128 bits.  Las direcciones DNS normales se mapean para direcciones IPv4 de 32 bits.
+
+#### MX
+
+El registro "MX" o intercambio de correo es principalmente una lista de servidor de intercambio de correo que se debe utilizar para el dominio.
+
+#### PTR
+
+Puedes pensar en el registro PTR como lo opuesto del registro A. Mientras que un registro A apunta a una IP, el PTR resuelve una IP a un Dominio/Servidor. Los registros PTR se utilizan para la búsqueda de las DNS inversas. Utilizando la IP puede ver a qué dominio/servidor se encuentra asociada. Debe existir un registro A para cada PTR.
+
+#### SRV
+
+Un registro "SRV" significa "Servicio". Se utiliza para la definición de un servicio TCP en el que opera el dominio.
+
+#### NS
+
+El registro "NS" significa Servidor de nombres e indica qué nombre del servidor es el autorizado para el dominio.
+
+#### CNAME
+
+El registro de "CNAME" significa nombre canónico y su función es hacer que un dominio sea un alias para otro. El CNAME generalmente se utiliza para asociar nuevos subdominios con dominios ya existentes de registro A.
+
+#### SOA
+
+Un registro "SOA" significa "Comienzo de autoridad". Evidentemente, es uno de los registros DNS más importantes, dado que guarda información esencial, como la fecha de la última actualización del dominio y otros cambios y actividades.
+
+#### TXT
+
+Un registro "TXT" significa "Texto". Esta sintaxis de DNS permite que los administradores inserten texto en el registro DNS. A menudo se utiliza para denotar hechos o información sobre el dominio.
+
+---
+
 
