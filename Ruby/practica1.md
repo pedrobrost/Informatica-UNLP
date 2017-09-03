@@ -198,6 +198,10 @@ puts "¡Hola, #{name}!"
 def notacion_hexadecimal array
     array.reduce("#") { |hex, int| hex << int.to_s(16).rjust 2, '0' }
 end
+
+def notacion_entera array
+    array.each_with_index.reduce(0) { |sum, (value, index)| sum + value * 256 ** index }
+end
 ```
 
 ---
