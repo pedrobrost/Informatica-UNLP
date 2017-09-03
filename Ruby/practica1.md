@@ -160,8 +160,8 @@ end
 ### 11. Escribí una función llamada rot13 que encripte un string recibido como parámetro utilizando el algoritmo ROT13.
 
 ```
-def rot13(value)
-    value.tr("a-zA-Z", "n-za-mN-ZA-M")
+def rot13(string)
+    string.tr("a-zA-Z", "n-za-mN-ZA-M")
 end
 ```
 
