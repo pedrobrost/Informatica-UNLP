@@ -246,7 +246,7 @@ def fib prev1, prev2, sum, max
     fib prev2, curr, sum, max
 end
 
-def sumOddFib2 max
+def sumEvenFib max
     fib 1, 1, 0, max
 end
 ```
