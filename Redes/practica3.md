@@ -84,4 +84,26 @@ Un registro "TXT" significa "Texto". Esta sintaxis de DNS permite que los admini
 
 ---
 
+### 7. En la VM, utilice el comando dig para obtener la dirección IP del host www.redes.unlp.edu.ar. Responda:
+
+#### a. ¿La solicitud fue recursiva? ¿Y la respuesta? ¿Cómo lo sabe?
+
+El flag `rd` (recursion desired) nos indica que la solicitud fue recursiva.
+
+El flag `ra` (recursion available) nos indica que el servidor puede responder recursivamente.
+
+#### b. ¿Puede indicar si se trata de una respuesta autoritativa?
+
+El flag `aa` (authoritative answer) nos indica que la respuesta fue autoritativa.
+
+#### c.  ¿Cuál es la dirección IP del servidor de DNS al que le realizó la consulta? ¿Cómo lo sabe?
+
+SERVER: `172.28.0.29`
+
+#### d. ¿Es posible obtener la misma información con el comando host? ¿Cómo?
+
+`host -v www.redes.unlp.edu.ar`
+
+---
+
 
