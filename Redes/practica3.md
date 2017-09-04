@@ -106,4 +106,12 @@ SERVER: `172.28.0.29`
 
 ---
 
+### 8. Usando el comando dig, averigüe la dirección IP de www.google.com. Observe los números que aparecen antes de la palabra IN. Vuelva a ejecutar la misma consulta y observe nuevamente esos números. ¿Qué ocurrió? ¿Por qué? ¿Qué significado cree que tienen dichos números?
+
+Direccion IP de Google: `172.217.28.196`
+
+El número que aparece hace referencia al TTL (time to live), el cual le dice a los dns servers locales cuanto tiempo se deberia cachear el registro. Cuando hacemos un request a un servidor no autoritativo obtendremos este número decrementandosé, en cambio si el request lo hacemos sobre un servidor autoritativo obtendremos el numero seteado para el determinado registro.
+
+---
+
 
