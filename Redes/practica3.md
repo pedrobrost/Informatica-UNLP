@@ -148,4 +148,47 @@ Por lo tanto hay 3 servidores.
 
 ---
 
+### 11. Investigue los comando nslookup y host. ¿Para qué sirven? Intente con ambos comandos obtener:
+
+Nslookup es un programa utilizado para saber si el DNS está resolviendo correctamente los nombres y las IPs. Se utiliza con el comando nslookup, que funciona tanto en Windows como en UNIX para obtener la dirección IP conociendo el nombre, y viceversa.
+
+El comando host se usa para encontrar la dirección IP del dominio dado y también muestra el nombre de dominio para la IP dada.
+
+#### a. Dirección IP de www.redes.unlp.edu.ar
+
+* nslookup www.redes.unlp.edu.ar
+* host www.redes.unlp.edu.ar
+
+#### b. Servidores de correo del dominio redes.unlp.edu.ar.
+
+```
+nslookup
+set ty=MX
+redes.unlp.edu.ar
+```
+
+```
+host -t MX redes.unlp.edu.ar
+```
+
+#### c. Servidores de DNS del dominio redes.unlp.edu.ar.
+
+```
+nslookup
+set ty=NS
+redes.unlp.edu.ar
+```
+
+```
+host -t NS redes.unlp.edu.ar
+```
+
+---
+
+### 12. ¿Qué función cumple en Linux/Unix el archivo /etc/hosts o en Windows el archivo \WINDOWS\system32\drivers\etc\hosts? 
+
+El archivo hosts de un ordenador es usado por el sistema operativo para guardar la correspondencia entre dominios de Internet y direcciones IP. Este es uno de los diferentes métodos que usa el sistema operativo para resolver nombres de dominios. Antiguamente cuando no había servidores DNS que resolvieran los dominios, el archivo hosts era el único encargado de hacerlo, pero dejó de utilizarse cuando Internet empezó a crecer en nombres de dominio, pasando a usar servidores de resolución de DNS. En muchos sistemas operativos este método es usado preferentemente respecto a otros como el DNS. En la actualidad también es usado para bloquear contenidos de Internet como la publicidad web. 
+
+---
+
 
