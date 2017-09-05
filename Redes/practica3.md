@@ -114,4 +114,21 @@ El número que aparece hace referencia al TTL (time to live), el cual le dice a 
 
 ---
 
+### 10. Utilizando el comando dig responda (debe tener conexión a Internet para realizar este ejercicio):
+
+#### a. Cantidad de servidores que aceptan correos para el dominio gmail.com.
+
+* `alt2.gmail-smtp-in.l.google.com.`
+* `alt1.gmail-smtp-in.l.google.com.`
+* `gmail-smtp-in.l.google.com.`
+* `alt3.gmail-smtp-in.l.google.com.`
+* `alt4.gmail-smtp-in.l.google.com.`
+
+Por lo tanto hay 5 servidores.
+
+#### b. Cuándo se envía un correo a una cuenta gmail.com, ¿cuál de los servidores recibirá el correo? Justifique.
+
+---
+
+
 
