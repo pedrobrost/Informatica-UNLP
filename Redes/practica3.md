@@ -128,7 +128,24 @@ Por lo tanto hay 5 servidores.
 
 #### b. Cuándo se envía un correo a una cuenta gmail.com, ¿cuál de los servidores recibirá el correo? Justifique.
 
----
 
+
+#### c. ¿En qué ocasión los demás servidores de correo recibirían correos dirigidos al dominio gmail.com? ¿Qué sucede luego de que uno de estos servidores recibe algún correo para el mencionado dominio?
+
+
+
+#### d. Cantidad de servidores de DNS del dominio unlp.edu.ar
+
+* `unlp.unlp.edu.ar.`
+* `ns1.riu.edu.ar.`
+* `anubis.unlp.edu.ar.`
+
+Por lo tanto hay 3 servidores.
+
+#### e. Dirección IP del host www.info.unlp.edu.ar.
+
+`163.10.5.71`
+
+---
 
 
