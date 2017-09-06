@@ -197,4 +197,18 @@ Se puede observar que la información que devuelve la captura de paquetes se cor
 
 ---
 
+### 14. Dada la siguiente situación: “Una PC en una red determinada, con acceso a Internet, utiliza los servicios de DNS de un servidor de la red”. Analice:
+
+#### a. ¿Qué tipo de consultas (iterativas o recursivas) realiza la PC a su servidor de DNS?
+
+La PC realiza consultas recursivas al servidor DNS, por lo cual este le responderá al resolver ya sea con la respuesta esperada o con un error. Si en cambio la consulta fuese iterativa, el servidor DNS responderá de la mejor manera posible para que el cliente pueda seguir buscando.
+
+#### b. ¿Qué tipo de consultas (iterativas o recursivas) realiza el servidor de DNS para resolver requerimientos de usuario como el anterior? ¿A quién le realiza estas consultas?
+
+El servidor DNS que intenta resolver la consulta recursiva, realizará una serie de consultas iterativas a los distintos servidores DNS que sean necesarios hasta llegar al servidor DNS autoritativo para el dominio solicitado. Todo esto es considerando que ningun servidor cacheó dicho dominio.
+
+<https://technet.microsoft.com/en-us/library/cc961401.aspx>
+
+---
+
 
