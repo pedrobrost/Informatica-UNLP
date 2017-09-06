@@ -242,7 +242,7 @@ Sin servicio de DNS, Internet, tal cual lo conocemos, sería inviable.
 
 ### 17. ¿A quién debería consultar para que la respuesta sobre www.google.com sea autoritativa?
 
-Para que una consulta DNS a www.google.com sea autoritativa debo hacerla a un nameserver del cominio www.google.com el cual lo podemos obtener consultando por los registros NS. Por lo tanto un ejemplo para obtener una respuesta autoritativa sería:
+Para que una consulta DNS a www.google.com sea autoritativa debo hacerla a un nameserver del dominio www.google.com el cual lo podemos obtener consultando por los registros NS. Por lo tanto un ejemplo para obtener una respuesta autoritativa sería:
 
 ```
 dig @ns3.google.com. www.google.com.
