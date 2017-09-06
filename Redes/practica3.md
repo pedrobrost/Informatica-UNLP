@@ -211,4 +211,15 @@ El servidor DNS que intenta resolver la consulta recursiva, realizará una serie
 
 ---
 
+### 15. Relacione DNS con HTTP. ¿Se puede navegar si no hay servicio de DNS?
+
+Como sabemos, HTTP permite trabajar con recursos compartidos (documentos, servicios, etc.) entre dos o más sistemas terminales (hosts). Para esto los hosts deben ser identificables unívocamente, y así poder direccionar a un host y un recurso particular (URI). Los hosts se identifican en la red mediante una dirección IP (4 bytes separados por punto). El servicio DNS permite mapear (y consultar) direcciones IP con nombres nemotécnicos, que pueden perdurar en el tiempo, tener varios alias y pueden ser recordados fácilmente por las personas. HTTP permite referenciar recursos con nombres de dominio, como con direcciones IP. Pero lógicamente, navegar en internet se complicaría muchísimo sin servicio de DNS, ya que deberíamos:
+* Tener localmente el mapeo entre los nombres de host y las IPs (archivo host). Oconocer previamente las IP de los host que deseamos acceder.
+* Referenciar todos los recursos de internet mediante la IP.
+* Mantener todas las IP estáticas (ya que sino los documentos y archivos dejarían deservir).
+
+Sin servicio de DNS, Internet, tal cual lo conocemos, sería inviable.
+
+---
+
 
