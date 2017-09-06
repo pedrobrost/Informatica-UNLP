@@ -255,3 +255,67 @@ dig @ns3.google.com. www.google.com.
 Si se realiza una consulta DNS al servidor ns3.google.com. por el dominio www.info.unlp.edu.ar, no habrá respuesta alguna debido a que este nameserver no tiene registros asociados a para este dominio.
 
 En cambio, si la consulta la hago sobre el nameserver 8.8.8.8, se obtendrá la respuesta esperada. Esto se debe a que 8.8.8.8 referencia a el servicio Google Public DNS, el cual es un servicio de DNS gratuito.
+
+---
+
+### 19. En base a la siguiente salida de dig, conteste las consignas. Justifique en todos los casos.
+
+```
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 4, ADDITIONAL: 4
+;; QUESTION SECTION:
+;ejemplo.com. IN ___
+;; ANSWER SECTION:
+ejemplo.com. 1634 IN __ 10 srv01.ejemplo.com.
+ejemplo.com. 1634 IN __ 5 srv00.ejemplo.com.
+;; AUTHORITY SECTION:
+ejemplo.com. 92354 IN __ ss00.ejemplo.com.
+ejemplo.com. 92354 IN __ ss02.ejemplo.com.
+ejemplo.com. 92354 IN __ ss01.ejemplo.com.
+ejemplo.com. 92354 IN __ ss03.ejemplo.com.
+;; ADDITIONAL SECTION:
+srv01.ejemplo.com. 272 IN __ 64.233.186.26
+srv01.ejemplo.com. 240 IN ___ 2800:3f0:4003:c00::1a
+srv00.ejemplo.com. 272 IN __ 74.125.133.26
+srv00.ejemplo.com. 240 IN ___ 2a00:1450:400c:c07::1b
+```
+
+#### a. Complete las líneas con el registro correcto.
+
+```
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 4, ADDITIONAL: 4
+;; QUESTION SECTION:
+;ejemplo.com. IN MX
+;; ANSWER SECTION:
+ejemplo.com. 1634 IN MX 10 srv01.ejemplo.com.
+ejemplo.com. 1634 IN MX 5 srv00.ejemplo.com.
+;; AUTHORITY SECTION:
+ejemplo.com. 92354 IN NS ss00.ejemplo.com.
+ejemplo.com. 92354 IN NS ss02.ejemplo.com.
+ejemplo.com. 92354 IN NS ss01.ejemplo.com.
+ejemplo.com. 92354 IN NS ss03.ejemplo.com.
+;; ADDITIONAL SECTION:
+srv01.ejemplo.com. 272 IN A 64.233.186.26
+srv01.ejemplo.com. 240 IN AAAA 2800:3f0:4003:c00::1a
+srv00.ejemplo.com. 272 IN A 74.125.133.26
+srv00.ejemplo.com. 240 IN AAAA 2a00:1450:400c:c07::1b
+```
+
+#### b. ¿Es una respuesta autoritativa? En caso de no serlo, ¿a qué servidor le preguntaría para obtener una respuesta autoritativa?
+
+No es una respuesta autoritativa debido a que no está presente el flag `aa` que corresponde a "Authoritative Answer". Para obtener una respuesta de este tipo se podria hacer la consulta al cualquier servidor DNS obtenidos del registro NS, es decir:
+
+* ss00.ejemplo.com.
+* ss02.ejemplo.com.
+* ss01.ejemplo.com.
+* ss03.ejemplo.com.
+
+#### c. ¿La consulta fue recursiva? ¿Y la respuesta?
+
+El flag `rd` nos indica que la consulta fue recursiva y el flag `ra` que la respuesta también lo fue.
+
+* `rd`: Recursion Desired
+* `ra`: Recursion Available
+
+#### d. ¿Qué representan los valores 10 y 5 en la Answer section.
+
+Estos valores representan la preferencia del servidor. El sistema de DNS eligirá el servidor de menor numero de preferencia. Si hay dos o mas registros con la misma preferencia se eligirá al azar cualquiera de estos.
