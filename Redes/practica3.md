@@ -222,4 +222,22 @@ Sin servicio de DNS, Internet, tal cual lo conocemos, sería inviable.
 
 ---
 
+### 16. Observar el siguiente gráfico y contestar:
+
+![alt text](https://i.imgur.com/9BQYizQ.png)
+
+### Si desde PC-A se desea obtener la IP de www.unlp.edu.ar, cuáles serían, y en qué orden, los pasos que se ejecutarán para obtener la respuesta. ¿Dónde es recursiva la consulta? ¿Y dónde iterativa?
+
+* El resolver de PC-A hace una consulta DNS recursiva al servidor DNS 192.168.10 por el dominio www.unlp.edu.ar.
+
+* El DNS server 192.168.10.2 hace una conulta iterativa a a.root-server, el cual respondera con la dirección del TLD a.dns.ar el cual es el servidor dns autoritativo para el dominio ar.
+
+* El DNS server hace una consulta iterativa a a.dns.ar, el cual responde con la direccion de ns1.riu.edu.ar el cual es el servidor dns autoritativo para el dominio edu.ar.
+
+* El DNS server hace una consulta iterativa a s1.riu.edu.ar el cual responde con la direccion unlp.unlp.edu.ar el cual es el servidor autoritativo para el dominio unlp.edu.ar.
+
+* El DNS server hace una consulta iterativa a unlp.unlp.edu.ar el cual es el servidor autoritativo de unlp.edu.ar ...
+
+---
+
 
