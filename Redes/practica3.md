@@ -250,7 +250,7 @@ dig @ns3.google.com. www.google.com.
 
 ---
 
-### ¿Qué sucede si al servidor elegido en el paso anterior se lo consulta por www.info.unlp.edu.ar? ¿Y si la consulta es al servidor 8.8.8.8?
+### 18. ¿Qué sucede si al servidor elegido en el paso anterior se lo consulta por www.info.unlp.edu.ar? ¿Y si la consulta es al servidor 8.8.8.8?
 
 Si se realiza una consulta DNS al servidor ns3.google.com. por el dominio www.info.unlp.edu.ar, no habrá respuesta alguna debido a que este nameserver no tiene registros asociados a para este dominio.
 
