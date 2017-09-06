@@ -250,4 +250,8 @@ dig @ns3.google.com. www.google.com.
 
 ---
 
+### ¿Qué sucede si al servidor elegido en el paso anterior se lo consulta por www.info.unlp.edu.ar? ¿Y si la consulta es al servidor 8.8.8.8?
 
+Si se realiza una consulta DNS al servidor ns3.google.com. por el dominio www.info.unlp.edu.ar, no habrá respuesta alguna debido a que este nameserver no tiene registros asociados a para este dominio.
+
+En cambio, si la consulta la hago sobre el nameserver 8.8.8.8, se obtendrá la respuesta esperada. Esto se debe a que 8.8.8.8 referencia a el servicio Google Public DNS, el cual es un servicio de DNS gratuito.
