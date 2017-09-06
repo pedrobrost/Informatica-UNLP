@@ -191,4 +191,10 @@ El archivo hosts de un ordenador es usado por el sistema operativo para guardar 
 
 ---
 
+### 13. Abra el programa Wireshark para comenzar a capturar el tráfico de red en la interfaz con IP 172.28.0.1. Una vez abierto realice una consulta DNS con el comando dig para averiguar el registro MX de redes.unlp.edu.ar y luego, otra para averiguar los registros NS correspondientes al dominio redes.unlp.edu.ar. Analice la información proporcionada por dig y compárelo con la captura.
+
+Se puede observar que la información que devuelve la captura de paquetes se corresponde a la devuelta por dig. Además se pueden apreciar demás campos adicionales de información.
+
+---
+
 
