@@ -185,7 +185,7 @@ Se utilizó el comando `GET`, y se solicitó el recurso `/http/HTTP-1.x/`.
 
 #### c. ¿Qué diferencias notó entre los dos casos? ¿Puede explicar por qué?
 
-...
+Al hacer el request utilizando el protocolo HTTP 1.0, luego de obtener la respuesta, la conexión se cerró inmediatamente, en cambio al utilizar HTTP 1.1, luego de obtener la respuesta, la conexión se mantiene abierta por un momento, dando lugar así a realizar nuevas consultas.
 
 #### d. ¿Cuál de los dos casos le parece más eficiente? Piense en el ejercicio donde analizó la cantidad de requerimientos necesarios para obtener una página con estilos, javascripts e imágenes. El caso elegido, ¿puede traer asociado algún problema?
 
