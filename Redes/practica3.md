@@ -236,7 +236,7 @@ Sin servicio de DNS, Internet, tal cual lo conocemos, sería inviable.
 
 * El DNS server hace una consulta iterativa a s1.riu.edu.ar el cual responde con la direccion unlp.unlp.edu.ar el cual es el servidor autoritativo para el dominio unlp.edu.ar.
 
-* El DNS server hace una consulta iterativa a unlp.unlp.edu.ar el cual es el servidor autoritativo de unlp.edu.ar ...
+* El DNS server hace una consulta iterativa a unlp.unlp.edu.ar el cual es el servidor autoritativo de unlp.edu.ar, este finalmente devuelve la dirección ip buscada, ya que posee los registros necesarios para proveer esta información.
 
 ---
 
