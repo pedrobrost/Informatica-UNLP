@@ -128,7 +128,7 @@ Por lo tanto hay 5 servidores.
 
 #### b. Cuándo se envía un correo a una cuenta gmail.com, ¿cuál de los servidores recibirá el correo? Justifique.
 
-
+El servidor que recibirá el correo será el que posee el menor número de preferencia, en este caso: `5 gmail-smtp-in.l.google.com.`
 
 #### c. ¿En qué ocasión los demás servidores de correo recibirían correos dirigidos al dominio gmail.com? ¿Qué sucede luego de que uno de estos servidores recibe algún correo para el mencionado dominio?
 
