@@ -114,6 +114,12 @@ El número que aparece hace referencia al TTL (time to live), el cual le dice a 
 
 ---
 
+### 9. Observe nuevamente las respuestas del paso anterior, ¿el orden de los servidores en la respuesta es siempre el mismo? ¿Por qué piensa que sucede esto?
+
+DNS también se emplea para la distribución de carga entre los servidores replicados (tanto web como de correo). Los sitios con una gran carga de trabajo están replicados en varios servidores, cada uno ejecutando en distintas terminar y dirección IP. Por lo tanto, para un nombre de host canónico hay un conjunto de direcciones IP. Cuando un cliente realiza una consulta DNS para un servidor con varias direcciones IP el servidor responde con el conjunto completo de direcciones, pero rota el orden de las direcciones en cada respuesta (normalmente los clientes usan la primera dirección del conjunto). La rotación DNS distribuye el tráfico entre los servidores replicados.
+
+---
+
 ### 10. Utilizando el comando dig responda (debe tener conexión a Internet para realizar este ejercicio):
 
 #### a. Cantidad de servidores que aceptan correos para el dominio gmail.com.
