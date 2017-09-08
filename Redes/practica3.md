@@ -16,7 +16,7 @@ DNS utiliza un gran número de servidores, organizados de forma jerárquica y di
 
 * **Los servidores DNS raízu**: Existen 13 servidores DNS raíz (etiquetados de la A hasta la M), la mayoría de los cuales se localizan en América del Norte. Cada “servidor” es una agrupación (cluster) de servidores replicados (seguridad y fiabilidad).
 
-* **Los servidores DNS de dominio de nivel superior (TLD, Top-LevelDomain)**: Estos servidors son respondables de los dominios de nivel superior.
+* **Los servidores DNS de dominio de nivel superior (TLD, Top-LevelDomain)**: Estos servidores son responsables de los dominios de nivel superior.
 
 1. **Generic TLD (gTLD)**: contienen dominios con propósitos particulares, de acuerdo a diferentes actividades, como son .com, .org, .net, .edu, y .gov, etc.
 
@@ -108,9 +108,9 @@ SERVER: `172.28.0.29`
 
 ### 8. Usando el comando dig, averigüe la dirección IP de www.google.com. Observe los números que aparecen antes de la palabra IN. Vuelva a ejecutar la misma consulta y observe nuevamente esos números. ¿Qué ocurrió? ¿Por qué? ¿Qué significado cree que tienen dichos números?
 
-Direccion IP de Google: `172.217.28.196`
+Dirección IP de Google: `172.217.28.196`
 
-El número que aparece hace referencia al TTL (time to live), el cual le dice a los dns servers locales cuanto tiempo se deberia cachear el registro. Cuando hacemos un request a un servidor no autoritativo obtendremos este número decrementandosé, en cambio si el request lo hacemos sobre un servidor autoritativo obtendremos el numero seteado para el determinado registro.
+El número que aparece hace referencia al TTL (time to live), el cual le dice a los dns servers locales cuanto tiempo se debería cachear el registro. Cuando hacemos un request a un servidor no autoritativo obtendremos este número decrementandose, en cambio si el request lo hacemos sobre un servidor autoritativo obtendremos el numero seteado para el determinado registro.
 
 ---
 
@@ -211,7 +211,7 @@ La PC realiza consultas recursivas al servidor DNS, por lo cual este le responde
 
 #### b. ¿Qué tipo de consultas (iterativas o recursivas) realiza el servidor de DNS para resolver requerimientos de usuario como el anterior? ¿A quién le realiza estas consultas?
 
-El servidor DNS que intenta resolver la consulta recursiva, realizará una serie de consultas iterativas a los distintos servidores DNS que sean necesarios hasta llegar al servidor DNS autoritativo para el dominio solicitado. Todo esto es considerando que ningun servidor cacheó dicho dominio.
+El servidor DNS que intenta resolver la consulta recursiva, realizará una serie de consultas iterativas a los distintos servidores DNS que sean necesarios hasta llegar al servidor DNS autoritativo para el dominio solicitado. Todo esto es considerando que ningún servidor cacheó dicho dominio.
 
 <https://technet.microsoft.com/en-us/library/cc961401.aspx>
 
