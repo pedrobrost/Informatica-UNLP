@@ -30,4 +30,25 @@ process persona[i=1 to N]{
 
 ---
 
+### 2. Un sistema operativo mantiene 5 instancias de un recurso almacenadas en una cola, cuando un proceso necesita usar una instancia del recurso la saca de la cola, la usa y cuando termina de usarla la vuelve a depositar.
+
+```
+sem mutex = 5;
+sem sCola = 1;
+
+process SO[i=1 to N]{
+    P(mutex);
+    P(sCola);
+    x = desencolar;
+    V(sCola);
+    "usar recurso x";
+    P(sCola);
+    encolar(x);
+    V(sCola);
+    V(mutex);
+}
+```
+
+---
+
 
