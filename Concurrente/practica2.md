@@ -85,4 +85,53 @@ Esta solución es mas apropiada que la presentada en el enunciado debido a que b
 
 ---
 
+### 4. Se tiene un curso con 40 alumnos, la maestra entrega una tarea distinta a cada alumno, luego cada alumno realiza su tarea y se la entrega a la maestra para que la corrija, esta revisa la tarea y si está bien le avisa al alumno que puede irse, si la tarea está mal le indica los errores, el alumno corregirá esos errores y volverá a entregarle la tarea a la maestra para que realice la corrección nuevamente, esto se repite hasta que la tarea no tenga errores.
+
+```
+
+sem entregada[N] = 0;
+sem freeQueue = 1;
+queue paraCorregir;
+boolean puedeIr[N] = false;
+Alumno alumnos[N];
+sem entregas = 0;
+sem correccion[N] = 0;
+Tarea tarea[N];
+int cantAlumnos = N;
+
+process alumno[i=1 to N]{
+    P(entregada[i]);
+    while(!puedeIr[i]){
+        alumnos[i].realizar(tarea[i]);
+        P(freeQueue);
+        paraCorregir.encolar(i);
+        V(freeQueue);
+        V(entregas);
+        P(correccion[i]);
+    }
+}
+
+process maestra{
+    for i=1 to N {
+        tarea[i] = new Tarea();
+        V(entregada[i]);
+    }
+    while(cantAlumnos > 0){
+        P(entregas);
+        P(freeQueue);
+        alumno = paraCorregir.desencolar();
+        V(freeQueue);
+        puedeIr[alumno] = maestra.estaAprobado(tarea[alumno]);
+        if(puedeIr[alumno]){
+             cantAlumnos--;
+        }else{
+            tarea[alumno] = new Correccion();
+        }
+        V(correccion[alumno]; 
+    }
+}
+```
+
+---
+
 
