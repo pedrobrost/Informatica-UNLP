@@ -79,6 +79,7 @@ process usuario-baja[i=1 to L]{
     V(mutex);
     V(baja);
 }
+```
 
 Esta solución es mas apropiada que la presentada en el enunciado debido a que bloqueando de sta manera se logra que si no hay lugar para un determinado usuario debido a su pioridad, este no bloquea a la posible entrada a los de la otra prioridad.
 
