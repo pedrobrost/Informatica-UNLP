@@ -51,4 +51,37 @@ process SO[i=1 to N]{
 
 ---
 
+### 3. Suponga que existe una BD que puede ser accedida por 6 usuarios como máximo al mismo tiempo. Además los usuarios se clasifican como usuarios de prioridad alta y usuarios de prioridad baja. Por último la BD tiene la siguiente restricción:
+ 
+* no puede haber más de 4 usuarios con prioridad alta al mismo tiempo usando la BD.
+* no puede haber más de 5 usuarios con prioridad baja al mismo tiempo usando la BD.
+ 
+Indique si la solución presentada es la más adecuada. Justifique la respuesta. 
+
+La solucion mas adecuada sería:
+```
+sem mutex = 6;
+sem alta = 4;
+sem baja = 5;
+
+process usuario-alta[i=1 to L]{
+    P(alta);
+    P(mutex);
+    "usa la BD";
+    V(mutex);
+    V(alta);
+}
+
+process usuario-baja[i=1 to L]{
+    P(baja);
+    P(mutex);
+    "usa la BD";
+    V(mutex);
+    V(baja);
+}
+
+Esta solución es mas apropiada que la presentada en el enunciado debido a que bloqueando de sta manera se logra que si no hay lugar para un determinado usuario debido a su pioridad, este no bloquea a la posible entrada a los de la otra prioridad.
+
+---
+
 
