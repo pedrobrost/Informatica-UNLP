@@ -169,4 +169,40 @@ process profesor {
 
 ---
 
+### 6. A una empresa llegan E empleados y por día hay T tareas para hacer (T>E), una vez que todos los empleados llegaron empezaran a trabajar. Mientras haya tareas para hacer los empleados tomaran una y la realizarán. Cada empleado puede tardar distinto tiempo en realizar cada tarea. Al finalizar el día se le da un premio al empleado que más tareas realizó. 
+
+```
+Empleado empleados[]
+sem sArrivo = 1
+sem comenzar[E] = 0
+sem sCola = 1
+sem finDia = 0
+
+process empleado[i=1 to E]{
+    P(sArrivo)
+    llegaron++
+    if (llegaron == E) for j=1 to E do V(comenzar[j])
+    V(sArrivo)
+
+    P(comenzar[i])
+    
+    P(sCola)
+    while(tareas.size > 0) {
+        tarea = tareas.desencolar()
+        V(sCola)
+        tarea.realizar()
+        empleados[i].tareas++
+        P(sCola)
+    }
+
+    V(finDia)
+}
+
+process empresa{
+    P(finDia)
+    entregarPremio(empleados.max())
+}
+```
+
+---
 
