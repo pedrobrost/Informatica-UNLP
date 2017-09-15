@@ -134,4 +134,39 @@ process maestra{
 
 ---
 
+### 5. Suponga que se tiene un curso con 50 alumnos. Cada alumno elije una de las 10 tareas para realizar entre todos. Una vez que todos los alumnos eligieron su tarea comienzan a realizarla. Cada vez que un alumno termina su tarea le avisa al profesor y si todos los alumnos que tenían la misma tarea terminaron el profesor les otorga un puntaje que representa el orden en que se terminó esa tarea.  Nota: Para elegir la tarea suponga que existe una función elegir que le asigna una tarea a un alumno (esta función asignará 10 tareas diferentes entre 50 alumnos, es decir, que 5 alumnos tendrán la tarea 1, otros 5 la tarea 2 y así sucesivamente para las 10 tareas).
+
+```
+
+
+
+process alumno[i=1 to 50] {
+    tarea = elegir()
+    P(sEligieron)
+    eligieron++
+    if (eligieron == 50) for j=1 to 50 do V(arrancar[j]);
+    v(sEligieron)
+
+    P(arrancar[i])
+    "alumno realiza la tarea"
+    P(realizo[tarea])
+    realizo[tarea]++
+    if (realizo[tarea] == 5)
+        P(sTerminoTarea)
+        terminadas++;
+        cola.encolar(tarea)
+        V(sTerminoTarea)
+    V(realizo[tarea]
+    
+       
+
+}
+
+process profesor {
+    
+}
+```
+
+---
+
 
