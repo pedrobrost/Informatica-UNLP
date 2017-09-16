@@ -365,4 +365,72 @@ process armador[i=1 to 2] {
 
 ---
 
+### 10. En un curso hay dos profesores que toman examen en forma oral, el profesor A llama a los alumnos de acuerdo al orden de llegada, mientras que el profesor B llama a cualquier alumno (que haya llegado). Existen N alumnos que llegan y se quedan esperando hasta ser llamados para rendir, luego de que uno de los dos profesores lo atiende, se va. Indicar si la siguiente solución realizada con semáforo resuelve lo pedido. Justificar la respuesta. 
+
+```
+string estado[N] = ([N], “Esperando” )
+queue colaA, colaB
+sem llegoA, llegoB = 0
+sem esperando[N] = ([N], 0)
+sem mutex[N] = ([N], 1)
+sem mutexA, mutexB = 1
+
+Profesor A::
+{ int idAlumno
+ while (true)
+ { P(llegoA)
+ P(mutexA)
+ idAlumno = pop(colaA)
+ V(mutexA)
+ P(mutex[idAlumno])
+ If (estado[idAlumno] = =“Esperando”)
+ estado[idAlumno] = “A”
+ V(mutex[idAlumno])
+ V(esperando[idAlumno])
+ //Se toma el examen//
+ V(esperando[idAlumno])
+ else
+ V(mutex[idAlumno])
+ }
+}
+
+Profesor B::
+{ int idAlumno
+ while (true)
+ { P(llegoB)
+ P(mutexB)
+ idAlumno = popAleatorio(colaB)
+ V(mutex(B))
+ P(mutex[idAlumno])
+ If (estado[idAlumno] == “Esperando”)
+ estado[idAlumno] = “B”
+ V(mutex[idAlumno])
+ V(esperando[idAlumno])
+ //Se toma el examen//
+ V(esperando[idAlumno])
+ else
+ V(mutex[idAlumno])
+ }
+}
+
+Alumno[i: 1..N]
+{ P(mutexA)
+ push(colaA, i)
+ V(mutexA)
+ P(mutexB)
+ push(colaB, i)
+ V(mutexB)
+ P(esperando[i])
+ if (estado[i] == “A”)
+ //Interactúa con el Prof A//
+ else
+ //Interactua con el Prof B//
+ P(esperando[i])
+}
+```
+
+La solución planteada no resuelve el problema debido a que tanto el proceso `Profesor A` como `Profesor B` se quedan bloqueados ya que los procesos `Alumno` nunca hacen un `V(llegoA)` o `V(llegoB)` respectivamente. Además la solución se debería poder plantear haciendo uso de una única cola.
+
+---
+
 
