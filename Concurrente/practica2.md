@@ -177,6 +177,9 @@ sem sArrivo = 1
 sem comenzar[E] = 0
 sem sCola = 1
 sem finDia = 0
+sem sTerminados = 1
+int terminados = 0
+int llegaron = 0
 
 process empleado[i=1 to E]{
     P(sArrivo)
@@ -213,6 +216,15 @@ process empresa{
 
 ```
 
+Cola cola
+sem sCola = 1
+sem sPersona = 0
+sem sEsperando[N] = ([N] 0)
+sem sSalida[N] = ([N] 0)
+sem sEstado[N] = ([N] 1)
+string estado[N] = ([N] "esperando")
+
+
 process persona[i=1 to N]{
     P(sCola)
     cola.encolar(i)
@@ -225,10 +237,12 @@ process persona[i=1 to N]{
 process coordinador[i=1 to N]{
     P(sEsperando[i])
     delay(10min)
-    P(sSeFue[i])
-    seFue[i] = true
-    V(sSeFue[i])
-    V(sSalida[i])
+    P(sEstado[i])
+    if (estado == "esperando"){
+        estado[i] = "saliendo"
+        V(sEstado[i])
+        V(sSalida[i])
+    }
 }
 
 process empleado{
@@ -237,10 +251,11 @@ process empleado{
         P(sCola)
         persona = cola.desencolar()
         V(sCola)
-        P(sSeFue[persona])
-        if not seFue[persona]{
+        P(sEstado[persona])
+        if (estado[persona] == "esperando"){
+            estado[persona] = "atendido"
+            V(sEstado[persona])
             atender(persona)
-            V(sSeFue[persona])
             V(pSalida[persona])
         }
     }
