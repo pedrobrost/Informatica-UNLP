@@ -206,3 +206,42 @@ process empresa{
 
 ---
 
+### 7. Existe una casa de comida rápida que es atendida por 1 empleado. Cuando una persona llega se pone en la cola y espera a lo sumo 10 minutos a que el empleado lo atienda. Pasado ese tiempo se retira sin realizar la compra.
+
+```
+
+process persona[i=1 to N]{
+    P(sCola)
+    cola.encolar(i)
+    V(sCola)
+    V(sPersona)
+    V(sEsperando[i])
+    P(sSalida[i])
+}
+
+process coordinador[i=1 to N]{
+    P(sEsperando[i])
+    delay(10min)
+    P(sSeFue[i])
+    seFue[i] = true
+    V(sSeFue[i])
+    V(sSalida[i])
+}
+
+process empleado{
+    while(true)
+        P(sPersona)
+        P(sCola)
+        persona = cola.desencolar()
+        V(sCola)
+        P(sSeFue[persona])
+        if not seFue[persona]{
+            atender(persona)
+            V(sSeFue[persona])
+            V(pSalida[persona])
+        }
+    }
+}
+```
+
+---
