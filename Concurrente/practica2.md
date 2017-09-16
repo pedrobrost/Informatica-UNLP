@@ -269,7 +269,14 @@ process empleado{
 ```
 
 sem sLlegaEmpleado = 1
-grupoLibre = 1
+int grupoLibre = 1
+int contGrupos[N] = ([N] 0)
+sem grupoListo[N] = ([N] 0)
+sem sElementosProducidos[N] = ([N] 1)
+int elementosProducidos[N] = ([N] 0)
+sem sTerminados[N] = ([N] 1)
+int terminados[N] = ([N] 0)
+sem salida[N] = ([N] 0)
 
 process operario[i=1 to M]{
 
@@ -292,6 +299,7 @@ process operario[i=1 to M]{
         producirElemento(grupo)
         P(sElementosProducidos[grupo])
     }
+    V(sElementosProducidos[grupo])
 
     P(sTerminados[grupo])
     terminados[grupo]++
@@ -303,3 +311,6 @@ process operario[i=1 to M]{
         P(salida[grupo])
  
 }
+```
+
+---
