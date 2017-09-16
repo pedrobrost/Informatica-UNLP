@@ -314,3 +314,54 @@ process operario[i=1 to M]{
 ```
 
 ---
+
+### 9. Resolver con SEMÁFOROS el funcionamiento en una fábrica de ventanas con 7 empleados (4 carpinteros, 1 vidriero y 2 armadores) que trabajan de la siguiente manera:
+
+* Los carpinteros continuamente hacen marcos (cada marco es armando por un único carpintero) y los deja en un depósito con capacidad de almacenar 30 marcos.
+
+* El vidriero continuamente hace vidrios y los deja en otro depósito con capacidad para 50 vidrios.
+
+* Los armador continuamente toman un marco y un vidrio de los depósitos correspondientes y arman la ventana (cada ventana es armada por un único armador).
+
+```
+sem sCantMarcos = 30
+sem sCantVidrios = 50
+sem sColaMarcos = 1
+sem sColaVidrios = 1
+Cola colaMarcos
+Cola colaVidrios
+
+
+process carpintero[i=1 to 4] {
+    while(true)
+        marco = generarMarco()
+        P(sCantMarcos)
+        P(sColaMarcos)
+        colaMarcos.encolar(marco)
+        V(sColaMarcos)
+}
+
+process vidriero {
+    while(true)
+        vidrio = generarVidrio()
+        P(sCantVidrios)
+        P(sColaVidrios)
+        colaVidios.encolar(vidrio)
+        V(sColaVidrios)
+}
+
+process armador[i=1 to 2] {
+    while(true)
+        P(sColaMarcos)
+        marco = colaMarcos.desencoalr()
+        V(sColaMarcos)
+        V(sCantMarcos)
+        P(sColaVidrios)
+        vidrio = colaVidrios.desencoalr()
+        V(sColaVidrios)
+        V(sCantVidrios)
+        ensamblar(marco, vidrio)
+}
+```
+
+---
