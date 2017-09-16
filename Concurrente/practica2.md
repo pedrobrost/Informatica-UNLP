@@ -194,8 +194,11 @@ process empleado[i=1 to E]{
         empleados[i].tareas++
         P(sCola)
     }
-
-    V(finDia)
+    
+    P(sTerminados)
+    terminados++
+    if (terminados == E) then V(finDia)
+    V(sTerminados)
 }
 
 process empresa{
