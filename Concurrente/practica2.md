@@ -263,3 +263,43 @@ process empleado{
 ```
 
 ---
+
+### 8. Hay una fábrica con M operarios en donde se deben realizar N tareas (siendo M = Nx5).  Cada tarea se realiza de a grupos de 5 operarios, ni bien llegan a la fábrica se juntan de a 5 en el orden en que llegaron y cuando se ha formado el grupo se le da la tarea correspondiente empezando de la tarea uno hasta la enésima. Una vez que los operarios del grupo tienen la tarea asignada producen elementos hasta que hayan realizado exactamente X entre los operarios del grupo. Una vez que terminaron de producir los X elementos, se juntan los 5 operarios del grupo y se retiran.  Nota: cada operario puede hacer 0, 1 o más elementos de una tarea. El tiempo que cada operario tarda en hacer cada elemento es diferente y random. Maximice la concurrencia. 
+
+```
+
+sem sLlegaEmpleado = 1
+grupoLibre = 1
+
+process operario[i=1 to M]{
+
+    P(sLlegaEmpleado)
+    grupo = grupoLibre
+    contGrupos[grupo]++
+    if (contGrupos[grupo] == 5){
+        grupoLibre++
+        V(sLlegaEmpleado)
+        for 1 to 4 do V(grupoListo[grupo])
+    }else{
+        V(sLlegaEmpleado)
+        P(grupoListo[grupo])
+    }
+
+    P(sElementosProducidos[grupo])
+    while(elementosProducidos[grupo] < X){
+        elementosProducidos[grupo]++
+        V(sElementosProducidos[grupo])
+        producirElemento(grupo)
+        P(sElementosProducidos[grupo])
+    }
+
+    P(sTerminados[grupo])
+    terminados[grupo]++
+    if (terminados[grupo] == 5)
+        V(sTerminados[grupo])
+        for i=1 to 4 V(salida[grupo])
+    else
+        V(sTerminados[grupo])
+        P(salida[grupo])
+ 
+}
