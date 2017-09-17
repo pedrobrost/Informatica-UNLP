@@ -1,4 +1,5 @@
 # Práctica 2 - Semáforos 
+
 ### 1. Existen N personas que deben ser chequeadas por un detector de metales antes de poder ingresar al avión.
 
 #### a. Implemente una solución que modele el acceso de las personas a un detector (es decir si el detector está libre la persona lo puede utilizar caso contrario debe esperar).
@@ -136,32 +137,49 @@ process maestra{
 ### 5. Suponga que se tiene un curso con 50 alumnos. Cada alumno elije una de las 10 tareas para realizar entre todos. Una vez que todos los alumnos eligieron su tarea comienzan a realizarla. Cada vez que un alumno termina su tarea le avisa al profesor y si todos los alumnos que tenían la misma tarea terminaron el profesor les otorga un puntaje que representa el orden en que se terminó esa tarea.  Nota: Para elegir la tarea suponga que existe una función elegir que le asigna una tarea a un alumno (esta función asignará 10 tareas diferentes entre 50 alumnos, es decir, que 5 alumnos tendrán la tarea 1, otros 5 la tarea 2 y así sucesivamente para las 10 tareas).
 
 ```
-
-
+sem sEligieron = 1
+int eligieron = 0
+sem arrancar[50] = ([50], 0)
+sem sRealizo[10] = ([10], 1)
+int realizo[10] = ([10], 0)
+sem sCola = 1
+sem terminoTarea = 0
+sen resultado[10] = ([10], 0)
+int puntaje[10]
 
 process alumno[i=1 to 50] {
-    tarea = elegir()
+    tarea = asignarTarea()
     P(sEligieron)
     eligieron++
     if (eligieron == 50) for j=1 to 50 do V(arrancar[j]);
     v(sEligieron)
 
     P(arrancar[i])
-    "alumno realiza la tarea"
-    P(realizo[tarea])
+    realizar(tarea)
+    P(sRealizo[tarea])
     realizo[tarea]++
-    if (realizo[tarea] == 5)
-        P(sTerminoTarea)
-        terminadas++;
+    if (realizo[tarea] == 5){
+        P(sCola)
         cola.encolar(tarea)
+        V(sCola)
         V(sTerminoTarea)
-    V(realizo[tarea]
+    }
+    V(sRealizo[tarea])
     
-       
-
+    P(resultado[tarea]) 
 }
 
 process profesor {
+    orden = 0 
+    for i=1 to 10 do{
+        P(sTerminoTarea)
+        P(sCola)
+        tarea = cola.desencolar()
+        V(sCola)
+        puntaje[tarea] = ++orden
+        for j=1 to 5 do
+            V(resultado[tarea])
+    }
     
 }
 ```
