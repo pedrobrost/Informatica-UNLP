@@ -1,5 +1,4 @@
-# Práctica 2 - Semáforos
-
+# Práctica 2 - Semáforos 
 ### 1. Existen N personas que deben ser chequeadas por un detector de metales antes de poder ingresar al avión.
 
 #### a. Implemente una solución que modele el acceso de las personas a un detector (es decir si el detector está libre la persona lo puede utilizar caso contrario debe esperar).
@@ -433,4 +432,41 @@ La solución planteada no resuelve el problema debido a que tanto el proceso `Pr
 
 ---
 
+### 11. Resolver el funcionamiento en una empresa de genética. Hay N clientes que sucesivamente envían secuencias de ADN a la empresa para que sean analizadas y esperan los resultados para poder envían otra secuencia a analizar. Para resolver estos análisis la empresa cuenta con 2 servidores que van alternando su uso para no exigirlos de más (en todo momento uno está trabajando y los otros dos descansando); cada 8 horas cambia en servidor con el que se trabaja. El servidor que está trabajando, toma un pedido (de a uno de acuerdo al orden de llegada de los mismos), lo resuelve y devuelve el resultado al cliente correspondiente; si al terminar ya han pasado las 8 horas despierta al próximo servidor y él descansa, sino continúa con el siguiente pedido. 
+
+```
+sem sColaADN = 1
+sem envioADN = 0
+sem respuesta[N] = ([N], 0)
+sem sServidor[3] = {1, 0, 0}
+int contServidor = 1
+Cola colaADN
+
+process cliente[i=1 to N]{
+    while(true)
+        P(sColaADN)
+        colaADN.encolar(i)
+        V(sColaADN)
+        V(envioADN)
+        P(respuesta[i])
+}
+
+process servidor[i=1 to 3]{
+    while(true){
+        P(sServidor[i])
+        horas = 0
+        while(horas < 8){
+            P(envioADN)
+            P(sColaADN)
+            cliente = cola.desencolar()
+            V(sColaADN)
+            procesar(cliente)
+            V(respuesta[cliente])
+        } 
+        contServidor++
+        if contServidor == 4 then contServidor = 1
+        V(sServidor[contServidor])
+    }
+}
+```
 
