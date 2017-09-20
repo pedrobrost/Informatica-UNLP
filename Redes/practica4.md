@@ -68,3 +68,27 @@ A la hora de elegir qué protocolo utilizar para recuperar los mails de nuestro 
   * Si el dispositivo donde están almacenados los correos descargados tiene una avería, es extraviado, o robado se pierden los correos.
   * Enviar un mensaje desde el cliente puede tardar el doble del tiempo.
   * Dependiendo del mensaje, puede consumir recursos del sistema.
+
+---
+
+### 5. Suponga que el servidor de correo mail1.example.com tiene para enviar un correo a pepe@gmail.com.  Indique y justifique en todos los casos:
+
+#### a. Primer consulta de DNS que debe hacer mail1.example.com.
+
+La primer consuta DNS que se debe hacer es por los registros MX del dominio gmail.com.
+
+#### b. Suponiendo que la consulta anterior devuelve varios resultados, ¿de qué forma elegiría mail1.example.com el servidor al cuál entregar el correo? ¿Y si ese servidor no estuviera disponible?
+
+Si la consulta anterior devuelve varios resultados se debe elegir el que tiene menor numero de preferencia. Si este servidor no esta disponible se debe intentar con otro.
+
+#### c. Considerando que la consulta anterior retorna un listado de nombres de servidores de correo para gmail.com, ¿será necesario realizar una consulta adicional? En caso de responder afirmativamente, indique el registro por el cuál será la consulta.
+
+Se debe consultar por el registro `A` del dominio del correo obtenido.
+
+#### d. El protocolo de aplicación y de transporte, junto con el puerto correspondiente, que deberá utilizar el servidor mail1.example.com para entregar el correo a pepe@gmail.com.
+
+* Protocolo de aplicación: SMTP
+* Protocolo de transporte: TCP
+* Puerto: 25
+
+
