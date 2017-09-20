@@ -24,7 +24,14 @@ Cuando un usuario desea leer los correos que se almacenan en su servidor de corr
 
 ---
 
+### 3j. Con el rol de administrador del sistema (root), ejecute el cliente de correos. Para esto, abra una consola de comandos y ejecute: sudo icedove De esta forma, iniciará el cliente de correo con el perfil del superusuario (diferente del usuario con el que configuró las cuentas antes mencionadas).  Luego configure las cuentas POP e IMAP de los usuarios alumnopop y alumnoimap como se describió anteriormente pero desde el cliente de correos del usuario root. Luego responda:
 
+#### ¿Qué correos ve en el buzón de entrada de ambas cuentas? ¿Están marcados como leídos o como no leídos? ¿Por qué? ¿Qué pasó con las carpetas POP e IMAP que creó en el paso anterior? 
+ 
+En la cuenta POP3 se ven los correos como no leidos y no se visualizan las carpetas. En cambio en la cuenta IMAP los correos estan como leidos y se visualizan las carpetas personales.
 
+Esto se debe a que IMAP, a diferencia de POP3, mantiene el estado en el servidor.
+
+---
 
 
