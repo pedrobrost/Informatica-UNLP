@@ -41,30 +41,30 @@ A la hora de elegir qué protocolo utilizar para recuperar los mails de nuestro 
 
 #### IMAP
 
-**Ventajas:**
+* Ventajas:
 
-* Comunicación bidireccional entre el servidor de correo y el cliente de correo electrónico, lo que permite que varios dispositivos trabajen con una misma cuenta viendo los cambios realizados por todos.
-* Los correos están en todo momento en el servidor, por lo que se puede acceder a ellos desde cualquier lugar, teniendo un dispositivo con acceso a internet.
-* En caso de una avería en el ordenador en el que esté configurado el buzón, o si por cualquier razón se elimina la cuenta, siempre es posible recuperar los correos.
-* Al no descargarse los correos directamente en el dispositivo que accede al servidor de correo, no consume espacio local.
-* Es posible gestionar carpetas locales y archivos desde el servidor.
-* Permite la búsqueda de mensajes por medio de palabras clave.
+  * Comunicación bidireccional entre el servidor de correo y el cliente de correo electrónico, lo que permite que varios dispositivos trabajen con una misma cuenta viendo los cambios realizados por todos.
+  * Los correos están en todo momento en el servidor, por lo que se puede acceder a ellos desde cualquier lugar, teniendo un dispositivo con acceso a internet.
+  * En caso de una avería en el ordenador en el que esté configurado el buzón, o si por cualquier razón se elimina la cuenta, siempre es posible recuperar los correos.
+  * Al no descargarse los correos directamente en el dispositivo que accede al servidor de correo, no consume espacio local.
+  * Es posible gestionar carpetas locales y archivos desde el servidor.
+  * Permite la búsqueda de mensajes por medio de palabras clave.
 
-**Desventajas:**
+* Desventajas:
 
-* No es posible acceder a los correos sin acceso a internet.
-* En caso de hacer un uso intensivo del servicio de correo, es necesaria una gran cantidad de espacio de almacenamiento en el servidor.
-* Las carpetas que se hayan creado con IMAP no podrán ser leídas usando POP (la única excepción es la carpeta de la Bandeja de entrada).
+  * No es posible acceder a los correos sin acceso a internet.
+  * En caso de hacer un uso intensivo del servicio de correo, es necesaria una gran cantidad de espacio de almacenamiento en el servidor.
+  * Las carpetas que se hayan creado con IMAP no podrán ser leídas usando POP (la única excepción es la carpeta de la Bandeja de entrada).
 
 #### POP3
 
-**Ventajas:**
+* Ventajas:
 
-* Poder utilizar un cliente de correo para descargarlos en un dispositivo u ordenador, y poder leerlos posteriormente, aún sin tener conexión a internet.
-* No es necesario tener un gran espacio de almacenamiento en el servidor de correo, ya que al descargar los correos se borran del mismo.
+  * Poder utilizar un cliente de correo para descargarlos en un dispositivo u ordenador, y poder leerlos posteriormente, aún sin tener conexión a internet.
+  * No es necesario tener un gran espacio de almacenamiento en el servidor de correo, ya que al descargar los correos se borran del mismo.
 
-**Desventajas:**
+* Desventajas:
 
-* Si el dispositivo donde están almacenados los correos descargados tiene una avería, es extraviado, o robado se pierden los correos.
-* Enviar un mensaje desde el cliente puede tardar el doble del tiempo.
-* Dependiendo del mensaje, puede consumir recursos del sistema.
+  * Si el dispositivo donde están almacenados los correos descargados tiene una avería, es extraviado, o robado se pierden los correos.
+  * Enviar un mensaje desde el cliente puede tardar el doble del tiempo.
+  * Dependiendo del mensaje, puede consumir recursos del sistema.
