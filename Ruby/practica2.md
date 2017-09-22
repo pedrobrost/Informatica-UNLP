@@ -40,4 +40,14 @@ end
 
 ---
 
+### 5. Implementá el método cuanto_falta? que opcionalmente reciba como parámetro un objeto Time y que calcule la cantidad de minutos que faltan para ese momento. Si el parámetro de fecha no es provisto, asumí que la consulta es para la medianoche de hoy
+
+```
+def cuanto_falta? time = Time.new(Time.new.year, Time.new.month, Time.new.day+1)
+    Time.at(time - Time.now).utc.strftime("%M")
+end
+```
+
+---
+
 
