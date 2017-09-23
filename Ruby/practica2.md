@@ -4,7 +4,7 @@
 
 ### 1. Implementá un método que reciba como parámetro un arreglo de números, los ordene y devuelva el resultado.
 
-```
+```ruby
 def ordenar_arreglo array
     array.sort
 end
@@ -14,7 +14,7 @@ end
 
 ### 2. Modificá el método anterior para que en lugar de recibir un arreglo como único parámetro, reciba todos los números como parámetros separados.
 
-```
+```ruby
 def ordenar_arreglo *array
     array.sort
 end
@@ -24,7 +24,7 @@ end
 
 ### 3. Suponé que se te da el método que implementaste en el ejercicio anterior para que lo uses a fin de ordenar un arreglo de números que te son provistos en forma de arreglo.  ¿Cómo podrías invocar el método?
 
-```
+```ruby
 ordenar_arreglo *[10, 9, 1, 2, 3, 5, 7, 8]
 ```
 
@@ -32,7 +32,7 @@ ordenar_arreglo *[10, 9, 1, 2, 3, 5, 7, 8]
 
 ### 4. Escribí un método que dado un número variable de parámetros que pueden ser de cualquier tipo, imprima en pantalla la cantidad de caracteres que tiene su representación como String y la representación que se utilizó para contarla.
 
-```
+```ruby
 def longitud *args
     args.each { |arg| puts "\"#{arg.to_s}\" --> #{arg.to_s.length}"}
 end
@@ -42,7 +42,7 @@ end
 
 ### 5. Implementá el método cuanto_falta? que opcionalmente reciba como parámetro un objeto Time y que calcule la cantidad de minutos que faltan para ese momento. Si el parámetro de fecha no es provisto, asumí que la consulta es para la medianoche de hoy
 
-```
+```ruby
 def cuanto_falta? time = Time.new(Time.new.year, Time.new.month, Time.new.day+1)
     Time.at(time - Time.now).utc.strftime("%M")
 end
@@ -52,7 +52,7 @@ end
 
 ### 6. Analizá el siguiente código e indicá qué problema(s) puede tener.
 
-```
+```ruby
 def tirar_dado
     rand 1..6
 end
@@ -89,7 +89,7 @@ Problemas:
 
 ### 7. Modificá el código anterior para, acorde a tu análisis, corregir los problemas que pueda tener.
 
-```
+```ruby
 def tirar_dado
     rand 1..6
 end
@@ -126,7 +126,7 @@ end
 * El auto, adicionalmente, requiere que no esté puesto el freno de mano y que el cambio esté en punto muerto. La moto, por otra parte, requiere una patada (sin la llave). La lancha arranca con la llave y listo.
 * El arranque de los tres vehículos se prueba en un taller. La especificación de Taller es la siguiente:
 
-```
+```ruby
 class Taller
     def probar objeto
         objeto.arrancar
@@ -139,7 +139,7 @@ hacerlo? ¿Cómo? ¿Qué concepto del lenguaje estás usando para poder realizar
 esto?
 
 
-```
+```ruby
 class Vehiculo
 
 end
@@ -189,7 +189,7 @@ Utilizaría la sentencia `extend`.
 
 #### 2. #ssalc: Imprime el nombre de la clase del receptor en espejo.
 
-```
+```ruby
 module Reverso
 
     def di_tcejbo
@@ -225,7 +225,7 @@ end
 
 ### 5. Dada la siguiente clase abstracta GenericFactory, implementá subclases de la misma que permitan la creación de instancias de dichas clases mediante el uso del método de clase .create, de manera tal que luego puedas usar esa lógica para instanciar objetos sin invocar directamente el constructor new.
 
-```
+```ruby
 class GenericFactory
     def self.create (**args)
         new(**args)
@@ -237,7 +237,7 @@ class GenericFactory
 end
 ```
 
-```
+```ruby
 class Test < GenericFactory
     def initialize **args
     end
@@ -248,7 +248,7 @@ end
 
 ### 6. Modificá la implementación del ejercicio anterior para que GenericFactory sea un módulo que se incluya como Mixin en las subclases que implementaste. ¿Qué modificaciones tuviste que hacer en tus clases?
 
-```
+```ruby
 module GenericFactory
     def create **args
         new **args
@@ -270,7 +270,7 @@ end
 
 ### 7. Extendé las clases TrueClass y FalseClass para que ambas respondan al método de instancia opposite, el cual en cada caso debe retornar el valor opuesto al que recibe la invocación al método. 
 
-```
+```ruby
 module Opposite
     def opposite
         !self
@@ -285,7 +285,7 @@ false.extend Opposite
 
 ### 8. Analizá el script Ruby presentado a continuación e indicá:
 
-```
+```ruby
 VALUE = 'global'
 
 module A
