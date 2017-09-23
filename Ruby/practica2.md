@@ -268,4 +268,19 @@ end
 
 ---
 
+### 7. Extendé las clases TrueClass y FalseClass para que ambas respondan al método de instancia opposite, el cual en cada caso debe retornar el valor opuesto al que recibe la invocación al método. 
+
+```
+module Opposite
+    def opposite
+        !self
+    end
+end
+
+true.extend Opposite
+false.extend Opposite
+```
+
+---
+
 
