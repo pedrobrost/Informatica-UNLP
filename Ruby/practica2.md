@@ -165,4 +165,22 @@ end
 
 ---
 
+### 2. ¿Qué diferencia hay entre el uso de include y extend a la hora de incorporar un módulo en una clase?
+
+A la hora de incorporar un módulo a una clase existen dos posiblidades las cuales son hacer uso de la sentencia `include` o bien de `extend`, las cuales trabajan de la siguiente manera:
+
+* include: cuando se incluye un módulo, éste es includio como si los métodos que posee fuesen definidos en la misma clase a la cual se estan incluyendo.
+
+* extend: cuando se utiliza esta sentencia se están agregando los métodos del modulo a una instancia específica. Si se hace sobre la definición de una clase, será sobre la instancia que representa a la clase, por ende los métodos serán de clase. Aunque tambien se puede utilizar sobre una instancia de un objeto creado a partir de una clase, lo cual le extenderá los metodos del módulo a esa única instancia.
+
+#### 1. Si quisieras usar un módulo para agregar métodos de instancia a una clase, ¿qué forma usarías a la hora de incluirlo en la clase?
+
+Utilizaría la sentencia `include`.
+
+#### 2. Si en cambio quisieras usar un módulo para agregar métodos de clase, ¿qué forma usarías a la hora de incluir el módulo en la clase?
+
+Utilizaría la sentencia `extend`.
+
+---
+
 
