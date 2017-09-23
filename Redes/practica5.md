@@ -10,6 +10,7 @@ La responsabilidad principal de UDP y TCP es ampliar el servicio de entrega de I
 
 TCP, por el contrario, ofrece a las aplicaciones varios servicios adicionales. El primero y más importante es que proporciona una transferencia de datos fiable. Utilizando técnicas de control de flujo, números de secuencia, mensajes de reconocimiento y temporizadores. TCP garantiza que los datos transmitidos por el proceso emisor sean entregados al proceso receptor, correctamente y en orden. De este modo, TCP convierte el servicio no fiable de IP entre sistemas terminales en un servicio de transporte de datos fiable entre procesos. TCP también proporciona mecanismos de control de congestión.
 
+---
 
 ### 2. Describa la estructura del segmento TCP y UDP.
 
@@ -35,5 +36,19 @@ TCP. Al igual que con UDP, la cabecera incluye los número de puerto de origen y
 * El campo opciones es opcional y de longitud variable. Se utiliza cuando un emisor y un receptor negocian el tamaño máximo de segmento (MSS) o como un factor de escala de la ventana en las redes de alta velocidad. También se define una opción de marca temporal.
 
 * El campo indicador tiene 6 bits. El bit ACK se utiliza para indicar que el valor transportado en el campo de reconocimiento es válido; es decir, el segmento contiene un reconocimiento para un segmento que ha sido recibido correctamente. Los bits RST, SYN y FIN se utilizan para el establecimiento y cierre de conexiones. La activación del bit PSH indica que el receptor deberá pasar los datos a la capa superior de forma inmediata. Por último, el bit URG se utiliza para indicar que hay datos en este segmento que la entidad de la capa superior del lado emisor ha marcado como “urgentes”. La posición de este último byte de estos datos urgentes se indica mediante el campo puntero de datos urgentes de 16 bits. TCP tiene que informar a la entidad de la capa superior del lado receptor si existen datos urgentes y pasarle un puntero a la posición donde finalizan los datos urgentes. En la práctica, PSH, URG y el puntero a datos urgentes no se utilizan.
+
+---
+
+### 3. ¿Cuál es el objetivo del uso de puertos en el modelo TCP/IP?
+
+En primer lugar, recordemos que un proceso puede tener uno o más sockets, puertas por las que pasan los datos de la red al proceso, y viceversa. Por tanto, la capa de transporte del host receptor realmente no entrega los datos directamente a un proceso, sino a un socket intermedio, que a su vez tiene un identificador único (ya que puede haber más de uno por host).
+
+Cada segmento de la capa de transporte contiene un conjunto de campos destinados para identificar el socket apropiado (entre otros). En el extremo receptor, la capa de transporte examina estos campos para identificar el socket receptor y, a continuación, envía el segmento a dicho socket. Esta tarea de entregar los datos contenidos en un segmento de la capa de transporte al socket correcto es lo que se demultiplexación. La tarea de reunir los fragmentos de datos en el host de origen desde los diferentes sockets, encapsulando cada fragmento de datos con la información de cabecera (el cual se utilizará después en el proceso de demultiplexación) para crear los segmentos y pasarlos a la capa de red es lo que se denomina multiplexación. Es importante darse cuenta de que estas técnicas son necesarias siempre que un único protocolo en una capa (cualquiera) sea utilizado por varios protocolos de la capa inmediatamente superior.
+
+Sabemos que la operación de multiplexación que se lleva a cabo en la capa de transporte requiere (1) que los sockets tengan identificadores únicos y (2) que cada segmento tenga campos especiales que indiquen el socket al que tiene que entregarse el segmento. Estos campos especiales, son el campo número de puerto origen y número de puerto destino.  
+
+Cada número de puerto es un número de 16 bits comprendido en el rango de 0 a 65535. Los números de puerto pertenecientes al rango de 0 a 1023 se conocen como números de puertos bien conocidos y son restringidos, lo que significa que están reservados para ser empleados por los protocolos de aplicación bien conocidos (ej. HTTP que utiliza el puerto 80 y FTP que utiliza el puerto 21).
+
+---
 
 
