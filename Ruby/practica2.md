@@ -283,4 +283,73 @@ false.extend Opposite
 
 ---
 
+### 8. Analizá el script Ruby presentado a continuación e indicá:
+
+```
+VALUE = 'global'
+
+module A
+    VALUE = 'A'
+
+    class B
+        VALUE = 'B'
+
+        def self.value
+            VALUE
+        end
+
+        def value
+            'iB'
+        end
+    end
+
+    def self.value
+        VALUE
+    end
+end
+
+class C
+    class D
+        VALUE = 'D'
+
+        def self.value
+            VALUE
+        end
+    end
+
+    module E
+        def self.value
+            VALUE
+        end
+    end
+
+    def self.value
+        VALUE
+    end
+end
+
+class F < C
+    VALUE = 'F'
+end
+```
+
+#### 1. ¿Qué imprimen cada una de las siguientes sentencias? ¿De dónde está obteniendo el valor?
+
+* puts A.value -> `A`
+* puts A::B.value -> `B`
+* puts C::D.value -> `D`
+* puts C::E.value -> 
+* puts F.value --> 
+
+#### 2. ¿Qué pasaría si ejecutases las siguientes sentencias? ¿Por qué?
+
+* puts A::value -> `A`
+* puts A.new.value -> `A es un módulo, no se puede instanciar`
+* puts B.value -> `B está fuera del alcance, debido a que está definido dentro del módulo A`
+* puts C::D.value -> `D`
+* puts C.value -> `uninitialized constant C::VALUE`
+* puts F.superclass.value -> `uninitialized constant C::VALUE`
+
+---
+
 
