@@ -364,6 +364,14 @@ end
 
 ---
 
+### 2. Implementá un método que reciba como parámetros un Hash y Proc, y que devuelva un nuevo Hash cuyas las claves sean los valores del Hash recibido como parámetro, y cuyos valores sean el resultado de invocar el Proc con cada clave del Hash original.
 
+```ruby
+def procesar_hash hash, proc
+    hash.invert.transform_values { |value| proc.call value }
+end
+```
+
+---
 
 
