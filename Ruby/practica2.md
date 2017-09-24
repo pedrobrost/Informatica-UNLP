@@ -352,4 +352,18 @@ end
 
 ---
 
+## Bloques
+
+### 1. Escribí un método da_nil? que reciba un bloque, lo invoque y retorne si el valor de retorno del bloque fue nil. 
+
+```ruby
+def da_nil?
+    yield.nil?
+end
+```
+
+---
+
+
+
 
