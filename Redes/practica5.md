@@ -51,4 +51,96 @@ Cada número de puerto es un número de 16 bits comprendido en el rango de 0 a 6
 
 ---
 
+### 4. Compare TCP y UDP en cuanto a:
+
+#### a. Confiabilidad.
+
+El protocolo IP proporciona una comunicación lógica entre hosts. El modelo de servicio de IP es un servicio de entrega de mejor esfuerzo (best effort). Esto quiere decir que IP hace todo lo que puede por entregar los segmentos entre los hosts que se están comunicando, pero no garantiza la entrega. En particular, no garantiza la entrega de segmentos, ni que los segmentos se entreguen en orden y tampoco la integridad de los contenidos en los segmentos. Por lo tanto, IP es un servicio NO FIABLE.
+
+#### UDP
+
+* Al igual que IP es un servicio no fiable.
+* No garantiza que los segmentos lleguen al proceso destino.
+* Tampoco garantiza que los lleguen en orden y estén libres de errores.
+* La comprobación de errores es responsabilidad de la aplicación.
+
+#### TCP
+
+* Proporciona una transferencia de datos fiable. Utilizando técnicas de control de flujo, números de secuencia, mensajes de reconocimiento y temporizadores.
+* Garantiza que los datos transmitidos por el proceso emisor sean entregados al proceso receptor, correctamente y en orden. Continuará reenviando un segmento hasta que la recepción del mismo haya sido confirmada por el destino.
+
+#### b. Multiplexación.
+
+#### UDP
+
+* Utiliza multiplexación y demultiplexación SIN conexión.
+* Creamos sockets indicando el número de puerto.
+* El segmento (de UDP + IP) identifica el socket destino mediante dos campos de cabecera: Dirección IP Destino y Nro. Puerto Destino.
+* Ademas el segmento tiene una “dirección de retorno”. Por si el receptor desea devolver un segmento al emisor.
+* Si dos segmentos UDP con diferentes sockets de origen (Direccion IP y/o Nro. Puerto) poseen la misma dirección IP destino y el mismo nro. de puerto de destino, entonces los dos segmentos se enviarán al mismo proceso de destino a través del mismo socket de destino.
+* Cabeceras de 8 bytes. Más pequeñas.
+
+#### TCP
+
+* Utiliza multiplexación y demultiplexación orientada a la conexión.
+* El socket, en TCP se identifica por una tupla de cuatro elementos: Dirección IP Origen, Nro. Puerto Origen, Dirección IP Destino, Nro. Puerto Destino.
+* Dos segmentos TCP entrantes con direcciones IP de origen o números de puerto de origen diferentes (con la excepción de un segmento TCP que transporte la solicitud original de establecimiento de conexión) serán dirigidos a dos sockets distintos.
+* Cuando un proceso cliente se quiere comunicar con un servidor por un socket TCP. Este debe enviar una solicitud en un puerto de destino (ej. 6789) y un conjunto especial de bits de establecimiento de conexión en la cabecera TCP. Cuando el SO del host que está ejecutando el proceso servidor recibe el segmento de entrada de solicitud de conexión con el puerto de destino (6789), localiza el proceso de servidor que está esperando para aceptar una conexión en el número de puerto 6789. El proceso de servidor entonces crea un nuevo puerto. Además, la capa de transporte toma nota de los cuatro valores contenidos en el segmento de solicitud de conexión (IPO, PO, IPD/su propia IP, PD). El socket de conexión recién creado queda identificado por estos cuatro valores, así, todos los segmentos que lleguen después con esta tupla de valores serán enviados a este socket.  Una vez establecida la conexión TCP, el cliente y el servidor podrán enviarse datos entre sí.
+* Cabecera de 20 bytes (es variable). Más del doble que UDP.
+
+#### c. Orientado a la conexión.
+
+#### UDP
+
+* Es un protocolo sin conexión. No tiene lugar una fase de establecimiento de la conexión entre las entidades de la capa de transporte emisora y receptora previa al envío del segmento.
+* Inicia la transmisión sin formalidades preliminares. Por tanto, UDP no añade ningún retarde a causa del establecimiento de una conexión.
+* No mantiene información del estado de la conexión.
+* Suele soportar más clientes activos cuando la aplicación se ejecuta sobre UDP.
+
+#### TCP
+
+* Lleva a cabo un proceso de establecimiento de la conexión en tres fases antes de iniciar la transferencia de datos.
+* Mantiene información acerca del estado de la conexión en los sistemas terminales.
+* El estado de la conexión reside completamente en los sistemas terminales y no en los elementos intermedios de la red (routers y switches de la capa de enlace).
+* La conexión proporciona un servicio full-dupex: si existe una conexión entre el proceso A que se ejecuta en un host y el proceso B que se ejecuta en otro host, entonces los datos de la capa de aplicación pueden fluir desde el proceso A al proceso B en el mismo instante que los datos de la capa de aplicación fluyen del proceso B al proceso A.
+* Conexión (casi siempre) punto a punto, es decir, entre un único emisor y un único receptor. La “multidifusión” (multicasting sección 4.7), la transferencia de datos desde un emisor a muchos receptores en una única operación, no es posible con TCP.
+* Handshaking (intercambio de mensajes de control). Inicializa ambos procesos antes del intercambio de datos.
+* Cada lado de la conexión tiene su propio buffer de emisión y su propio buffer de recepción.
+* Consta de buffers, variables y un socket de conexión a un proceso en un host, y otro conjunto de buffers, variables y un socket de conexión a un proceso en otro host.
+
+#### d. Controles de congestión.
+
+#### UDP
+
+* No implementa control de congestión.
+
+#### TCP
+
+* Dispone de un mecanismo de control de congestión que regula el flujo del emisor TCP de la capa de transporte cuando uno o más de los enlaces existentes entre los hosts de origen y de destino están excesivamente congestionados.
+* Proporciona un servicio de control de flujo a sus aplicaciones para eliminar la posibilidad de que el emisor desborde el buffer del receptor. Por lo tanto, un servicio de adaptación de velocidades (adapta la velocidad a la que el emisor está transmitiendo frente a la velocidad a la que la aplicación receptora está leyendo).
+* El emisor dispone (y determina el tamaño) de una ventana de recepción. Se emplea para proporcionar al emisor una idea de cuánto espacio libre hay disponible en el buffer del receptor. Debido a que la conexión es full dúplex, cada proceso dispone de una ventana de recepción diferente.
+
+#### e. Utilización de puertos.
+
+Los sockets pueden verse como las puertas de los procesos.
+
+#### UDP
+
+* El socket está definido por el número de puerto destino y la dirección IP del destino.
+* Muchos clientes pueden enviar datos por un mismo socket.
+
+#### TCP
+
+* El socket está definido para cada extremo de la conexión. Es decir, por los cuatro campos (IPOrigen, PuertoOrigen, IPDestino, PuertoDestino). Esto quiere decir que por cada socket pueden intercambiar datos únicamente dos procesos (conexión punto a punto).
+
+#### f. ¿Cuál es el campo del datagrama IP y los valores que se utilizan en este para diferenciar que se transporta TCP o UDP? 
+
+El campo de cabecera de IP es el campo protocolo de 8 bits.
+
+`TCP es el 6`.
+
+`UDP es el 17`
+
+---
+
 
