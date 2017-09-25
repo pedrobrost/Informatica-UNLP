@@ -143,4 +143,10 @@ El campo de cabecera de IP es el campo protocolo de 8 bits.
 
 ---
 
+### 5. La PDU de la capa de transporte es el segmento. Sin embargo, en algunos contextos suele utilizarse el término datagrama. Indique cuándo.
+
+En el contexto de Internet los paquetes de la capa de transporte se definen como segmentos. No obstante, tenemos que decir que, en textos dedicados a Internet, como por ejemplo los RFC, también se emplea el término segmento para hacer referencia a los paquetes de la capa de transporte en el caso de TCP, pero a menudo a los paquetes de UDP se les denomina datagrama. Pero resulta que estos mismos textos dedicados a Internet también utilizan el término datagrama para referirse a los paquetes de la capa de red.
+
+---
+
 
