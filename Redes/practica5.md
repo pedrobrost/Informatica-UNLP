@@ -163,4 +163,39 @@ Una vez completados estos tres pasos, los hosts cliente y servidor pueden enviar
 
 ---
 
+### 7. Utilice el comando ss (reemplazo de netstat) para obtener la siguiente información de su PC:
+
+#### a. Para listar las comunicaciones TCP establecidas.
+
+`ss -t`
+
+#### b. Para listar las comunicaciones UDP establecidas.
+
+`ss -u`
+
+#### c. Obtener sólo los servicios TCP que están esperando comunicaciones.
+
+`ss -t -l`
+
+#### d. Obtener sólo los servicios UDP que están esperando comunicaciones.
+
+`ss -u -l`
+
+#### e. Repetir los anteriores para visualizar el proceso del sistema asociado a la conexión.
+
+ej: `ss -t -l -p`
+
+#### f. Obtenga la misma información planteada en los items anteriores usando el comando netstat.
+
+  a. `netstat -t -p`
+
+  b. `netstat -u -p`
+
+  c. `netstat -t -l -p`
+
+  d. `netstat -u -l -p`
+
+---
+
+
 
