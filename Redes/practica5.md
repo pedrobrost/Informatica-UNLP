@@ -267,4 +267,10 @@ Es posible iniciar mas de una conexión desde el cliente al servidor en el mismo
 
 ---
 
+### 14. Completar los datos que faltan en el intercambio de mensajes del siguiente diagrama de flujo TCP:
+
+![alt text](https://i.imgur.com/yBOOSj6.png "Punto 14")
+
+---
+
 
