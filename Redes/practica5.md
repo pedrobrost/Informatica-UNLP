@@ -273,4 +273,26 @@ Es posible iniciar mas de una conexión desde el cliente al servidor en el mismo
 
 ---
 
+### 15. Se tiene una conexión TCP entre dos hosts, A y B. A se conecta desde el puerto 1987 al puerto 22 de B. Responder, considerando números de secuencia relativos, comenzando desde el 1.
+
+#### a. Si B ya recibió correctamente de A todos los bytes hasta el byte 525 ¿Qué valor indicará B en el campo ACK para reconocer esta condición? ¿Qué puertos origen y destino utilizará?
+
+* `ACK: 526`
+* `Puerto origen: 22`
+* `Puerto destino: 1987`
+
+#### b. Si, a continuación del punto anterior, A le envía dos segmentos a B de 200 y 220 bytes respectivamente, ¿cuáles serían los números de secuencia de los dos segmentos?
+
+* `Primer segmento: 526`
+* `Segundo segmento: 726`
+
+#### c. Si B envía un ACK por cada segmento recibido en el punto anterior, ¿cuáles serían los números de ACKs seteados? ¿Podría enviar un sólo ACK por los dos segmentos? En ese caso, ¿cuál sería el número del ACK?
+
+* `Primer segmento: 726` 
+* `Primer segmento: 946` 
+
+#### d. Si en el punto b) el segundo segmento arriba antes que el primero enviado, ¿cuál será el valor del ACK enviado al recibir el primero de los dos segmentos?
+
+* `ACK: 946`
+
 
