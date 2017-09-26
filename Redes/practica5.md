@@ -217,4 +217,22 @@ Al utilizar el comando `ss` podemos ver que hay un socket escuchando en el puert
 
 ---
 
+### 9. ¿Qué sucede si llega un datagrama UDP a un host que no tiene a ningún proceso esperando en el puerto destino de dicho datagrama (es decir, que dicho puerto no está en estado LISTEN)?
+
+Cuando un host recibe un paquete UDP en el que el númer    o de puerto de destino no se corresponde con un socket UDP activo, el host envía un datagrama ICMP especial.
+
+#### a. Utilice hping3 para enviar datagramas UDP al puerto destino 68 de la máquina virtual.
+
+`hping3 -2 -p 68 -S localhost`
+
+#### b. Utilice hping3 para enviar datagramas UDP al puerto destino 40 de la máquina virtual.
+
+`hping3 -2 -p 40 -S localhost`
+
+#### c. ¿Qué diferencias nota en las respuestas obtenidas en los dos casos anteriores? ¿Puede explicar a qué se debe? (Ayuda: utilice el comando ss visto anteriormente).
+
+La diferencia es que como hay un socket escuchando en el puerto 68, no se recibe respuesta alguna debido a que UDP no manda segmentos ACK. En cambio como no hay socket escuchando en el puerto 40, se recibe el packete ICMP.
+
+---
+
 
