@@ -243,4 +243,16 @@ No se podría utilizar bajo el protocolo TCP ya que éste es un protocolo para c
 
 ---
 
+### 11. Use CORE para armar una topología como la siguiente, sobre la cual deberá realizar:
+
+#### d. Iniciar otra conexión desde CLIENTE1 de la misma manera que la anterior y verificar el estado de las conexiones. ¿De qué manera puede identificar cada conexión?
+
+La conexión se identifica con la 4-tupla (source port, dest port, dource ip, dest ip).
+
+#### e. En base a lo observado en el item anterior, ¿es posible iniciar más de una conexión desde el cliente al servidor en el mismo puerto destino? ¿Por qué? ¿Cómo se garantiza que los datos de una conexión no se mezclarán con los de la otra?
+
+Es posible iniciar mas de una conexión desde el cliente al servidor en el mismo puerto destino ya que estas conexiones se diferenciarán por el puerto fuente del cliente. Así de esta manera no se "mezclarán" los datos de una conexión con los de la otra.
+
+---
+
 
