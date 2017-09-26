@@ -255,4 +255,11 @@ Es posible iniciar mas de una conexión desde el cliente al servidor en el mismo
 
 ---
 
+### 12. De acuerdo a la captura de la siguiente figura, indique los valores de los campos borroneados.
+
+![alt text](https://i.imgur.com/XShZ4H5.png "Punto 12")
+
+---
+
+
 
