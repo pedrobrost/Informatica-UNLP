@@ -261,5 +261,10 @@ Es posible iniciar mas de una conexión desde el cliente al servidor en el mismo
 
 ---
 
+### 13. Dada la sesión TCP de la figura, completar los valores marcados con un signo de interrogación.
+
+![alt text](https://i.imgur.com/Paa4CrA.png "Punto 13")
+
+---
 
 
