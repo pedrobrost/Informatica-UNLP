@@ -235,4 +235,12 @@ La diferencia es que como hay un socket escuchando en el puerto 68, no se recibe
 
 ---
 
+### 10. Investigue qué es multicast. ¿Sobre cuál de los protocolos de capa de transporte funciona? ¿Se podría adaptar para que funcione sobre el otro protocolo de capa de transporte? ¿Por qué?
+
+Múlticast es un tipo de comunicación donde la transmición de datos es enviada a un grupo de computadoras destino simultaneamente. Funciona sobre el protocolo UDP, ya que este no es orientado a la conexión (lo que constituye una conexión punto a punto), y no ejecuta los controles de flujo y congestión.
+
+No se podría utilizar bajo el protocolo TCP ya que éste es un protocolo para comunicación entre exactamente dos puntos. Comparado con UDP, TCP realiza un transporte fiable, lo que significa que los paquetes no son solamente enviados sino que se espera además por los paquetes de reconocimiento. Debido a que Multicast solamente envía pero nunca recibe datos, la fiabilidad de TCP no puede ser implementada sobre este protocolo.
+
+---
+
 
