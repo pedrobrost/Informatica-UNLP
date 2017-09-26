@@ -197,5 +197,24 @@ ej: `ss -t -l -p`
 
 ---
 
+### 8. ¿Qué sucede si llega un segmento TCP a un host que no tiene ningún proceso esperando en el puerto destino de dicho segmento (es decir, que dicho puerto no está en estado LISTEN)?
+
+Consideremos lo que ocurre cuando un host recibe un segmento TCP cuyo número de puerto o cuya dirección IP de origen no se corresponde con ninguno de los sockets activos en el host. Por ejemplo, suponiendo que un host recibe un paquete TCP SYN cuyo puerto de destino es el número 80, pero el host no está aceptando conexiones en dicho puerto (es decir, no está ejecutando un servidor web en el puerto 80). Entonces, el host enviará al origen un segmento especial de reinicio. Este segmento TCP tiene el bit indicador RST puesto a 1. Por tanto, cuando un host envía un segmento de reinicio, le está diciendo al emisor “No tengo un socket para ese segmento. Por favor, no reenvies el segmento.” Cuando un host recibe un paquete UDP en el que el número de puerto de destino no se corresponde con un socket UDP activo, el host envía un datagrama ICMP especial. 
+
+#### a. Utilice hping3 para enviar paquetes TCP al puerto destino 22 de la máquina virtual con el flag SYN activado.
+
+`hping3 -p 22 -S localhost`
+
+#### b. Utilice hping3 para enviar paquetes TCP al puerto destino 40 de la máquina virtual con el flag SYN activado.
+
+`hping3 -p 40 -S localhost`
+
+#### c. ¿Qué diferencias nota en las respuestas obtenidas en los dos casos anteriores? ¿Puede explicar a qué se debe? (Ayuda: utilice el comando ss visto anteriormente).
+
+La diferencia está en los flags de las respuestas, para el primer comando se recibe `SA` mientras que el segundo `RA`. Esto se debe a que un flag SA quiere decir que corresponde con SYN/ACK, es decir, que la comunicación ha sido aceptada, o lo que es lo mismo, que el puerto está abierto. De lo contrario, si el valor es RA corresponde a RST/ACK o lo que es lo mismo, que la comunicación no se ha realizado correctamente porque el puerto está cerrado o filtrado.
+
+Al utilizar el comando `ss` podemos ver que hay un socket escuchando en el puerto 22, y no el en 44.
+
+---
 
 
