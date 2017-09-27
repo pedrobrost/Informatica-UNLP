@@ -128,4 +128,23 @@ Info: http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm
 
 ---
 
+### 4. Dadas las salidas de los siguientes comandos ejecutados en el cliente y el servidor, responder:
+
+![alt text](https://i.imgur.com/Gt7POZ5.png "punto 3")
+
+#### a. ¿Qué segmentos llegaron y cuáles se están perdiendo en la red?
+
+El segmento SYN enciado por el cliente ha llegado al servidor, pero el SYN-ACK del servidor no ha llegado al cliente.
+
+#### b. ¿A qué protocolo de capa de aplicación y de transporte se está intentando conectar el cliente?
+
+El puerto `110` es un “puerto bien conocido” para el protocolo `POP3`.
+
+#### c. ¿Qué flags tendría seteado el segmento perdido?
+
+* `SYN = 1`
+* `ACK = 1`
+
+---
+
 
