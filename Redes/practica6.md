@@ -85,4 +85,47 @@ Más info: http://tcpipguide.com/free/t_TCPOperationalOverviewandtheTCPFiniteSta
 
 ---
 
+### 3. Dada la siguiente salida del comando ss, responda:
+
+![alt text]( "punto 3")
+
+#### a. ¿Cuántas conexiones hay establecidas?
+
+Se listan 9 conexiones en el estado `ESTAB`, como hay una conexión que es al mismo host local, se ven ambas conexiones.
+
+#### b. ¿Cuántos puertos hay abiertos a la espera de posibles nuevas conexiones?
+
+`4`
+
+#### c. El cliente y el servidor de las comunicaciones HTTPS (puerto 443), ¿residen en la misma máquina?
+
+`No, para esto debería haber algun socket en estado Listen en el puerto 443, además de coincidir las IPs`
+
+#### d. El cliente y el servidor de la comunicación SSH (puerto 22), ¿residen en la misma máquina?
+
+`Si, debido a que se puede ver el socket en estado Listen en el puerto 22, además de que coiniden las IPs en los dos sockets de estado ESTAB`
+
+#### e. Liste los nombres de todos los procesos asociados con cada comunicación. Indique para cada uno si se trata de un proceso cliente o uno servidor.
+
+* `sshd`: servidor
+* `apache2`: servidor
+* `named`: servidor
+* `x-www-browser`: cliente
+* `postfix`: servidor
+* `ssh`: cliente
+
+#### f. ¿Cuáles conexiones tuvieron el cierre iniciado por el host local y cuáles por el remoto?
+
+* La conexión que se encuentra en estado `CLOSE-WAIT` tuvo el cierre iniciado por el host remoto.
+
+* La conexión que se encuentra en estado `TIME-WAIT` tuvo el cierre iniciado por el host local.
+
+Info: http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm
+
+#### g. ¿Cuántas conexiones están aún pendientes por establecerse?
+
+`Una, la que está en estado SYN-SENT`
+
+---
+
 
