@@ -87,7 +87,7 @@ Más info: http://tcpipguide.com/free/t_TCPOperationalOverviewandtheTCPFiniteSta
 
 ### 3. Dada la siguiente salida del comando ss, responda:
 
-![alt text]( "punto 3")
+![alt text](https://i.imgur.com/odEN6Ft.png "punto 3")
 
 #### a. ¿Cuántas conexiones hay establecidas?
 
