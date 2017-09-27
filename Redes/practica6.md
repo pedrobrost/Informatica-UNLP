@@ -134,7 +134,7 @@ Info: http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm
 
 #### a. ¿Qué segmentos llegaron y cuáles se están perdiendo en la red?
 
-El segmento SYN enciado por el cliente ha llegado al servidor, pero el SYN-ACK del servidor no ha llegado al cliente.
+El segmento SYN enviado por el cliente ha llegado al servidor, pero el SYN-ACK del servidor no ha llegado al cliente.
 
 #### b. ¿A qué protocolo de capa de aplicación y de transporte se está intentando conectar el cliente?
 
