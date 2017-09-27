@@ -53,3 +53,36 @@ Sin embargo, cada archivo transferido vía TFTP constituye un intercambio indepe
 * El paquete de datos final debe contener menos de 512 bytes de datos para indicar que es el último. Si el tamaño del archivo transferido es un múltiplo exacto de 512 bytes, el origen envía un paquete final que contiene 0 bytes de datos.
 
 ---
+
+
+### 2. Investigue los distintos tipos de estado que puede tener una conexión TCP.
+
+Estados TCP:
+
+* CLOSED : No hay conexión activa ni pendiente.
+
+* LISTEN: El servidor espera una llamada.
+
+* SYN RCVD: Llegó una solicitud de conexión; espera ACK.
+
+* SYN SENT: La aplicación comenzó a abrir una conexión.
+
+* ESTABLISHED: Estado normal de transferencia de datos.
+
+* FIN WAIT 1: La aplicación dijo que ya terminó.
+
+* FIN WAIT 2: El otro lado acordó liberar.
+
+* TIMED WAIT: Espera a que todos los paquetes mueran.
+
+* CLOSING: Ambos lados intentaron cerrar simultáneamente.
+
+* CLOSE WAIT: El otro lado inició una liberación.
+
+* LAST ACK: Espera a que todos los paquetes mueran.
+
+Más info: http://tcpipguide.com/free/t_TCPOperationalOverviewandtheTCPFiniteStateMachineF-2.htm
+
+---
+
+
