@@ -165,7 +165,7 @@ Windows: `C:\WINDOWS\system32\drivers\etc\services`
 
 ### 6. Complete los (?) de la siguiente secuencia Stop and Wait:
 
-![alt text](https://i.imgur.com/jpdl9E1.png "punto6")
+![alt text](https://i.imgur.com/UuEdIrn.png "punto6")
 
 ---
 
