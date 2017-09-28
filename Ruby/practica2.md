@@ -443,4 +443,68 @@ end
 
 ---
 
+### 4.
+
+```ruby
+require 'matrix'
+
+class Image
+    attr_accessor :data, :size
+
+    def initialize(data = nil, size = 1024)
+        self.size = size
+        if data != nil
+            @filters = data
+        else
+            @filters = [].push(-> (dat) {Matrix.build(self.size) { Math::PI }})
+        end
+    end
+
+    def header_bytes
+        calc_data
+        Matrix.rows([data.first(size)])
+    end
+
+    def calc_data
+        @filters.each do |filter|
+            @data = filter.call @data
+        end
+    end
+
+    def filter value
+        Image.new @filters.push(-> (dat) {dat.map { | e | e ** value }})
+    end
+
+    def filter_a
+        filter 1.2
+    end
+
+    def filter_b
+        filter 1.4
+    end
+
+    def filter_c
+        filter 1.8
+    end
+
+    def filter_d
+        filter 2
+    end
+
+    def filter_e
+        filter 2.2
+    end
+
+    def filter_f
+        filter 2.4
+    end
+
+
+    def all_filters
+        ('a'..'f').inject(self) do | pipe, type|
+            pipe.public_send "filter_#{type}"
+        end
+    end
+end
+```
 
