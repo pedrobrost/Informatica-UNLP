@@ -405,4 +405,20 @@ end
 
 ---
 
+## Enumeradores
+
+### 1. Si no lo hiciste de esa forma en la práctica 1, escribí un enumerador que calcule la serie de Fibonacci.
+
+```ruby
+fibonacci = Enumerator.new do | y |
+    a = b = 1
+    loop do
+        y.yield a
+        a, b = b, a+b
+    end
+end
+```
+
+---
+
 
