@@ -421,4 +421,10 @@ end
 
 ---
 
+### 2. ¿Qué son los lazy enumerators? ¿Qué ventajas les ves con respecto al uso de los enumeradores que no son lazy?
+
+https://www.sitepoint.com/implementing-lazy-enumerables-in-ruby/
+
+---
+
 
