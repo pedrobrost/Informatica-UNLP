@@ -250,16 +250,24 @@ end
 
 ```ruby
 module GenericFactory
-    def create **args
-        new **args
+
+    module ClassMethods
+        def create **args
+            new **args
+        end
     end
+
     def initialize **args
         raise NotImplementedError
     end
+
+    def self.included base
+        base.extend ClassMethods
+    end 
 end
 
 class Test
-    extend GenericFactory
+    include GenericFactory
     
     def initialize **args
     end
