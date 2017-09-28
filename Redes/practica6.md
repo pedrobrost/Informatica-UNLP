@@ -31,7 +31,7 @@ Es posible conectarse dos veces en forma simultánea al mismo lugar ya que estas
 
 #### e. ¿Qué diferencias encuentra en cuánto a mensajes intercambiados entre los puntos A, B respecto del punto D?
 
-El intercambio de mensaje s es distinto ya que en el punto D el protocolo que se utiliza corre sobre UDP, por ende no existen los paquetes relacionados al handshake ni al cierre de conexión.
+El intercambio de mensajes es distinto ya que en el punto D el protocolo que se utiliza corre sobre UDP, por ende no existen los paquetes relacionados al handshake ni al cierre de conexión.
 
 #### f. ¿Qué diferencias encuentra en el punto D respecto a los anteriores respecto a utilización de puertos y protocolo de transporte utilizado?
 
@@ -91,7 +91,7 @@ Más info: http://tcpipguide.com/free/t_TCPOperationalOverviewandtheTCPFiniteSta
 
 #### a. ¿Cuántas conexiones hay establecidas?
 
-Se listan 9 conexiones en el estado `ESTAB`, como hay una conexión que es al mismo host local, se ven ambas conexiones.
+Se listan 9 sockets en el estado `ESTAB`, como hay una conexión que es al mismo host local, se ven ambas conexiones. Por ende hay 8 conexiones.
 
 #### b. ¿Cuántos puertos hay abiertos a la espera de posibles nuevas conexiones?
 
