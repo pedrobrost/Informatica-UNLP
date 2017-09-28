@@ -448,63 +448,47 @@ end
 ```ruby
 require 'matrix'
 
-class Image
-    attr_accessor :data, :size
+class Image                                                                                    
+    attr_accessor :data, :size                                                                     
 
-    def initialize(data = nil, size = 1024)
-        self.size = size
-        if data != nil
-            @filters = data
-        else
-            @filters = [].push(-> (dat) {Matrix.build(self.size) { Math::PI }})
-        end
+    def initialize(data = nil, size = 2)                                                           
+        self.size = size                                                                           
+        self.data = data || Matrix.build(size) { Math::PI }                                        
+    end                                                                                            
+
+    def header_bytes                                                                               
+        Matrix.rows([data.first(size)])                                                            
+    end                                                                                            
+                                                                                               
+    def filter_a                                                                                   
+        Image.new data.lazy.map { | e| e ** 1.2 }                                                  
+    end                
+    
+    def filter_b                                                                                   
+        Image.new data.lazy.map { | e| e ** 1.4 }                                                  
     end
-
-    def header_bytes
-        calc_data
-        Matrix.rows([data.first(size)])
+    
+    def filter_c                                                                                   
+        Image.new data.lazy.map { | e| e ** 1.8 }                                                  
     end
+    
+    def filter_d                                                                                   
+        Image.new data.lazy.map { | e| e ** 2 }                                                    
+    end 
+    
+    def filter_e                                                                                   
+        Image.new data.lazy.map { | e| e ** 2.2 }                                                  
+    end 
+    
+    def filter_f                                                                                   
+        Image.new data.lazy.map { | e| e ** 2.4 }                                                  
+    end                                                                                            
 
-    def calc_data
-        @filters.each do |filter|
-            @data = filter.call @data
-        end
-    end
-
-    def filter value
-        Image.new @filters.push(-> (dat) {dat.map { | e | e ** value }})
-    end
-
-    def filter_a
-        filter 1.2
-    end
-
-    def filter_b
-        filter 1.4
-    end
-
-    def filter_c
-        filter 1.8
-    end
-
-    def filter_d
-        filter 2
-    end
-
-    def filter_e
-        filter 2.2
-    end
-
-    def filter_f
-        filter 2.4
-    end
-
-
-    def all_filters
-        ('a'..'f').inject(self) do | pipe, type|
-            pipe.public_send "filter_#{type}"
-        end
-    end
+    def all_filters                                                                                
+        ('a'..'f').inject(self) do | pipe, type|                                                   
+            pipe.public_send "filter_#{type}"                                                      
+        end                                                                                        
+    end                                                                                            
 end
 ```
 
