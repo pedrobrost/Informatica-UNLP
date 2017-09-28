@@ -253,6 +253,16 @@ La conexión se identifica con la 4-tupla (source port, dest port, dource ip, de
 
 Es posible iniciar mas de una conexión desde el cliente al servidor en el mismo puerto destino ya que estas conexiones se diferenciarán por el puerto fuente del cliente. Así de esta manera no se "mezclarán" los datos de una conexión con los de la otra.
 
+#### f. Cerrar la última conexión establecida desde CLIENTE1 y ver los estados de las conexiones en ambos equipos.
+
+La conexión del lado del cliente quedará en `TIME-WAIT` y luego de un tiempo se cerrará, y del lado del servidor se cerrará.
+
+#### g. Cortar el servicio de ncat en el servidor (Ctrl+C) y ver los estados de las conexiones en ambos equipos. Luego, cerrar la conexión en el cliente y verificar nuevamente los estados de las conexiones.
+
+Al cortar el servicio en el servidor, este se quedará esperando en `FIN-WAIT-2`, es decir hasta que el cliente cierre su aplicación, lo cual se representa por el estado `CLOSE-WAIT`. Luego de cerrar la aplicacion del cliente, se terminarán de cerrar ambas conexiones.
+
+Mas Info: http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm
+
 ---
 
 ### 12. De acuerdo a la captura de la siguiente figura, indique los valores de los campos borroneados.
