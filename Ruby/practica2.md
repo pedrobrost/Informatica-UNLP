@@ -285,8 +285,8 @@ module Opposite
     end
 end
 
-true.extend Opposite
-false.extend Opposite
+TrueClass.include Opposite
+FalseClass.include Opposite
 ```
 
 ---
