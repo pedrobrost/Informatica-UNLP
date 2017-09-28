@@ -291,6 +291,8 @@ Es posible iniciar mas de una conexión desde el cliente al servidor en el mismo
 * `Primer segmento: 726` 
 * `Primer segmento: 946` 
 
+Se podría mandar un solo ACK por los dos segmentos, en este caso sería el `946`.
+
 #### d. Si en el punto b) el segundo segmento arriba antes que el primero enviado, ¿cuál será el valor del ACK enviado al recibir el primero de los dos segmentos?
 
 * `ACK: 946`
