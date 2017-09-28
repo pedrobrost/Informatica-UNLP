@@ -147,4 +147,20 @@ El puerto `110` es un “puerto bien conocido” para el protocolo `POP3`.
 
 ---
 
+### 5. ¿Cual es el puerto por defecto que se utiliza en los siguientes servicios?. Investigue en qué lugar en Linux y en Windows está descripta la asociación utilizada por defecto para cada servicio.
+
+* HTTP: `80`
+* SSH: `22`
+* DNS: `53`
+* HTTPS: `443`
+* POP3: `110`
+* IMAP: `143`
+* SMTP: `25`
+
+Linux: `/etc/services`
+
+Windows: `C:\WINDOWS\system32\drivers\etc\services`
+
+---
+
 
