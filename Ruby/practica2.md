@@ -443,8 +443,8 @@ https://www.sitepoint.com/implementing-lazy-enumerables-in-ruby/
 
 ```ruby
 class Array
-    def randomly
-        block_given? ? shuffle.each { |elem| yield elem } : shuffle.each
+    def randomly &block
+        shuffle.each &block
     end
 end
 ```
