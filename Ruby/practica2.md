@@ -346,8 +346,8 @@ end
 * puts A.value -> `A`
 * puts A::B.value -> `B`
 * puts C::D.value -> `D`
-* puts C::E.value -> 
-* puts F.value --> 
+* puts C::E.value -> `global`
+* puts F.value --> `global`
 
 #### 2. ¿Qué pasaría si ejecutases las siguientes sentencias? ¿Por qué?
 
@@ -355,8 +355,8 @@ end
 * puts A.new.value -> `A es un módulo, no se puede instanciar`
 * puts B.value -> `B está fuera del alcance, debido a que está definido dentro del módulo A`
 * puts C::D.value -> `D`
-* puts C.value -> `uninitialized constant C::VALUE`
-* puts F.superclass.value -> `uninitialized constant C::VALUE`
+* puts C.value -> `global`
+* puts F.superclass.value -> `global`
 
 ---
 
