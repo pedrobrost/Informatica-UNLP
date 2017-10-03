@@ -169,3 +169,10 @@ Windows: `C:\WINDOWS\system32\drivers\etc\services`
 
 ---
 
+### 7. Explique la lógica de Go BackN.
+
+Un protocolo Go Back - N (GNB) es un protocolo ARQ con pipelining (es decir, soporta múltiples segmentos en tránsito pendientes de confirmación, implementando buffers en el emisor; el rango de los números de secuencia debe aumentarse), por esto el emisor puede transmitir varios paquetes sin esperar ningún reconocimiento, pero tiene restringido el número máximo, N, de paquetes no reconocidos en el canal, llamado ventana del emisor. El emisor también tiene un timer para controlar el timeout. La recepción del ACK de un segmento, confirma a todos los anteriores pendientes -acuse de recibo acumulado-. El vencimiento del timer para un segmento implica la retransmisión de todos los segmentos siguientes en la ventana. La ventana se desplaza a medida que se reciben ACKs. El receptor envía el ACK sólo del segmento recibido correctamente de mayor número de secuencia en orden -es decir, que no le falte ninguno-. Puede generar acuses duplicados. No precisa buffers, ya que descarta los segmentos fuera de orden y duplicados (al descartar re envía el ACK del mayor número de secuencia que recibió correctamente y en orden). Por esto último, es simple de implementar en el emisor y en el receptor.
+
+---
+
+
