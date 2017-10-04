@@ -191,7 +191,7 @@ Al hacer el request utilizando el protocolo HTTP 1.0, luego de obtener la respue
 
 HTTP 1.1 permite tener conexiones persistentes, lo cual significa que se puede realizar mas de un request en la misma conexión HTTP.
 
-En cambio en HTTP 1.0 se debe abrir una nueva conexión por cada request. Y luego de cada respuesta la conexión debería ser cerrada. Esto claramente llevó a claros problemas de eficiencia.
+En cambio en HTTP 1.0 se debe abrir una nueva conexión por cada request. Y luego de cada respuesta la conexión debería ser cerrada. Esto claramente lleva a claros problemas de ineficiencia.
 
 ---
 
