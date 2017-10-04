@@ -231,7 +231,7 @@ Cuando un host recibe un paquete UDP en el que el númer    o de puerto de desti
 
 #### c. ¿Qué diferencias nota en las respuestas obtenidas en los dos casos anteriores? ¿Puede explicar a qué se debe? (Ayuda: utilice el comando ss visto anteriormente).
 
-La diferencia es que como hay un socket escuchando en el puerto 68, no se recibe respuesta alguna debido a que UDP no manda segmentos ACK. En cambio como no hay socket escuchando en el puerto 40, se recibe el packete ICMP.
+La diferencia es que como hay un socket escuchando en el puerto 68, no se recibe respuesta alguna debido a que UDP no manda segmentos ACK. En cambio como no hay socket escuchando en el puerto 40, se recibe el paquete ICMP.
 
 ---
 
