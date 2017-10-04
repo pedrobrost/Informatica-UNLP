@@ -176,6 +176,6 @@ El modelo OSI se compone de 7 capas:
 * Capa de Enlace de Datos
 * Capa Física
 
-La funcionalidad de cinco de estas capas es aproximadamente la misma que las que se ven en el stack TCP/IP. El rol de la capa de presentación es proveer servicios que permiten a aplicaciones de comunicación interpretar el significado de datos intercambiados. Estos servicios incluyen compresión, encriptación y descripción de datos. La capa de sesión provee proporciona los mecanismos para controlar el diálogo entre las aplicaciones de los sistemas finales. En muchos casos, los servicios de la capa de sesión son parcialmente, o incluso, totalmente prescindibles.
+La funcionalidad de cinco de estas capas es aproximadamente la misma que las que se ven en el stack TCP/IP. El rol de la capa de presentación es proveer servicios que permiten a aplicaciones de comunicación interpretar el significado de datos intercambiados. Estos servicios incluyen compresión, encriptación y descripción de datos. La capa de sesión proporciona los mecanismos para controlar el diálogo entre las aplicaciones de los sistemas finales. En muchos casos, los servicios de la capa de sesión son parcialmente, o incluso, totalmente prescindibles.
 
 Es responsabilidad del desarrollador de la aplicación decidir si un servicio es importante, y si lo es, depende del desarrollador construir esa funcionalidad en la aplicación.
