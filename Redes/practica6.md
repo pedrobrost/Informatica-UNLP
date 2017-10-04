@@ -270,4 +270,10 @@ s.close
 
 ---
 
+### 13. Compare ambas implementaciones. ¿Qué diferencia nota entre la implementación de cada una? ¿Cuál le parece más simple?
+
+Obviamente al ser UDP un servicio no fiable, no orientado a la conexión, la implementación del ejercicio es más simple.
+
+---
+
 
