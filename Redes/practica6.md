@@ -213,4 +213,61 @@ Antes de cada nueva transferencia tanto en el modo Activo como en el Pasivo, el 
 
 ---
 
+### 13. Desarrolle un cliente y un servidor, donde el cliente envíe un mensaje al servidor y este último imprima en pantalla el contenido del mismo.
+
+## UDP
+
+#### Server
+
+```ruby
+require 'socket'
+
+s = UDPSocket.new
+s.bind(nil, 1234)
+loop {
+    text, sender = s.recvfrom(16)
+    puts text
+}
+```
+
+#### Client
+
+```ruby
+require 'socket'
+s = UDPSocket.new
+s.send("hello", 0, 'localhost', 1234)
+```
+
+## TCP
+
+#### Server
+
+```ruby
+require 'socket'               # Get sockets from stdlib
+
+server = TCPServer.open(2000)  # Socket to listen on port 2000
+loop {                         # Servers run forever
+    client = server.accept       # Wait for a client to connect
+    puts client.gets
+    client.close                 # Disconnect from the client
+}
+```
+
+#### Client
+
+```ruby
+require 'socket'      # Sockets are in standard library
+
+hostname = 'localhost'
+port = 2000
+
+s = TCPSocket.open(hostname, port)
+
+s.puts "hola"
+
+s.close 
+```
+
+---
+
 
