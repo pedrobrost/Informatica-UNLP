@@ -187,4 +187,10 @@ Un protocolo Go Back - N (GNB) es un protocolo ARQ con pipelining (es decir, sop
 
 ---
 
+### 10. ¿Qué restricción existe sobre el tamaño de ventanas en el protocolo Selective Repeat?
+
+La restricción que tiene SR con respecto al tamaño de la ventana es que, el tamaño de esta, debe ser menor o igual que la mitad del tamaño del especio de números de secuencia.  Esto se debe a que la ventana se implementa como un buffer circular, entonces se podría dar la situación en que el receptor no puede determinar si para un número de secuencia X, se trata del segmento X o el segmento X + Y (donde Y es una vuelta completa en el buffer circular). Esta situación se da cuando se pierden mensajes de ACK dirigidos al emisor.
+
+---
+
 
