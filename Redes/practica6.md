@@ -304,4 +304,8 @@ A pesar de que podemos ver 5 sockets en estado `ESTAB`, disponemos de 3 conexion
 
 ---
 
+### 16. Complete el número de secuencia correspondiente.
+
+![alt text](https://i.imgur.com/MojHueY.png "punto 16")
+
 
