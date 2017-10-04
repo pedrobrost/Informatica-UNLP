@@ -276,4 +276,32 @@ Obviamente al ser UDP un servicio no fiable, no orientado a la conexión, la imp
 
 ---
 
+### 15. Dada la salida que se muestra en la imagen, responda los ítems debajo.
+
+![alt text](https://i.imgur.com/yt40wFO.png "punto 15")
+
+Suponga que ejecuta los siguientes comandos desde un host con la IP 10.100.25.90. Responda qué devuelve la ejecución de los siguientes comandos y, en caso que corresponda, especifique los flags.
+
+#### a. hping3 -p 3306 –udp 10.100.25.135
+
+`Responde con un paquete ICMP`
+
+#### b. hping3 -S -p 25 10.100.25.135
+
+`Responde con los flags RA activados`
+
+#### c. hping3 -S -p 22 10.100.25.135
+
+`Responde con los flags SA activados`
+
+#### d. hping3 -S -p 110 10.100.25.135
+
+`Responde con los flags RA activados`
+
+#### ¿Cuántas conexiones distintas hay establecidas? Justifique.
+
+A pesar de que podemos ver 5 sockets en estado `ESTAB`, disponemos de 3 conexiones establecidas ya que dos de las conexiones son al mismo host local, por ende se ven ambos pares de cada conexión punto a punto TCP.
+
+---
+
 
