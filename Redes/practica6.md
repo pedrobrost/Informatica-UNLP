@@ -181,4 +181,10 @@ Un protocolo Go Back - N (GNB) es un protocolo ARQ con pipelining (es decir, sop
 
 ---
 
+### 9. Suponiendo Selective Repeat; tamaño de ventana 4 y sabiendo que E indica que el mensaje llegó con errores. Indique en el siguiente gráfico, la numeración de los ACK que el host B envía al Host A.
+
+![alt text](https://i.imgur.com/rIExioy.png "punto9")
+
+---
+
 
