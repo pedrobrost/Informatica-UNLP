@@ -14,7 +14,7 @@ La asignación de nombres a direcciones IP es ciertamente la función más conoc
 
 DNS utiliza un gran número de servidores, organizados de forma jerárquica y distribuidos alrededor del mundo. Ningún servidor DNS dispone de todas las correspondencias de todos los hosts de Intenet. En su lugar, las correspondencias están repartidas por los servidores DNS. Podemos decir que existe 3 clases de servidores DNS:
 
-* **Los servidores DNS raízu**: Existen 13 servidores DNS raíz (etiquetados de la A hasta la M), la mayoría de los cuales se localizan en América del Norte. Cada “servidor” es una agrupación (cluster) de servidores replicados (seguridad y fiabilidad).
+* **Los servidores DNS raíz**: Existen 13 servidores DNS raíz (etiquetados de la A hasta la M), la mayoría de los cuales se localizan en América del Norte. Cada “servidor” es una agrupación (cluster) de servidores replicados (seguridad y fiabilidad).
 
 * **Los servidores DNS de dominio de nivel superior (TLD, Top-LevelDomain)**: Estos servidores son responsables de los dominios de nivel superior.
 
