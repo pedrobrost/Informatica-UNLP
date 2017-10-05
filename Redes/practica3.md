@@ -222,7 +222,7 @@ El servidor DNS que intenta resolver la consulta recursiva, realizará una serie
 Como sabemos, HTTP permite trabajar con recursos compartidos (documentos, servicios, etc.) entre dos o más sistemas terminales (hosts). Para esto los hosts deben ser identificables unívocamente, y así poder direccionar a un host y un recurso particular (URI). Los hosts se identifican en la red mediante una dirección IP (4 bytes separados por punto). El servicio DNS permite mapear (y consultar) direcciones IP con nombres nemotécnicos, que pueden perdurar en el tiempo, tener varios alias y pueden ser recordados fácilmente por las personas. HTTP permite referenciar recursos con nombres de dominio, como con direcciones IP. Pero lógicamente, navegar en internet se complicaría muchísimo sin servicio de DNS, ya que deberíamos:
 * Tener localmente el mapeo entre los nombres de host y las IPs (archivo host). Oconocer previamente las IP de los host que deseamos acceder.
 * Referenciar todos los recursos de internet mediante la IP.
-* Mantener todas las IP estáticas (ya que sino los documentos y archivos dejarían deservir).
+* Mantener todas las IP estáticas (ya que sino los documentos y archivos dejarían de servir).
 
 Sin servicio de DNS, Internet, tal cual lo conocemos, sería inviable.
 
@@ -236,7 +236,7 @@ Sin servicio de DNS, Internet, tal cual lo conocemos, sería inviable.
 
 * El resolver de PC-A hace una consulta DNS recursiva al servidor DNS 192.168.10 por el dominio www.unlp.edu.ar.
 
-* El DNS server 192.168.10.2 hace una conulta iterativa a a.root-server, el cual respondera con la dirección del TLD a.dns.ar el cual es el servidor dns autoritativo para el dominio ar.
+* El DNS server 192.168.10.2 hace una conulta iterativa a a.root-server, el cual responderá con la dirección del TLD a.dns.ar el cual es el servidor dns autoritativo para el dominio ar.
 
 * El DNS server hace una consulta iterativa a a.dns.ar, el cual responde con la direccion de ns1.riu.edu.ar el cual es el servidor dns autoritativo para el dominio edu.ar.
 
