@@ -61,7 +61,7 @@ El protocolo IP proporciona una comunicación lógica entre hosts. El modelo de 
 
 * Al igual que IP es un servicio no fiable.
 * No garantiza que los segmentos lleguen al proceso destino.
-* Tampoco garantiza que los lleguen en orden y estén libres de errores.
+* Tampoco garantiza que lleguen en orden y estén libres de errores.
 * La comprobación de errores es responsabilidad de la aplicación.
 
 #### TCP
@@ -135,7 +135,7 @@ Los sockets pueden verse como las puertas de los procesos.
 
 #### f. ¿Cuál es el campo del datagrama IP y los valores que se utilizan en este para diferenciar que se transporta TCP o UDP? 
 
-El campo de cabecera de IP es el campo protocolo de 8 bits.
+El campo de cabecera de IP es el campo `protocolo` de 8 bits.
 
 `TCP es el 6`.
 
@@ -145,7 +145,7 @@ El campo de cabecera de IP es el campo protocolo de 8 bits.
 
 ### 5. La PDU de la capa de transporte es el segmento. Sin embargo, en algunos contextos suele utilizarse el término datagrama. Indique cuándo.
 
-En el contexto de Internet los paquetes de la capa de transporte se definen como segmentos. No obstante, tenemos que decir que, en textos dedicados a Internet, como por ejemplo los RFC, también se emplea el término segmento para hacer referencia a los paquetes de la capa de transporte en el caso de TCP, pero a menudo a los paquetes de UDP se les denomina datagrama. Pero resulta que estos mismos textos dedicados a Internet también utilizan el término datagrama para referirse a los paquetes de la capa de red.
+En el contexto de Internet los paquetes de la capa de transporte se definen como segmentos. No obstante, tenemos que decir que, en textos dedicados a Internet, como por ejemplo los RFC, también se emplea el término segmento para hacer referencia a los paquetes de la capa de transporte en el caso de TCP, pero a menudo a los paquetes de UDP se los denomina datagrama. Pero resulta que estos mismos textos dedicados a Internet también utilizan el término datagrama para referirse a los paquetes de la capa de red.
 
 ---
 
@@ -219,7 +219,7 @@ Al utilizar el comando `ss` podemos ver que hay un socket escuchando en el puert
 
 ### 9. ¿Qué sucede si llega un datagrama UDP a un host que no tiene a ningún proceso esperando en el puerto destino de dicho datagrama (es decir, que dicho puerto no está en estado LISTEN)?
 
-Cuando un host recibe un paquete UDP en el que el númer    o de puerto de destino no se corresponde con un socket UDP activo, el host envía un datagrama ICMP especial.
+Cuando un host recibe un paquete UDP en el que el número de puerto de destino no se corresponde con un socket UDP activo, el host envía un datagrama ICMP especial.
 
 #### a. Utilice hping3 para enviar datagramas UDP al puerto destino 68 de la máquina virtual.
 
