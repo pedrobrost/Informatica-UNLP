@@ -138,7 +138,7 @@ El servidor que recibirá el correo será el que posee el menor número de prefe
 
 #### c. ¿En qué ocasión los demás servidores de correo recibirían correos dirigidos al dominio gmail.com? ¿Qué sucede luego de que uno de estos servidores recibe algún correo para el mencionado dominio?
 
-
+Los servidores SMTP intentarán con el servidor de mail de segunda prioridad más alta en caso de que el que tenia mayor prioridad no sea alcanzable o que la conexión no fue exitosa. Sin embargo esto depende del servidor SMTP que el emisor está utilizando.
 
 #### d. Cantidad de servidores de DNS del dominio unlp.edu.ar
 
