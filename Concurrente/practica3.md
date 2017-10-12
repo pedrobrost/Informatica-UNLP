@@ -133,22 +133,24 @@ end
 ```
 monitor Empresa
     
-    int count = 0;
+    int pozo = 1;
+    int grupo[1..10] = 0;
     cond cola;
 
-    procedure avisarLlegada()
-        count++;
-        if (count < 5) wait(cola);
+    procedure avisarLlegada(var int numPozo)
+        numPozo = pozo;
+        grupo[pozo]++;
+        if (grupo[pozo] < 5) wait(cola);
         else {
-            count = 0;
             signal_all(cola);
+            pozo++; 
         }
     end
 end
         
 process Empleado [i=1 to 50]
-    Empresa.avisarLlegada();
-    "Verificar pozo";
+    Empresa.avisarLlegada(numPozo);
+    verificarPozo(numPozo);
 end
 ```
 
