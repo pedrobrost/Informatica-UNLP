@@ -127,3 +127,29 @@ end
 ```
 
 ---
+
+### 5. Se tienen 50 empleados de una empresa petrolera que se reúnen para ir en grupos de a 5 a verificar 1 de los 10 pozos de petróleo existentes, cuando los empleados llegan se les asigna un numero de grupo, luego deberán esperar a sus compañeros de grupo para ir a la verificación.
+
+```
+monitor Empresa
+    
+    int count = 0;
+    cond cola;
+
+    procedure avisarLlegada()
+        count++;
+        if (count < 5) wait(cola);
+        else {
+            count = 0;
+            signal_all(cola);
+        }
+    end
+end
+        
+process Empleado [i=1 to 50]
+    Empresa.avisarLlegada();
+    "Verificar pozo";
+end
+```
+
+---
