@@ -24,10 +24,8 @@
 
 No, ya que al menos encontramos una dependencia funcional `DF1` donde `idLibreria` no es superclave de LIBRERIAS_ASOCIADAS, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF1`.
 
-```
-L1(**idLibreria**, nombreLibreria)
-L2(**idLibreria**, **idArticulo**, nombreArticulo, **idComponente**, nombreComponente, **idFabricanteArticulo**, **idDueño**)
-```
+* L1(**idLibreria**, nombreLibreria)
+* L2(**idLibreria**, **idArticulo**, nombreArticulo, **idComponente**, nombreComponente, **idFabricanteArticulo**, **idDueño**)
 
 #### ¿Se perdió información?
 
@@ -48,10 +46,8 @@ Sí, ya que en L1 vale DF1 y `idLibreria` es superclave del esquema L1.
 
 No, ya que al menos encontramos una dependencia funcional `DF2` donde `idLibreria, idArticulo` no es superclave de L2, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF2`.
 
-```
-L3(**idLibreria**, **idArticulo**, nombreAcrticulo)
-L4(**idLibreria**, **idArticulo**, **idComponente**, nombreComponente, **idFabricanteArticulo**, **idDueño**)
-```
+* L3(**idLibreria**, **idArticulo**, nombreAcrticulo)
+* L4(**idLibreria**, **idArticulo**, **idComponente**, nombreComponente, **idFabricanteArticulo**, **idDueño**)
 
 #### ¿Se perdió información?
 
@@ -72,10 +68,8 @@ Sí, ya que en L3 vale DF2 y `idLibreira, idArticulo` es superclave del esquema 
 
 No, ya que al menos encontramos una dependencia funcional `DF3` donde `idLibreria, idArticulo, idComponente` no es superclave de L4, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF3`.
 
-```
-L5(**idLibreria**, **idArticulo**, **idComponente**, nombreComponente)
-L6(**idLibreria**, **idArticulo**, **idComponente**, **idFabricanteArticulo**, **idDueño**)
-```
+* L5(**idLibreria**, **idArticulo**, **idComponente**, nombreComponente)
+* L6(**idLibreria**, **idArticulo**, **idComponente**, **idFabricanteArticulo**, **idDueño**)
 
 #### ¿Se perdió información?
 
@@ -97,12 +91,10 @@ Sí, ya que las únicas dependencias funcionales son triviales.
 
 #### Particiones de LIBRERIAS_ASOCIADAS que quedaron en BCNF:
 
-```
-L1(**idLibreria**, nombreLibreria)
-L3(**idLibreria**, **idArticulo**, nombreAcrticulo)
-L5(**idLibreria**, **idArticulo**, **idComponente**, nombreComponente)
-L6(**idLibreria**, **idArticulo**, **idComponente**, **idFabricanteArticulo**, **idDueño**)
-```
+* L1(**idLibreria**, nombreLibreria)
+* L3(**idLibreria**, **idArticulo**, nombreAcrticulo)
+* L5(**idLibreria**, **idArticulo**, **idComponente**, nombreComponente)
+* L6(**idLibreria**, **idArticulo**, **idComponente**, **idFabricanteArticulo**, **idDueño**)
 
 #### Dependencias Multivaludas en L6:
 
@@ -114,10 +106,8 @@ L6(**idLibreria**, **idArticulo**, **idComponente**, **idFabricanteArticulo**, *
 
 No, ya que existen dependencias multivualadas `DM1, DM2, DM3` que no son triviales en L6. Por lo tanto se particiona L6 teniendo en cuenta las dependencias multivaluadas, por ejemplo DM1.
 
-```
-L7(**idLibreria**, idDueño)
-L8(**idLibreria**, **idArticulo**, **idComponente**, **idFabricanteArticulo**)
-```
+* L7(**idLibreria**, idDueño)
+* L8(**idLibreria**, **idArticulo**, **idComponente**, **idFabricanteArticulo**)
 
 #### ¿L7 cumple con la definición de 4FN?
 
@@ -127,10 +117,8 @@ Sí, ya que en L7 solo vale la DM1 que es trivial en L7.
 
 No, ya que existen dependencias multivualadas `DM2, DM3` que no son triviales en L8. Por lo tanto se particiona L8 teniendo en cuenta las dependencias multivaluadas, por ejemplo DM2.
 
-```
-L9(**idLibreria**, **idArticulo**, idFabricanteArticulo)
-L10(**idLibreria**, **idArticulo**, idComponente)
-```
+* L9(**idLibreria**, **idArticulo**, idFabricanteArticulo)
+* L10(**idLibreria**, **idArticulo**, idComponente)
 
 #### ¿L9 cumple con la definición de 4FN?
 
@@ -142,12 +130,10 @@ Sí, ya que en L10 solo vale la DM3 que es trivial en L10.
 
 #### Particiones de LIBRERIAS_ASOCIADAS que quedaron en 4NF:
 
-```
-L1(**idLibreria**, nombreLibreria)
-L3(**idLibreria**, **idArticulo**, nombreAcrticulo)
-L5(**idLibreria**, **idArticulo**, **idComponente**, nombreComponente)
-L7(**idLibreria**, idDueño)
-L9(**idLibreria**, **idArticulo**, idFabricanteArticulo)
-```
+* L1(**idLibreria**, nombreLibreria)
+* L3(**idLibreria**, **idArticulo**, nombreAcrticulo)
+* L5(**idLibreria**, **idArticulo**, **idComponente**, nombreComponente)
+* L7(**idLibreria**, idDueño)
+* L9(**idLibreria**, **idArticulo**, idFabricanteArticulo)
 
 ---
