@@ -134,6 +134,6 @@ Sí, ya que en L10 solo vale la DM3 que es trivial en L10.
 * L3(**idLibreria**, **idArticulo**, nombreAcrticulo)
 * L5(**idLibreria**, **idArticulo**, **idComponente**, nombreComponente)
 * L7(**idLibreria**, **idDueño**)
-* L9(**idLibreria**, **idArticulo**, idFabricanteArticulo)
+* L9(**idLibreria**, **idArticulo**, **idFabricanteArticulo**)
 
 ---
