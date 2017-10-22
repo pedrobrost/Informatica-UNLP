@@ -106,7 +106,7 @@ Sí, ya que las únicas dependencias funcionales son triviales.
 
 No, ya que existen dependencias multivualadas `DM1, DM2, DM3` que no son triviales en L6. Por lo tanto se particiona L6 teniendo en cuenta las dependencias multivaluadas, por ejemplo DM1.
 
-* L7(**idLibreria**, idDueño)
+* L7(**idLibreria**, **idDueño**)
 * L8(**idLibreria**, **idArticulo**, **idComponente**, **idFabricanteArticulo**)
 
 #### ¿L7 cumple con la definición de 4FN?
@@ -117,8 +117,8 @@ Sí, ya que en L7 solo vale la DM1 que es trivial en L7.
 
 No, ya que existen dependencias multivualadas `DM2, DM3` que no son triviales en L8. Por lo tanto se particiona L8 teniendo en cuenta las dependencias multivaluadas, por ejemplo DM2.
 
-* L9(**idLibreria**, **idArticulo**, idFabricanteArticulo)
-* L10(**idLibreria**, **idArticulo**, idComponente)
+* L9(**idLibreria**, **idArticulo**, **idFabricanteArticulo**)
+* L10(**idLibreria**, **idArticulo**, **idComponente**)
 
 #### ¿L9 cumple con la definición de 4FN?
 
@@ -133,7 +133,7 @@ Sí, ya que en L10 solo vale la DM3 que es trivial en L10.
 * L1(**idLibreria**, nombreLibreria)
 * L3(**idLibreria**, **idArticulo**, nombreAcrticulo)
 * L5(**idLibreria**, **idArticulo**, **idComponente**, nombreComponente)
-* L7(**idLibreria**, idDueño)
+* L7(**idLibreria**, **idDueño**)
 * L9(**idLibreria**, **idArticulo**, idFabricanteArticulo)
 
 ---
