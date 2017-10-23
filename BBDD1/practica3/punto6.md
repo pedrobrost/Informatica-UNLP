@@ -56,7 +56,48 @@ No, ya que `L3 ∩ L4 = idElemento` es clave en L3.
 No, ya que:
 
 * DF2 vale en L3
-* DF3 a DF5 valen en L4
+
+La DF3 no vale ni en L3 ni L4. Aplico el algoritmo para ver si se pierde DF3 y veo que
+ 
+* DF1: caracteristicaTecnicaCamara -> descripcionCaracteristica, idCamara
+* DF2: idElemento -> descripcionElemento
+* DF3: idFoto -> fechaFoto, obturacionCamaraFoto, idCamara
+
+Res= idFoto
+i=1
+Res= idFoto U ((idFoto ∩ {caracteristicaTecnicaCamara, descripcionCaracteristica, idCamara})+ ∩ {caracteristicaTecnicaCamara, descripcionCaracteristica, idCamara}) = idFoto 
+
+Res= idFoto
+i=2
+Res= idFoto U ((idFoto ∩ {idElemento, descripcionElemento})+ ∩ {idElemento, descripcionElemento}) = idFoto 
+
+Res= idFoto
+i=3
+Res= idFoto U ((idFoto ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})+ ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
+Res= idFoto U ((idFoto)+ ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
+Res= idFoto U ({idFoto, fechaFoto, obturacionCamaraFoto, idCamara} ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara}) = {idFoto, fechaFoto, obturacionCamaraFoto}
+
+Res = {idFoto, fechaFoto, obturacionCamaraFoto}
+i= 1
+Res= {idFoto, fechaFoto, obturacionCamaraFoto} U (({idFoto, fechaFoto, obturacionCamaraFoto} ∩ {caracteristicaTecnicaCamara, descripcionCaracteristica, idCamara})+ ∩ {caracteristicaTecnicaCamara, descripcionCaracteristica, idCamara}) = {idFoto, fechaFoto, obturacionCamaraFoto}
+
+Res= {idFoto, fechaFoto, obturacionCamaraFoto}
+i=2
+Res= {idFoto, fechaFoto, obturacionCamaraFoto} U (({idFoto, fechaFoto, obturacionCamaraFoto} ∩ {idElemento, descripcionElemento})+ ∩ {idElemento, descripcionElemento}) = {idFoto, fechaFoto, obturacionCamaraFoto}
+
+Res= {idFoto, fechaFoto, obturacionCamaraFoto}
+i=3
+Res= {idFoto, fechaFoto, obturacionCamaraFoto} U (({idFoto, fechaFoto, obturacionCamaraFoto} ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})+ ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
+Res= {idFoto, fechaFoto, obturacionCamaraFoto} U (({idFoto, fechaFoto, obturacionCamaraFoto})+ ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara}) = {fechaFoto, obturacionCamaraFoto}
+Res= {idFoto, fechaFoto, obturacionCamaraFoto} U ({idFoto, fechaFoto, obturacionCamaraFoto} ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara}) = {idFoto, fechaFoto, obturacionCamaraFoto}
+
+
+
+
+
+
+
+
 
 #### ¿L3 cumple con la definición de BCNF?
 
