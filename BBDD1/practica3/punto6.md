@@ -54,9 +54,9 @@ No, ya que `L3 ∩ L4 = idElemento` es clave en L3.
 #### ¿Se perdieron dependencias funcionales?
 
 * DF2 vale en L3
-
-La DF3 no vale ni en L3 ni L4. Aplico el algoritmo para ver si se pierde DF3:
+* La DF3 no vale ni en L3 ni L4. Aplico el algoritmo para ver si se pierde DF3:
  
+```
 Res= idFoto
 i=1
 Res= idFoto U ((idFoto ∩ {caracteristicaTecnicaCamara, descripcionCaracteristica, idCamara})+ ∩ {caracteristicaTecnicaCamara, descripcionCaracteristica, idCamara}) = idFoto 
@@ -84,31 +84,44 @@ i=3
 Res= {idFoto, fechaFoto, obturacionCamaraFoto} U (({idFoto, fechaFoto, obturacionCamaraFoto} ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})+ ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
 Res= {idFoto, fechaFoto, obturacionCamaraFoto} U (({idFoto, fechaFoto, obturacionCamaraFoto})+ ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara}) = {fechaFoto, obturacionCamaraFoto}
 Res= {idFoto, fechaFoto, obturacionCamaraFoto} U ({idFoto, fechaFoto, obturacionCamaraFoto} ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara}) = {idFoto, fechaFoto, obturacionCamaraFoto}
+```
 
+Al finalizar el algoritmo, como en `Res = {idFoto, fechaFoto, obturacionCamaraFoto}` no dispongo de todos los atributos multideterminados por la DF3 puedo determinar que se perdieron dependencias funcionales, por ende hago el pasaje a 3FN.
 
-Explicacion de por que se pierde la DF3... inc --
+#### Esquemas en 3FN
 
+* L1(**caracteristicaTecnicaCamara**, descripcionCaracteristica, idCamara)
+* L2(**idElemento**, descripcionElemento)
+* L3(**idFoto**, fechaFoto, obturacionCamaraFoto, idCamara)
+* L4(**caracteristicaTecnicaCamara**, **idElemento**, **idFoto**)
 
-L1(**caracteristicaTecnicaCamara**, descripcionCaracteristica, idCamara)
-L2(**idElemento**, descripcionElemento)
-L3(**idFoto**, fechaFoto, obturacionCamaraFoto, idCamara)
-L4(**caracteristicaTecnicaCamara**, **idElemento**, **idFoto**)
-
-Multivaluadas:
+#### Dependencias multivaluadas en L4
 
 * DM1: idFoto -> idElemento
 * DM2: idElemento -> idFoto
 * DM3: idFoto -> caracteristifaTecnicaCamara
 
-L5(**idFoto**, **idElemento**)
-L6(**idFoto**, **caracteristicaTecnicaCamara**)
+#### ¿L4 cumple con la definición de 4FN?
 
-Final: 
+No, ya que existen dependencias multivualadas `DM1, DM2` que no son triviales en L4. Por lo tanto se particiona L4 teniendo en cuenta las dependencias multivaluadas, por ejemplo DM1.
 
-L1(**caracteristicaTecnicaCamara**, descripcionCaracteristica, idCamara)
-L2(**idElemento**, descripcionElemento)
-L3(**idFoto**, fechaFoto, obturacionCamaraFoto, idCamara)
-L5(**idFoto**, **idElemento**)
-L6(**idFoto**, **caracteristicaTecnicaCamara**)
+* L5(**idFoto**, **idElemento**)
+* L6(**idFoto**, **caracteristicaTecnicaCamara**)
 
+#### ¿L5 cumple con la definición de 4FN?
 
+Sí, ya que en L5 valen las dependencias multivaluadas `DM1, DM2` que son triviales en L5.
+
+#### ¿L6 cumple con la definición de 4FN?
+
+Sí, ya que en L6 solo vale la DM3 que es trivial en L6.
+
+#### Particiones de TOMAS_FOTOGRAFICAS que quedaron en 4NF:
+
+* L1(**caracteristicaTecnicaCamara**, descripcionCaracteristica, idCamara)
+* L2(**idElemento**, descripcionElemento)
+* L3(**idFoto**, fechaFoto, obturacionCamaraFoto, idCamara)
+* L5(**idFoto**, **idElemento**)
+* L6(**idFoto**, **caracteristicaTecnicaCamara**)
+
+---
