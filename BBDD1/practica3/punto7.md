@@ -246,34 +246,4 @@ Al finalizar el algoritmo, como en `Res = {#linea, #colectivo, nombreLinea}` no 
 * L6(**#linea**, **#colectivo**, #ramal)
 * L7(**#colectivo**, **dniChofer**, **dniInspector**, **dniEmpleado**)
 
-inc --
-
-#### Dependencias Multivaludas en L7:
-
-* DM1: 
-
-#### ¿L7 cumple con la definición de 4FN?
-
-No, ya que existen dependencias multivualadas `DM1, DM2` que no son triviales en L8. Por lo tanto se particiona L8 teniendo en cuenta las dependencias multivaluadas, por ejemplo DM1.
-
-* L9(**idEmpleado**, **idActividadEmpleadoOficina**)
-* L10(**idEmpleado**, **idResponsableOficina**)
-
-#### ¿L9 cumple con la definición de 4FN?
-
-Sí, ya que en L9 solo vale la DM1 que es trivial en L9.
-
-#### ¿L10 cumple con la definición de 4FN?
-
-Sí, ya que en L10 solo vale la DM2 que es trivial en L10.
-
-#### Particiones de EMPLEADO que quedaron en 4NF:
-
-* L1(**idEmpleado**, nombreOficina)
-* L3(**idResponsableOficina**, **idOficina**, nombreResponsableOficina)
-* L5(**idEmpleado**, nombreEmpleado, idOficina, añoIngresoOficina, dniEmpleado, cargaHorariaEnOficina)
-* L7(**idActividadEmpleadoOficina**, nombreActividadOficina)
-* L9(**idEmpleado**, **idActividadEmpleadoOficina**)
-* L10(**idEmpleado**, **idResponsableOficina**)
-
 ---
