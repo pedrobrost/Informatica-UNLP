@@ -34,27 +34,8 @@ No, ya que `L1 ∩ L2 = caracteristicaTecnicaCamara` es clave en L1.
 No, ya que:
 
 * DF1 vale en L1
-* DF2 y DF3 valen en L2
-
-#### ¿L1 cumple con la definición de BCNF?
-
-Sí, ya que en L1 vale DF1 y `caracteristicaTecnicaCamara` es superclave del esquema L1.
-
-#### ¿L2 cumple con la definición de BCNF?
-
-No, ya que al menos encontramos una dependencia funcional `DF2` donde `idElemento` no es superclave de L2, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF2`.
-
-* L3(**idElemento**, descripcionElemento)
-* L4(**idElemento**, **idFoto**, fechaFoto, obturacionCamaraFoto, **caracteristicaTecnicaCamara**)
-
-#### ¿Se perdió información?
-
-No, ya que `L3 ∩ L4 = idElemento` es clave en L3.
-
-#### ¿Se perdieron dependencias funcionales?
-
-* DF2 vale en L3
-* La DF3 no vale ni en L3 ni L4. Aplico el algoritmo para ver si se pierde DF3:
+* DF2 vale en L2
+* DF3 no vale ni en L1 ni L2. Aplico el algoritmo para ver si se pierde DF3:
  
 ```
 Res= idFoto
@@ -63,27 +44,21 @@ Res= idFoto U ((idFoto ∩ {caracteristicaTecnicaCamara, descripcionCaracteristi
 
 Res= idFoto
 i=2
-Res= idFoto U ((idFoto ∩ {idElemento, descripcionElemento})+ ∩ {idElemento, descripcionElemento}) = idFoto 
+Res= idFoto U ((idFoto ∩ {idElemento, descripcionElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})+ ∩ {idElemento, descripcionElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
+Res= idFoto U ((idFoto)+ ∩ {idElemento, descripcionElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
+Res= idFoto U ({idFoto, fechaFoto, obturacionCamaraFoto, idCamara} ∩ {idElemento, descripcionElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
+Res= idFoto U ({idFoto, fechaFoto, obturacionCamaraFoto}) = {idFoto, fechaFoto, obturacionCamaraFoto}
 
-Res= idFoto
-i=3
-Res= idFoto U ((idFoto ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})+ ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
-Res= idFoto U ((idFoto)+ ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
-Res= idFoto U ({idFoto, fechaFoto, obturacionCamaraFoto, idCamara} ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara}) = {idFoto, fechaFoto, obturacionCamaraFoto}
-
-Res = {idFoto, fechaFoto, obturacionCamaraFoto}
-i= 1
-Res= {idFoto, fechaFoto, obturacionCamaraFoto} U (({idFoto, fechaFoto, obturacionCamaraFoto} ∩ {caracteristicaTecnicaCamara, descripcionCaracteristica, idCamara})+ ∩ {caracteristicaTecnicaCamara, descripcionCaracteristica, idCamara}) = {idFoto, fechaFoto, obturacionCamaraFoto}
+Res= {idFoto, fechaFoto, obturacionCamaraFoto}
+i=1
+Res= {idFoto, fechaFoto, obturacionCamaraFoto} U (({idFoto, fechaFoto, obturacionCamaraFoto} ∩ {caracteristicaTecnicaCamara, descripcionCaracteristica, idCamara})+ ∩ {caracteristicaTecnicaCamara, descripcionCaracteristica, idCamara}) = {idFoto, fechaFoto, obturacionCamaraFoto} 
 
 Res= {idFoto, fechaFoto, obturacionCamaraFoto}
 i=2
-Res= {idFoto, fechaFoto, obturacionCamaraFoto} U (({idFoto, fechaFoto, obturacionCamaraFoto} ∩ {idElemento, descripcionElemento})+ ∩ {idElemento, descripcionElemento}) = {idFoto, fechaFoto, obturacionCamaraFoto}
-
-Res= {idFoto, fechaFoto, obturacionCamaraFoto}
-i=3
-Res= {idFoto, fechaFoto, obturacionCamaraFoto} U (({idFoto, fechaFoto, obturacionCamaraFoto} ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})+ ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
-Res= {idFoto, fechaFoto, obturacionCamaraFoto} U (({idFoto, fechaFoto, obturacionCamaraFoto})+ ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara}) = {fechaFoto, obturacionCamaraFoto}
-Res= {idFoto, fechaFoto, obturacionCamaraFoto} U ({idFoto, fechaFoto, obturacionCamaraFoto} ∩ {idElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara}) = {idFoto, fechaFoto, obturacionCamaraFoto}
+Res= {idFoto, fechaFoto, obturacionCamaraFoto} U (({idFoto, fechaFoto, obturacionCamaraFoto} ∩ {idElemento, descripcionElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})+ ∩ {idElemento, descripcionElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
+Res= {idFoto, fechaFoto, obturacionCamaraFoto} U ({idFoto, fechaFoto, obturacionCamaraFoto}+ ∩ {idElemento, descripcionElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
+Res= {idFoto, fechaFoto, obturacionCamaraFoto} U ({idFoto, fechaFoto, obturacionCamaraFoto, idCamara} ∩ {idElemento, descripcionElemento, idFoto, fechaFoto, obturacionCamaraFoto, caracteristicaTecnicaCamara})
+Res= idFoto U ({idFoto, fechaFoto, obturacionCamaraFoto}) = {idFoto, fechaFoto, obturacionCamaraFoto}
 ```
 
 Al finalizar el algoritmo, como en `Res = {idFoto, fechaFoto, obturacionCamaraFoto}` no dispongo de todos los atributos multideterminados por la DF3 puedo determinar que se perdieron dependencias funcionales, por ende hago el pasaje a 3FN.
@@ -98,8 +73,7 @@ Al finalizar el algoritmo, como en `Res = {idFoto, fechaFoto, obturacionCamaraFo
 #### Dependencias multivaluadas en L4
 
 * DM1: idFoto -> idElemento
-* DM2: idElemento -> idFoto
-* DM3: idFoto -> caracteristifaTecnicaCamara
+* DM2: idFoto -> caracteristifaTecnicaCamara
 
 #### ¿L4 cumple con la definición de 4FN?
 
