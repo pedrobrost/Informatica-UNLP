@@ -101,22 +101,6 @@ No, ya que `L7 ∩ L8 = dniChofer` es clave en L7.
 
 * DF4 vale en L7
 * DF5 no vale ni en L7 ni L8. Aplico el algoritmo para ver si se pierde DF5:
- 
-* DF5: #ramal -> #linea
-* DF6: #linea, #colectivo -> #ramal
-
-* L1(**#linea**, nombreLinea)
-* L3(**dniInspector**, nombreInspector)
-* L5(**dniEmpleado**, nombreEmpleado)
-* L7(**dniChofer**, #ramal, nombreChofer)
-* L8(#linea, **#colectivo**, **dniChofer**, **dniInspector**, **dniEmpleado**)
-
-* DF1: #linea -> nombreLinea
-* DF2: dniInspector -> nombreInspector
-* DF3: dniEmpleado -> nombreEmpleado
-* DF4: dniChofer -> #ramal, nombreChofer
-* DF5: #ramal -> #linea
-* DF6: #linea, #colectivo -> #ramal
 
 ```
 Res= #ramal
@@ -196,62 +180,79 @@ Res= {#ramal, #linea, nombreLinea} U (({#ramal, #linea})+ ∩ {#linea, #colectiv
 Res= {#ramal, #linea, nombreLinea} U ({#ramal, #linea, nombreLinea} ∩ {#linea, #colectivo, dniChofer, dniInspector, dniEmpleado}) = {#ramal, #linea, nombreLinea}
 ```
 
-inc --
+Al finalizar el algoritmo, como en `Res = {#ramal, #linea, nombreLinea}` dispongo del atributo `#linea` puedo concluir que no se perdió la `DF5`.
 
-Al finalizar el algoritmo, como en `Res = {idFoto, fechaFoto, obturacionCamaraFoto}` no dispongo de todos los atributos multideterminados por la DF3 puedo determinar que se perdieron dependencias funcionales, por ende hago el pasaje a 3FN.
+* DF6 no vale ni en L7 ni L8. Aplico el algoritmo para ver si se pierde DF6:
+
+```
+Res= {#linea, #colectivo}
+i=1
+Res= {#linea, #colectivo} U (({#linea, #colectivo} ∩ {#linea, nombreLinea})+ ∩ {#linea, nombreLinea})
+Res= {#linea, #colectivo} U ((#linea)+ ∩ {#linea, nombreLinea})
+Res= {#linea, #colectivo} U ({#linea, nombreLinea} ∩ {#linea, nombreLinea}) = {#linea, #colectivo, nombreLinea}
+
+Res= {#linea, #colectivo, nombreLinea}
+i=2
+Res= {#linea, #colectivo, nombreLinea} U (({#linea, #colectivo, nombreLinea} ∩ {dniInspector, nombreInspector})+ ∩ {dniInspector, nombreInspector}) = {#linea, #colectivo, nombreLinea}
+
+Res= {#linea, #colectivo, nombreLinea}
+i=3
+Res= {#linea, #colectivo, nombreLinea} U (({#linea, #colectivo, nombreLinea} ∩ {dniEmpleado, nombreEmpleado})+ ∩ {dniEmpleado, nombreEmpleado}) = {#linea, #colectivo, nombreLinea}
+
+Res= {#linea, #colectivo, nombreLinea}
+i=4
+Res= {#linea, #colectivo, nombreLinea} U (({#linea, #colectivo, nombreLinea} ∩ {dniChofer, #ramal, nombreChofer})+ ∩ {dniChofer, #ramal, nombreChofer}) = {#linea, #colectivo, nombreLinea}
+
+Res= {#linea, #colectivo, nombreLinea}
+i=5
+Res= {#linea, #colectivo, nombreLinea} U (({#linea, #colectivo, nombreLinea} ∩ {#linea, #colectivo, dniChofer, dniInspector, dniEmpleado})+ ∩ {#linea, #colectivo, dniChofer, dniInspector, dniEmpleado})
+Res= {#linea, #colectivo, nombreLinea} U (({#linea, #colectivo})+ ∩ {#linea, #colectivo, dniChofer, dniInspector, dniEmpleado})
+Res= {#linea, #colectivo, nombreLinea} U ({#linea, #colectivo, nombreLinea, #ramal} ∩ {#linea, #colectivo, dniChofer, dniInspector, dniEmpleado}) = {#linea, #colectivo, nombreLinea}
+
+Res= {#linea, #colectivo, nombreLinea}
+i=1
+Res= {#linea, #colectivo, nombreLinea} U (({#linea, #colectivo, nombreLinea} ∩ {#linea, nombreLinea})+ ∩ {#linea, nombreLinea})
+Res= {#linea, #colectivo} U ((#linea, nombreLinea)+ ∩ {#linea, nombreLinea})
+Res= {#linea, #colectivo} U ({#linea, nombreLinea} ∩ {#linea, nombreLinea}) = {#linea, #colectivo, nombreLinea}
+
+Res= {#linea, #colectivo, nombreLinea}
+i=2
+Res= {#linea, #colectivo, nombreLinea} U (({#linea, #colectivo, nombreLinea} ∩ {dniInspector, nombreInspector})+ ∩ {dniInspector, nombreInspector}) = {#linea, #colectivo, nombreLinea}
+
+Res= {#linea, #colectivo, nombreLinea}
+i=3
+Res= {#linea, #colectivo, nombreLinea} U (({#linea, #colectivo, nombreLinea} ∩ {dniEmpleado, nombreEmpleado})+ ∩ {dniEmpleado, nombreEmpleado}) = {#linea, #colectivo, nombreLinea}
+
+Res= {#linea, #colectivo, nombreLinea}
+i=4
+Res= {#linea, #colectivo, nombreLinea} U (({#linea, #colectivo, nombreLinea} ∩ {dniChofer, #ramal, nombreChofer})+ ∩ {dniChofer, #ramal, nombreChofer}) = {#linea, #colectivo, nombreLinea}
+
+Res= {#linea, #colectivo, nombreLinea}
+i=5
+Res= {#linea, #colectivo, nombreLinea} U (({#linea, #colectivo, nombreLinea} ∩ {#linea, #colectivo, dniChofer, dniInspector, dniEmpleado})+ ∩ {#linea, #colectivo, dniChofer, dniInspector, dniEmpleado})
+Res= {#linea, #colectivo, nombreLinea} U (({#linea, #colectivo})+ ∩ {#linea, #colectivo, dniChofer, dniInspector, dniEmpleado})
+Res= {#linea, #colectivo, nombreLinea} U ({#linea, #colectivo, nombreLinea, #ramal} ∩ {#linea, #colectivo, dniChofer, dniInspector, dniEmpleado}) = {#linea, #colectivo, nombreLinea}
+```
+
+Al finalizar el algoritmo, como en `Res = {#linea, #colectivo, nombreLinea}` no dispongo del atributo `#ramal` multideterminado por la DF3 puedo determinar que se perdieron dependencias funcionales, por ende hago el pasaje a 3FN.
 
 #### Esquemas en 3FN
 
+* L1(**#linea**, nombreLinea)
+* L2(**dniInspector**, nombreInspector)
+* L3(**dniEmpleado**, nombreEmpleado)
+* L4(**dniChofer**, #ramal, nombreChofer)
+* L5(**#ramal**, #linea)
+* L6(**#linea**, **#colectivo**, #ramal)
+* L7(**#colectivo**, **dniChofer**, **dniInspector**, **dniEmpleado**)
 
-#### ¿L7 cumple con la definición de BCNF?
+inc --
 
-Sí, ya que en L7 vale DF4 donde `dniChofer` es superclave del esquema L7.
+#### Dependencias Multivaludas en L7:
 
-#### ¿L8 cumple con la definición de BCNF?
+* DM1: 
 
-No, ya que al menos encontramos una dependencia funcional `DF5` donde `#ramal` no es superclave de L6, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF5`.
-
-
-* L9(**#ramal**, #linea)
-* L8(**#colectivo**, **dniChofer**, **dniInspector**, **dniEmpleado**)
-
-#### ¿Se perdió información?
-
-No, ya que `L9 ∩ L10 = dniChofer` es clave en L7.
-
-#### ¿Se perdieron dependencias funcionales?
-
-No, ya que:
-
-* DF4 vale en L7
-* DF5 y DF6 valen en L8
-
-#### ¿L7 cumple con la definición de BCNF?
-
-Sí, ya que en L7 vale DF4 donde `dniChofer` es superclave del esquema L7.
-
-#### ¿L8 cumple con la definición de BCNF?
-
-No, ya que al menos encontramos una dependencia funcional `DF5` donde `#ramal` no es superclave de L6, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF5`.
-
-
-
-
-
-#### Particiones de EMPLEADO que quedaron en BCNF:
-
-* L1(**idEmpleado**, nombreOficina)
-* L3(**idResponsableOficina**, **idOficina**, nombreResponsableOficina)
-* L5(**idEmpleado**, nombreEmpleado, idOficina, añoIngresoOficina, dniEmpleado, cargaHorariaEnOficina)
-* L7(**idActividadEmpleadoOficina**, nombreActividadOficina)
-* L8(**idEmpleado**, **idResponsableOficina**, **idActividadEmpleadoOficina**)
-
-#### Dependencias Multivaludas en L8:
-
-* DM1: idEmpleado ->> idActividadEmpleadoOficina
-* DM2: idEmpleado ->> idResponsableOficina
-
-#### ¿L8 cumple con la definición de 4FN?
+#### ¿L7 cumple con la definición de 4FN?
 
 No, ya que existen dependencias multivualadas `DM1, DM2` que no son triviales en L8. Por lo tanto se particiona L8 teniendo en cuenta las dependencias multivaluadas, por ejemplo DM1.
 
