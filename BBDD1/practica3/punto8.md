@@ -128,12 +128,7 @@ No, ya que `L5 ∩ L6 = dniPaciente, fechaInicioInternacion` es clave en L5.
 * DF4 vale en L5
 * DF5 no vale ni en L5 ni L6. Aplico el algoritmo para ver si se pierde DF5:
 
--- falta algoritmo --
-
-Al realizar el algoritmo, como en `Res = {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital}` dispongo de los atributos determinados por `DF5` puedo concluir que no se perdió la `DF5`.
-
-* DF4: dniPaciente, fechaInicioInternacion -> codHospital, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente
-* DF5: dniPaciente, fechaInicioInternacion -> domicilioHospital, ciudadHospital, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente
+Al realizar el algoritmo como en el resultado final dispongo de los atributos determinados por `DF5` puedo concluir que no se perdió la `DF5`.
 
 #### ¿L5 cumple con la definición de BCNF?
 
@@ -143,15 +138,43 @@ Sí, ya que en L5 vale DF4 donde `dniPaciente, fechaInicioInternacion` es superc
 
 Sí, ya que las únicas dependencias funcionales son triviales.
 
-#### Particiones de EMPLEADO que quedaron en BCNF:
+#### Particiones de INTERNACION que quedaron en BCNF:
 
 * L1(**codHospital**, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital)
 * L3(**dniPaciente**, domicilioPaciente, nombreApellidoPaciente)
 * L5(**dniPaciente**, **fechaInicioInternacion**, codHospital, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente)
 * L6(**dniPaciente**, **fechaInicioInternacion**, **doctorQueAtiendePaciente**, **insumoEmpleadoInternación**) 
 
+#### Clave primaria
+
+* (dniPaciente, fechaInicioInternacion, doctorQueAtiendePaciente, insumoEmpleadoInternacion)
+
 #### Dependencias Multivaludas en L6:
 
-* DM1:
+* DM1: dniPaciente, fechaInicioInternacion ->> doctorQueAtiendePaciente
+* DM2: dniPaciente, fechaInicioInternacion ->> insumoEmpleadoInternacion
+
+#### ¿L6 cumple con la definición de 4FN?
+
+No, ya que existen dependencias multivualadas `DM1, DM2` que no son triviales en L6. Por lo tanto se particiona L6 teniendo en cuenta las dependencias multivaluadas, por ejemplo DM1.
+
+* L7(**dniPaciente**, **fechaInicioInternacion**, **doctorQueAtiendePaciente**)
+* L8(**dniPaciente**, **fechaInicioInternacion**, **insumoEmpleadoInternación**) 
+
+#### ¿L7 cumple con la definición de 4FN?
+
+Sí, ya que en L7 solo vale la DM1 que es trivial en L7.
+
+#### ¿L8 cumple con la definición de 4FN?
+
+Sí, ya que en L8 solo vale la DM2 que es trivial en L8.
+
+#### Particiones de INTERNACION que quedaron en 4NF:
+
+* L1(**codHospital**, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital)
+* L3(**dniPaciente**, domicilioPaciente, nombreApellidoPaciente)
+* L5(**dniPaciente**, **fechaInicioInternacion**, codHospital, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente)
+* L7(**dniPaciente**, **fechaInicioInternacion**, **doctorQueAtiendePaciente**)
+* L8(**dniPaciente**, **fechaInicioInternacion**, **insumoEmpleadoInternación**) 
 
 ---
