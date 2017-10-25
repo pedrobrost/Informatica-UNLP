@@ -246,4 +246,61 @@ Al finalizar el algoritmo, como en `Res = {#linea, #colectivo, nombreLinea}` no 
 * L6(**#linea**, **#colectivo**, #ramal)
 * L7(**#colectivo**, **dniChofer**, **dniInspector**, **dniEmpleado**)
 
+#### Clave primaria
+
+* (#colectivo, dniChofer, dniInspector, dniEmpleado)
+
+#### Dependencias multivaluadas en L7
+
+* DM1: ∅ ->> dniChofer
+* DM2: ∅ ->> dniInspector
+* DM3: ∅ ->> dniEmpleado
+* DM4: ∅ ->> #colectivo
+
+#### ¿L7 cumple con la definición de 4FN?
+
+No, ya que existen dependencias multivualadas `DM1, DM2, DM3, DM4` que no son triviales en L7. Por lo tanto se particiona L7 teniendo en cuenta las dependencias multivaluadas, por ejemplo DM1.
+
+* L8(**dniChofer**)
+* L9(**#colectivo**, **dniInspector**, **dniEmpleado**)
+
+#### ¿L8 cumple con la definición de 4FN?
+
+Sí, ya que en L8 solo vale la DM1 que es trivial en L8.
+
+#### ¿L9 cumple con la definición de 4FN?
+
+No, ya que existen dependencias multivualadas `DM2, DM3, DM4` que no son triviales en L9. Por lo tanto se particiona L9 teniendo en cuenta las dependencias multivaluadas, por ejemplo DM2.
+
+* L10(**dniInspector**)
+* L11(**#colectivo**, **dniEmpleado**)
+
+#### ¿L10 cumple con la definición de 4FN?
+
+Sí, ya que en L10 solo vale la DM2 que es trivial en L10.
+
+#### ¿L11 cumple con la definición de 4FN?
+
+No, ya que existen dependencias multivualadas `DM3, DM4` que no son triviales en L11. Por lo tanto se particiona L11 teniendo en cuenta las dependencias multivaluadas, por ejemplo DM3.
+
+* L12(**dniEmpleado**)
+* L13(**#colectivo**)
+
+#### ¿L12 cumple con la definición de 4FN?
+
+Sí, ya que en L12 solo vale la DM3 que es trivial en L12.
+
+#### ¿L13 cumple con la definición de 4FN?
+
+Sí, ya que en L13 solo vale la DM4 que es trivial en L13.
+
+#### Particiones de EMPRESA_COLECTIVO que quedaron en 4NF:
+
+* L1(**#linea**, nombreLinea)
+* L2(**dniInspector**, nombreInspector)
+* L3(**dniEmpleado**, nombreEmpleado)
+* L4(**dniChofer**, #ramal, nombreChofer)
+* L5(**#ramal**, #linea)
+* L6(**#linea**, **#colectivo**, #ramal)
+
 ---
