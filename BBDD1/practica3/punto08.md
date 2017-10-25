@@ -145,7 +145,7 @@ Sí, ya que las únicas dependencias funcionales son triviales.
 * L5(**dniPaciente**, **fechaInicioInternacion**, codHospital, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente)
 * L6(**dniPaciente**, **fechaInicioInternacion**, **doctorQueAtiendePaciente**, **insumoEmpleadoInternación**) 
 
-#### Clave primaria
+#### Clave Primaria
 
 * (dniPaciente, fechaInicioInternacion, doctorQueAtiendePaciente, insumoEmpleadoInternacion)
 

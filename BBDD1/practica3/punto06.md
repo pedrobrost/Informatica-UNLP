@@ -70,6 +70,10 @@ Al finalizar el algoritmo, como en `Res = {idFoto, fechaFoto, obturacionCamaraFo
 * L3(**idFoto**, fechaFoto, obturacionCamaraFoto, idCamara)
 * L4(**caracteristicaTecnicaCamara**, **idElemento**, **idFoto**)
 
+#### Clave Primaria
+
+* (caracteristicaTecnicaCamara, idElemento, idFoto)
+
 #### Dependencias multivaluadas en L4
 
 * DM1: idFoto ->> idElemento

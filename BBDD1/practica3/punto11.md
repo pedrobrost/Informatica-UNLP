@@ -267,7 +267,7 @@ Sí, ya que las únicas dependencias funcionales son triviales.
 * L19(**dniDueño**, nyApDueño)
 * L20(**nombreBuque**, **dniDueño**, **#Viaje**, **puertoIntermedio**, **fechaPosicionActual**, **dniPasajero**)
 
-#### Clave primaria
+#### Clave Primaria
 
 * (nombreBuque, fechaPosicionActual, #viaje, dniPasajero, puertoIntermedio, dniDueño)
 

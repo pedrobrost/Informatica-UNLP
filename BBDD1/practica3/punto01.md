@@ -96,6 +96,10 @@ Sí, ya que las únicas dependencias funcionales son triviales.
 * L5(**idLibreria**, **idArticulo**, **idComponente**, nombreComponente)
 * L6(**idLibreria**, **idArticulo**, **idComponente**, **idFabricanteArticulo**, **idDueño**)
 
+#### Clave Primaria
+
+* (idLibreria, idArticulo, idComponente, idFabricanteArtículo, idDueño)
+
 #### Dependencias Multivaludas en L6:
 
 * DM1: idLibreria ->> idDueño

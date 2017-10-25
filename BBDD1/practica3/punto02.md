@@ -121,6 +121,10 @@ Sí, ya que las únicas dependencias funcionales son triviales.
 * L7(**idActividadEmpleadoOficina**, nombreActividadOficina)
 * L8(**idEmpleado**, **idResponsableOficina**, **idActividadEmpleadoOficina**)
 
+#### Clave Primaria
+
+* (idEmpleado, idResponsableOficina, idActividadEmpleadoOficina)
+
 #### Dependencias Multivaludas en L8:
 
 * DM1: idEmpleado ->> idActividadEmpleadoOficina

@@ -246,7 +246,7 @@ Al finalizar el algoritmo, como en `Res = {#linea, #colectivo, nombreLinea}` no 
 * L6(**#linea**, **#colectivo**, #ramal)
 * L7(**#colectivo**, **dniChofer**, **dniInspector**, **dniEmpleado**)
 
-#### Clave primaria
+#### Clave Primaria
 
 * (#colectivo, dniChofer, dniInspector, dniEmpleado)
 

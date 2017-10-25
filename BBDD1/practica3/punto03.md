@@ -162,7 +162,7 @@ Sí, ya que en L8 vale DF6 donde `idEstudio` es superclave del esquema L8.
 * L7(**idOrgano**, descripcion)
 * L8(idMedico, idPaciente, idÓrgano, **idEstudio**, resultado, fechaEstudio, informe)
 
-#### Clave primaria
+#### Clave Primaria
 
 * (idEstudio)
 

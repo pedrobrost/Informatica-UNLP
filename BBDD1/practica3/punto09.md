@@ -89,7 +89,7 @@ Sí, ya que las únicas dependencias funcionales son triviales.
 * L5(**#infraccion**, #cedula, fechaInfraccion, tipoInfraccion)
 * L6(**#propietario**, **#infraccion**)
 
-#### Clave primaria
+#### Clave Primaria
 
 * (#infraccion, #propietario)
 

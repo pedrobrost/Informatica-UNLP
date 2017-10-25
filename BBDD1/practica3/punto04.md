@@ -17,6 +17,10 @@
 
 Sí, ya que en AEROPUERTO vale DF1 donde `#aeropuerto, #avion, fecha` es superclave del esquema AEROPUERTO.
 
+#### Clave Primaria
+
+* (#aeropuerto, #avion, fecha)
+
 #### Dependencias Multivaludas en AEROPUERTO:
 
 No hay dependencias multivaludas en el esquema AEROPUERTO
