@@ -12,147 +12,174 @@
 * Cc2: (idEstudio)
 
 **Dependencias Funcionales:**
-* DF1: idMedico -> apynMedico, tipoDocM, nroDocM, fechaDocM, matrícula, direcciónM, teléfonoM
-* DF2: tipoDocM, nroDocM -> idMedico, apynMedico, fechaNacM, matricula, direcciónM, teléfonoM
-* DF3: matrícula -> apynMedico, tipoDocM, nroDocM, fechaDocM, idMedico, direcciónM, teléfonoM
-* DF4: idPaciente -> apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, direcciónP, teléfonoP, nroAfiliado
-* DF5: tipoDocP, nroDocP -> apynPaciente, fechaNacP, idObraSoc, direcciónP, teléfonoP, nroAfiliado, idPaciente
-* DF5: idObraSoc, nroAfiliado -> apynPaciente, tipoDocP, nroDocP, fechaNacP, direcciónP, teléfonoP ?????????????????????
-* DF6: idObraSoc -> nombreOS, direcciónOS, teléfonoOS
-* DF7: idOrgano -> descripción
-* DF8: idEstudio -> resultado, fechaEstudio, informe, idPaciente, idMedico
-* DF9: 
+DF1: idMedico -> apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM
+DF2: idObraSoc -> nombreOS, direcciónOS, teléfonoOS
+DF3: idPaciente -> apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP
+DF4: idObraSoc, nroAfiliado -> apynPaciente, tipoDocP, nroDocP, fechaNacP, idPaciente, direcciónP, teléfonoP
+DF5: idÓrgano -> descripción
+DF6: idEstudio -> resultado, fechaEstudio, informe, idOrgano, IdPaciente, IdMedico
+DF7: idEstudio -> resultado, fechaEstudio, informe, idOrgano, idObraSoc, nroAfiliado, IdMedico
 
-inc --
+#### ¿INFORME_MEDICO cumple con la definición de BCNF?
 
-#### ¿EMPLEADO cumple con la definición de BCNF?
+No, ya que al menos encontramos una dependencia funcional `DF1` donde `idMedico` no es superclave de INFORME_MEDICO, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF1`.
 
-No, ya que al menos encontramos una dependencia funcional `DF1` donde `idOficina` no es superclave de EMPLEADO, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF1`.
-
-* L1(**idEmpleado**, nombreOficina)
-* L2(**idEmpleado**, nombreEmpleado, idOficina, **idResponsableOficina**, cargaHorariaEnOficina, nombreResponsableOficina, añoIngresoOficina, **idActividadEmpleadoOficina**, nombreActividadOficina, dniEmpleado)
+* L1(**idMedico**, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM)
+* L2(idMedico, idPaciente, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP, nombreOS, direcciónOS, teléfonoOS, idÓrgano, descripción, **idEstudio**, resultado, fechaEstudio, informe)
 
 #### ¿Se perdió información?
 
-No, ya que `L1 ∩ L2 = idEmpleado` es clave en L1.
+No, ya que `L1 ∩ L2 = idMedico` es clave en L1.
 
 #### ¿Se perdieron dependencias funcionales?
 
 No, ya que:
 
 * DF1 vale en L1
-* DF2 a DF5 valen en L2
+* DF2 a DF7 valen en L2
 
 #### ¿L1 cumple con la definición de BCNF?
 
-Sí, ya que en L1 vale DF1 y `idEmpleado` es superclave del esquema L1.
+Sí, ya que en L1 vale DF1 donde `idMedico` es superclave del esquema L1.
 
 #### ¿L2 cumple con la definición de BCNF?
 
-No, ya que al menos encontramos una dependencia funcional `DF2` donde `idResponsableOficina, idOficina` no es superclave de L2, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF2`.
+No, ya que al menos encontramos una dependencia funcional `DF2` donde `idObraSoc` no es superclave de L2, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF2`.
 
-* L3(**idResponsableOficina**, **idOficina**, nombreResponsableOficina)
-* L4(**idEmpleado**, nombreEmpleado, idOficina, **idResponsableOficina**, cargaHorariaEnOficina, añoIngresoOficina, **idActividadEmpleadoOficina**, nombreActividadOficina, dniEmpleado))
+* L3(**idObraSoc**, nombreOS, direcciónOS, teléfonoOS)
+* L4(idMedico, idPaciente, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP, idÓrgano, descripción, **idEstudio**, resultado, fechaEstudio, informe)
 
 #### ¿Se perdió información?
 
-No, ya que `L3 ∩ L4 = idResponsableOficina, idOficina` es clave en L3.
+No, ya que `L3 ∩ L4 = idObraSocial` es clave en L3.
 
 #### ¿Se perdieron dependencias funcionales?
 
 No, ya que:
 
 * DF2 vale en L3
-* DF3 a DF5 valen en L4
+* DF3 a DF7 valen en L4
 
 #### ¿L3 cumple con la definición de BCNF?
 
-Sí, ya que en L3 vale DF2 y `idResponsableOficina, idOficina` es superclave del esquema L3.
+Sí, ya que en L3 vale DF2 donde `idObraSocial` es superclave del esquema L3.
 
 #### ¿L4 cumple con la definición de BCNF?
 
-idEmpleado -> nombreEmpleado, idOficina, añoIngresoOficina, dniEmpleado, cargaHorariaEnOficina
+No, ya que al menos encontramos una dependencia funcional `DF3` donde `idPaciente` no es superclave de L4, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF3`.
 
-No, ya que al menos encontramos una dependencia funcional `DF3` donde `idEmpleado` no es superclave de L4, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF3`.
-
-* L5(**idEmpleado**, nombreEmpleado, idOficina, añoIngresoOficina, dniEmpleado, cargaHorariaEnOficina)
-* L6(**idEmpleado**, **idResponsableOficina**, **idActividadEmpleadoOficina**, nombreActividadOficina)
+* L5(**idPaciente**, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP)
+* L6(idMedico, idPaciente, idÓrgano, descripción, **idEstudio**, resultado, fechaEstudio, informe)
 
 #### ¿Se perdió información?
 
-No, ya que `L5 ∩ L6 = idEmpleado` es clave en L5.
+No, ya que `L5 ∩ L6 = idPaciente` es clave en L5.
 
 #### ¿Se perdieron dependencias funcionales?
 
-No, ya que:
-
 * DF3 y DF4 valen en L5
-* DF5 vale en L6
+* DF5 a DF6 valen en L6
+* DF7 no vale ni en L5 ni L6. Aplico el algoritmo para ver si se pierde DF7:
+
+```
+Res= {idEstudio}
+i=1
+Res= {idEstudio} U (({idEstudio} ∩ {idMedico, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM})+ ∩ {idMedico, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM}) = {idEstudio}
+
+Res= {idEstudio}
+i=2
+Res= {idEstudio} U (({idEstudio} ∩ {idObraSoc, nombreOS, direcciónOS, teléfonoOS})+ ∩ {idObraSoc, nombreOS, direcciónOS, teléfonoOS}) = {idEstudio}
+
+Res= {idEstudio}
+i=3
+Res= {idEstudio} U (({idEstudio} ∩ {idPaciente, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP})+ ∩ {idPaciente, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP}) = {idEstudio}
+
+Res= {idEstudio}
+i=4
+Res= {idEstudio} U (({idEstudio} ∩ {idMedico, idPaciente, idÓrgano, descripción, **idEstudio**, resultado, fechaEstudio, informe})+ ∩ {idMedico, idPaciente, idÓrgano, descripción, **idEstudio**, resultado, fechaEstudio, informe})
+Res= {idEstudio} U (({idEstudio})+ ∩ {idMedico, idPaciente, idÓrgano, descripción, **idEstudio**, resultado, fechaEstudio, informe})
+Res= {idEstudio} U ({idMedico, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM, idPaciente, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP, nombreOS, direcciónOS, teléfonoOS, idÓrgano, descripción, idEstudio, resultado, fechaEstudio, informe} ∩ {idMedico, idPaciente, idÓrgano, descripción, **idEstudio**, resultado, fechaEstudio, informe}) = {idMedico, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM, idPaciente, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP, nombreOS, direcciónOS, teléfonoOS, idÓrgano, descripción, idEstudio, resultado, fechaEstudio, informe}
+```
+
+Al realizar el algoritmo, como en `Res = {idMedico, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM, idPaciente, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP, nombreOS, direcciónOS, teléfonoOS, idÓrgano, descripción, idEstudio, resultado, fechaEstudio, informe}` dispongo de los atributos determinados por `DF5` puedo concluir que no se perdió la `DF7`.
 
 #### ¿L5 cumple con la definición de BCNF?
 
-Sí, ya que en L5 valen DF3 y DF4 donde `idEmpleado` y `dniEmpleado` son superclave del esquema L5.
+Sí, ya que en L5 valen DF3 y DF4 donde `idPaciente` y `idObraSocial, nroAfiliado` son superclave del esquema L5.
 
 #### ¿L6 cumple con la definición de BCNF?
 
-No, ya que al menos encontramos una dependencia funcional `DF5` donde `idActividadEmpleadoOficina` no es superclave de L6, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF5`.
+No, ya que al menos encontramos una dependencia funcional `DF5` donde `idOrgano` no es superclave de L6, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF5`.
 
-* L7(**idActividadEmpleadoOficina**, nombreActividadOficina)
-* L8(**idEmpleado**, **idResponsableOficina**, **idActividadEmpleadoOficina**)
+* L7(**idOrgano**, descripcion)
+* L8(idMedico, idPaciente, idÓrgano, **idEstudio**, resultado, fechaEstudio, informe)
 
 #### ¿Se perdió información?
 
-No, ya que `L7 ∩ L8 = idActividadEmpleadoOficina` es clave en L7.
+No, ya que `L7 ∩ L8 = idOrgano` es clave en L7.
 
 #### ¿Se perdieron dependencias funcionales?
 
-No, ya que:
-
 * DF5 vale en L7
+* DF6 vale en L8
+* DF7 no vale ni en L7 ni L8. Aplico el algoritmo para ver si se pierde DF7:
+
+```
+Res= {idEstudio}
+i=1
+Res= {idEstudio} U (({idEstudio} ∩ {idMedico, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM})+ ∩ {idMedico, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM}) = {idEstudio}
+
+Res= {idEstudio}
+i=2
+Res= {idEstudio} U (({idEstudio} ∩ {idObraSoc, nombreOS, direcciónOS, teléfonoOS})+ ∩ {idObraSoc, nombreOS, direcciónOS, teléfonoOS}) = {idEstudio}
+
+Res= {idEstudio}
+i=3
+Res= {idEstudio} U (({idEstudio} ∩ {idPaciente, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP})+ ∩ {idPaciente, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP}) = {idEstudio}
+
+Res= {idEstudio}
+i=4
+Res= {idEstudio} U (({idEstudio} ∩ {idMedico, idPaciente, idÓrgano, idEstudio, resultado, fechaEstudio, informe})+ ∩ {idMedico, idPaciente, idÓrgano, idEstudio, resultado, fechaEstudio, informe})
+Res= {idEstudio} U (({idEstudio})+ ∩ {idMedico, idPaciente, idÓrgano, idEstudio, resultado, fechaEstudio, informe})
+Res= {idEstudio} U ({idMedico, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM, idPaciente, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP, nombreOS, direcciónOS, teléfonoOS, idÓrgano, descripción, idEstudio, resultado, fechaEstudio, informe} ∩ {idMedico, idPaciente, idÓrgano, idEstudio, resultado, fechaEstudio, informe}) = {idMedico, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM, idPaciente, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP, nombreOS, direcciónOS, teléfonoOS, idÓrgano, descripción, idEstudio, resultado, fechaEstudio, informe}
+```
+
+Al realizar el algoritmo, como en `Res = {idMedico, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM, idPaciente, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP, nombreOS, direcciónOS, teléfonoOS, idÓrgano, descripción, idEstudio, resultado, fechaEstudio, informe}` dispongo de los atributos determinados por `DF5` puedo concluir que no se perdió la `DF7`.
 
 #### ¿L7 cumple con la definición de BCNF?
 
-Sí, ya que en L7 vale DF5 donde `idActividadEmpleadoOficina` es superclave del esquema L7.
+Sí, ya que en L7 vale DF5 donde `idOrgano` es superclave del esquema L7.
 
 #### ¿L8 cumple con la definición de BCNF?
 
-Sí, ya que las únicas dependencias funcionales son triviales.
+Sí, ya que en L8 vale DF6 donde `idEstudio` es superclave del esquema L8.
 
-#### Particiones de EMPLEADO que quedaron en BCNF:
+#### Particiones de INFORME_MEDICO que quedaron en BCNF:
 
-* L1(**idEmpleado**, nombreOficina)
-* L3(**idResponsableOficina**, **idOficina**, nombreResponsableOficina)
-* L5(**idEmpleado**, nombreEmpleado, idOficina, añoIngresoOficina, dniEmpleado, cargaHorariaEnOficina)
-* L7(**idActividadEmpleadoOficina**, nombreActividadOficina)
-* L8(**idEmpleado**, **idResponsableOficina**, **idActividadEmpleadoOficina**)
+* L1(**idMedico**, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM)
+* L3(**idObraSoc**, nombreOS, direcciónOS, teléfonoOS)
+* L5(**idPaciente**, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP)
+* L7(**idOrgano**, descripcion)
+* L8(idMedico, idPaciente, idÓrgano, **idEstudio**, resultado, fechaEstudio, informe)
+
+#### Clave primaria
+
+* (idEstudio)
 
 #### Dependencias Multivaludas en L8:
 
-* DM1: idEmpleado ->> idActividadEmpleadoOficina
-* DM2: idEmpleado ->> idResponsableOficina
+No hay dependencias multivaludas en el esquema L8
 
 #### ¿L8 cumple con la definición de 4FN?
 
-No, ya que existen dependencias multivualadas `DM1, DM2` que no son triviales en L8. Por lo tanto se particiona L8 teniendo en cuenta las dependencias multivaluadas, por ejemplo DM1.
+Sí, ya que el esquema no presenta dependencias multivaluadas.
 
-* L9(**idEmpleado**, **idActividadEmpleadoOficina**)
-* L10(**idEmpleado**, **idResponsableOficina**)
+#### Particiones de INFORME_MEDICO que quedaron en 4NF:
 
-#### ¿L9 cumple con la definición de 4FN?
-
-Sí, ya que en L9 solo vale la DM1 que es trivial en L9.
-
-#### ¿L10 cumple con la definición de 4FN?
-
-Sí, ya que en L10 solo vale la DM2 que es trivial en L10.
-
-#### Particiones de EMPLEADO que quedaron en 4NF:
-
-* L1(**idEmpleado**, nombreOficina)
-* L3(**idResponsableOficina**, **idOficina**, nombreResponsableOficina)
-* L5(**idEmpleado**, nombreEmpleado, idOficina, añoIngresoOficina, dniEmpleado, cargaHorariaEnOficina)
-* L7(**idActividadEmpleadoOficina**, nombreActividadOficina)
-* L9(**idEmpleado**, **idActividadEmpleadoOficina**)
-* L10(**idEmpleado**, **idResponsableOficina**)
+* L1(**idMedico**, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM)
+* L3(**idObraSoc**, nombreOS, direcciónOS, teléfonoOS)
+* L5(**idPaciente**, apynPaciente, tipoDocP, nroDocP, fechaNacP, idObraSoc, nroAfiliado, direcciónP, teléfonoP)
+* L7(**idOrgano**, descripcion)
+* L8(idMedico, idPaciente, idÓrgano, **idEstudio**, resultado, fechaEstudio, informe)
 
 ---
