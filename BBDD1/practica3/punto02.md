@@ -68,8 +68,6 @@ Sí, ya que en L3 vale DF2 y `idResponsableOficina, idOficina` es superclave del
 
 #### ¿L4 cumple con la definición de BCNF?
 
-idEmpleado -> nombreEmpleado, idOficina, añoIngresoOficina, dniEmpleado, cargaHorariaEnOficina
-
 No, ya que al menos encontramos una dependencia funcional `DF3` donde `idEmpleado` no es superclave de L4, ni es una dependecia funcional trivial. Por lo tanto particionamos el esquema contemplando `DF3`.
 
 * L5(**idEmpleado**, nombreEmpleado, idOficina, añoIngresoOficina, dniEmpleado, cargaHorariaEnOficina)
