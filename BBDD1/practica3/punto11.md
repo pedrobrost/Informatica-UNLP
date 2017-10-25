@@ -326,7 +326,7 @@ Sí, ya que en L27 solo vale la DM4 que es trivial en L27.
 
 Sí, ya que las unicas dependencias multivaluadas serían triviales.
 
-#### Particiones de INTERNACION que quedaron en 4NF:
+#### Particiones de BUQUE que quedaron en 4NF:
 
 * L1(**tipoBuque**, tonelaje, tipoCasco)
 * L3(**nombreBuque**, tipoBuque)
