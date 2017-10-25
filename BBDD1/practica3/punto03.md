@@ -174,7 +174,7 @@ No hay dependencias multivaludas en el esquema L8
 
 Sí, ya que el esquema no presenta dependencias multivaluadas.
 
-#### Particiones de INFORME_MEDICO que quedaron en 4NF:
+#### Particiones de INFORME_MEDICO que quedaron en 4NF, quitando particiones que son proyecciones de esquemas anteriores:
 
 * L1(**idMedico**, apynMedico, tipoDocM, nroDocM, fechaNacM, matricula, direcciónM, teléfonoM)
 * L3(**idObraSoc**, nombreOS, direcciónOS, teléfonoOS)

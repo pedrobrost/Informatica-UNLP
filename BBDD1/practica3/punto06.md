@@ -94,7 +94,7 @@ Sí, ya que en L5 solo vale la DM1 que es trivial en L5.
 
 Sí, ya que en L6 solo vale la DM2 que es trivial en L6.
 
-#### Particiones de TOMAS_FOTOGRAFICAS que quedaron en 4NF:
+#### Particiones de TOMAS_FOTOGRAFICAS que quedaron en 4NF, quitando particiones que son proyecciones de esquemas anteriores:
 
 * L1(**caracteristicaTecnicaCamara**, descripcionCaracteristica, idCamara)
 * L2(**idElemento**, descripcionElemento)

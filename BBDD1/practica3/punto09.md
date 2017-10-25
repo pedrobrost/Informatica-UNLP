@@ -101,7 +101,7 @@ Sí, ya que las únicas dependencias funcionales son triviales.
 
 Sí, ya que la única dependencia multivaluada que vale el `L6` es trivial.
 
-#### Particiones de INFRACCIONES_REALIZADAS que quedaron en 4NF:
+#### Particiones de INFRACCIONES_REALIZADAS que quedaron en 4NF, quitando particiones que son proyecciones de esquemas anteriores:
 
 * L1(**#auto**, modeloAuto)
 * L3(**#cedula**, #auto, #conductor, fechaVto)

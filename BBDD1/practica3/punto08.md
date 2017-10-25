@@ -169,7 +169,7 @@ Sí, ya que en L7 solo vale la DM1 que es trivial en L7.
 
 Sí, ya que en L8 solo vale la DM2 que es trivial en L8.
 
-#### Particiones de INTERNACION que quedaron en 4NF:
+#### Particiones de INTERNACION que quedaron en 4NF, quitando particiones que son proyecciones de esquemas anteriores:
 
 * L1(**codHospital**, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital)
 * L3(**dniPaciente**, domicilioPaciente, nombreApellidoPaciente)

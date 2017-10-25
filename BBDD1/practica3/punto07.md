@@ -294,7 +294,7 @@ Sí, ya que en L12 solo vale la DM3 que es trivial en L12.
 
 Sí, ya que en L13 solo vale la DM4 que es trivial en L13.
 
-#### Particiones de EMPRESA_COLECTIVO que quedaron en 4NF:
+#### Particiones de EMPRESA_COLECTIVO que quedaron en 4NF, quitando particiones que son proyecciones de esquemas anteriores:
 
 * L1(**#linea**, nombreLinea)
 * L2(**dniInspector**, nombreInspector)

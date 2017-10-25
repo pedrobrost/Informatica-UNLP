@@ -145,7 +145,7 @@ Sí, ya que en L9 solo vale la DM1 que es trivial en L9.
 
 Sí, ya que en L10 solo vale la DM2 que es trivial en L10.
 
-#### Particiones de EMPLEADO que quedaron en 4NF:
+#### Particiones de EMPLEADO que quedaron en 4NF, quitando particiones que son proyecciones de esquemas anteriores:
 
 * L1(**idEmpleado**, nombreOficina)
 * L3(**idResponsableOficina**, **idOficina**, nombreResponsableOficina)
