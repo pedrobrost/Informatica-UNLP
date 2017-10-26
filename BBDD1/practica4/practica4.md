@@ -52,3 +52,22 @@ FLUSH PRIVILEGES;
 
 ---
 
+### 2. Listar dni, nombre y apellido de todos los clientes ordenados por dni en forma ascendente. Realice la consulta en ambas bases. ¿Qué diferencia nota en cuanto a performance? ¿Arrojan los mismos resultados? ¿Qué puede concluir en base a las diferencias halladas?
+
+```
+SELECT dniCliente, nombreApellidoCliente FROM cliente;
+# 20000 rows in set
+# Time: 0.985s
+
+SELECT dniCliente, nombreApellidoCliente FROM reparacion;
+# 162252 rows in set
+# Time: 8.350s
+```
+
+Como se puede ver los resultados no son los mismos, la consulta hecha sobre `reparacion_dn` da mas resultados ya que se recupera a un mismo usuario las veces que este realizó una reparación. Obviamente como hay mas tuplas la performance será mas baja.
+
+-- inc --
+
+---
+
+
