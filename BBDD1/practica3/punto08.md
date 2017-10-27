@@ -37,7 +37,7 @@ No, ya que `L1 ∩ L2 = codHospital` es clave en L1.
 
 #### ¿Se perdieron dependencias funcionales?
 
-* DF1 y DF2 valen en L1
+* DF1 y DF2 valen en L1, ya que los determinantes de las dependencias funcionales son posibles claves en L1. Se opta por dejar `codigoHospital` como clave de L1.
 * DF3 y DF4 valen en L2
 * DF5 no vale ni en L1 ni L2. Aplico el algoritmo para ver si se pierde DF5:
 
@@ -59,7 +59,7 @@ Res= {dniPaciente, fechaInicioInternacion, domicilioPaciente, nombreApellidoPaci
 Res= {dniPaciente, fechaInicioInternacion, domicilioPaciente, nombreApellidoPaciente, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital} U ({cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital} ∩ {codHospital, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital}) = {dniPaciente, fechaInicioInternacion, domicilioPaciente, nombreApellidoPaciente, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital}
 ```
 
-Al realizar el algoritmo, como en `Res = {dniPaciente, fechaInicioInternacion, domicilioPaciente, nombreApellidoPaciente, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital}` dispongo de los atributos determinados por `DF5` puedo concluir que no se perdió la `DF5`.
+Al realizar el algoritmo, como en `Res = {dniPaciente, fechaInicioInternacion, domicilioPaciente, nombreApellidoPaciente, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital}` dispongo de los atributos determinados por `DF5` puedo concluir que no se perdió la `DF5`. No se termina de realizar el algoritmo ya que con los resultados obtenidos hasta este paso ya se puede ver que no se pierde la dependencia funcional.
 
 #### ¿L1 cumple con la definición de BCNF?
 
@@ -84,26 +84,28 @@ No, ya que `L3 ∩ L4 = dniPaciente` es clave en L3.
 
 ```
 Res= {dniPaciente, fechaInicioInternacion}
-i=1
-Res= {dniPaciente, fechaInicioInternacion} U (({dniPaciente, fechaInicioInternacion} ∩ {codHospital, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital})+ ∩ {codHospital, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital}) = {dniPaciente, fechaInicioInternacion}
-
-Res= {dniPaciente, fechaInicioInternacion}
-i=2
+i=3
 Res= {dniPaciente, fechaInicioInternacion} U (({dniPaciente, fechaInicioInternacion} ∩ {dniPaciente, domicilioPaciente, nombreApellidoPaciente})+ ∩ {dniPaciente, domicilioPaciente, nombreApellidoPaciente}) = {dniPaciente, fechaInicioInternacion}
 Res= {dniPaciente, fechaInicioInternacion} U (({dniPaciente})+ ∩ {dniPaciente, domicilioPaciente, nombreApellidoPaciente})
 Res= {dniPaciente, fechaInicioInternacion} U ({dniPaciente, domicilioPaciente, nombreApellidoPaciente} ∩ {dniPaciente, domicilioPaciente, nombreApellidoPaciente}) = {dniPaciente, fechaInicioInternacion, domicilioPaciente, nombreApellidoPaciente}
 
 Res= {dniPaciente, fechaInicioInternacion, domicilioPaciente, nombreApellidoPaciente}
-i=3
+i=4
 Res= {dniPaciente, fechaInicioInternacion, domicilioPaciente, nombreApellidoPaciente} U (({dniPaciente, fechaInicioInternacion, domicilioPaciente, nombreApellidoPaciente} ∩ {codHospital, direcciónInternacionPaciente, telefonoInternacionPaciente, dniPaciente, fechaInicioInternacion, cantDiasIntenacion, doctorQueAtiendePaciente, insumoEmpleadoInternación})+ ∩ {codHospital, direcciónInternacionPaciente, telefonoInternacionPaciente, dniPaciente, fechaInicioInternacion, cantDiasIntenacion, doctorQueAtiendePaciente, insumoEmpleadoInternación})
 Res= {dniPaciente, fechaInicioInternacion, domicilioPaciente, nombreApellidoPaciente} U (({dniPaciente, fechaInicioInternacion})+ ∩ {codHospital, direcciónInternacionPaciente, telefonoInternacionPaciente, dniPaciente, fechaInicioInternacion, cantDiasIntenacion, doctorQueAtiendePaciente, insumoEmpleadoInternación})
 Res= {dniPaciente, fechaInicioInternacion, domicilioPaciente, nombreApellidoPaciente} U ({dniPaciente, fechaInicioInternacion, domicilioHospital, ciudadHospital, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital} ∩ {codHospital, direcciónInternacionPaciente, telefonoInternacionPaciente, dniPaciente, fechaInicioInternacion, cantDiasIntenacion, doctorQueAtiendePaciente, insumoEmpleadoInternación}) = {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente}
 
 Res= {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente}
-i=1
-Res= {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente} U (({dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente} ∩ {codHospital, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital})+ ∩ {codHospital, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital})
-Res= {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente} U (({codHospital})+ ∩ {codHospital, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital})
-Res= {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente} U ({codHospital, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital} ∩ {codHospital, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital}) = {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital}
+i=3
+Res= {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente} U (({dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente} ∩ {dniPaciente, domicilioPaciente, nombreApellidoPaciente})+ ∩ {dniPaciente, domicilioPaciente, nombreApellidoPaciente}) = {dniPaciente, fechaInicioInternacion}
+Res= {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente} U (({dniPaciente, domicilioPaciente, nombreApellidoPaciente})+ ∩ {dniPaciente, domicilioPaciente, nombreApellidoPaciente})
+Res= {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente} U ({dniPaciente, domicilioPaciente, nombreApellidoPaciente} ∩ {dniPaciente, domicilioPaciente, nombreApellidoPaciente}) = {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente}
+
+Res= {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente}
+i=4
+Res= {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente} U (({dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente} ∩ {codHospital, direcciónInternacionPaciente, telefonoInternacionPaciente, dniPaciente, fechaInicioInternacion, cantDiasIntenacion, doctorQueAtiendePaciente, insumoEmpleadoInternación})+ ∩ {codHospital, direcciónInternacionPaciente, telefonoInternacionPaciente, dniPaciente, fechaInicioInternacion, cantDiasIntenacion, doctorQueAtiendePaciente, insumoEmpleadoInternación})
+Res= {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente} U (({dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente})+ ∩ {codHospital, direcciónInternacionPaciente, telefonoInternacionPaciente, dniPaciente, fechaInicioInternacion, cantDiasIntenacion, doctorQueAtiendePaciente, insumoEmpleadoInternación})
+Res= {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente} U ({dniPaciente, fechaInicioInternacion, domicilioHospital, ciudadHospital, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital} ∩ {codHospital, direcciónInternacionPaciente, telefonoInternacionPaciente, dniPaciente, fechaInicioInternacion, cantDiasIntenacion, doctorQueAtiendePaciente, insumoEmpleadoInternación}) = {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente}
 ```
 
 Al realizar el algoritmo, como en `Res = {dniPaciente, fechaInicioInternacion, cantDiasInternacion, direccionInternacionPaciente, telefonoInternacionPaciente, codHospital, domicilioPaciente, nombreApellidoPaciente, cantidadHabitaciones, directorHospital, domicilioHospital, ciudadHospital}` dispongo de los atributos determinados por `DF5` puedo concluir que no se perdió la `DF5`.

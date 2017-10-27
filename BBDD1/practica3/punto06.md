@@ -77,7 +77,7 @@ Al finalizar el algoritmo, como en `Res = {idFoto, fechaFoto, obturacionCamaraFo
 #### Dependencias multivaluadas en L4
 
 * DM1: idFoto ->> idElemento
-* DM2: idFoto ->> caracteristifaTecnicaCamara
+* DM2: idFoto ->> caracteristifaTecnicaCamara -- vacio
 
 #### ¿L4 cumple con la definición de 4FN?
 
