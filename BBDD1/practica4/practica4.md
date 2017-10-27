@@ -32,7 +32,7 @@ FLUSH PRIVILEGES;
 CREATE USER 'reparacion_update'@'localhost' IDENTIFIED BY 'pass';
 GRANT SELECT, DELETE, UPDATE ON reparacion.* TO 'reparacion_update'@'localhost';
 
-CREATE USER 'reparacion_dn_update'localhost' IDENTIFIED BY 'pass';
+CREATE USER 'reparacion_dn_update'@'localhost' IDENTIFIED BY 'pass';
 GRANT SELECT, DELETE, UPDATE ON reparacion_dn.* TO 'reparacion_dn_update'@'localhost';
 
 FLUSH PRIVILEGES;
@@ -44,7 +44,7 @@ FLUSH PRIVILEGES;
 CREATE USER 'reparacion_schema'@'localhost' IDENTIFIED BY 'pass';
 GRANT SELECT, DELETE, UPDATE, CREATE, DROP, INSERT, ALTER ON reparacion.* TO 'reparacion_schema'@'localhost';
 
-CREATE USER 'reparacion_dn_schema'localhost' IDENTIFIED BY 'pass';
+CREATE USER 'reparacion_dn_schema'@'localhost' IDENTIFIED BY 'pass';
 GRANT SELECT, DELETE, UPDATE, CREATE, DROP, INSERT, ALTER ON reparacion_dn.* TO 'reparacion_dn_schema'@'localhost';
 
 FLUSH PRIVILEGES;
