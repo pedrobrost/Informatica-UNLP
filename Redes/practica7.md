@@ -88,3 +88,24 @@ El dispositivo de red loopback es una interfaz de red virtual. Las direcciones d
 `Host local`
 
 ---
+
+### 6. Investigue para qué sirven los comandos ifconfig y route. ¿Qué comandos podría utilizar en su reemplazo? Inicie una topología con CORE, cree una máquina y utilice en ella los comandos anteriores para practicar sus diferentes opciones, mínimamente:
+
+* **Configurar y quitar una dirección IP en una interfaz.**
+* **Ver la tabla de ruteo de la máquina.**
+
+* **ifconfig**: Es un programa disponible en varias versiones del sistema operativo UNIX, que permite configurar o desplegar numerosos parámetros de las interfaces de red residentes en el núcleo, como la dirección IP (dinámica o estática), o la máscara de red. Si se llama sin argumentos suele mostrar la configuración vigente de las interfaces de red activas, con detalles como la dirección MAC o el tráfico que ha circulado por las mismas hasta el momento. Las interfaces de red en Linux se suelen denominar eth (eth0, eth1, etc.).
+
+* **route**: El comando route muestra la tabla de enrutamiento que reside en el kernel y también se usa para modificarla. La tabla que especifica cómo se enrutan los paquetes a un host se llama tabla de enrutamiento.
+
+Actualmente los dos comandos mencionados anteriormente están obsoletos, en su reemplazo se utiliza el comando `ip`.
+
+* Agregar dirección ip a una interfaz: `ip a add ipdir dev interface`.
+
+* Eliminar dirección ip de una interfaz: `ip a del ipdir dev interface`.
+
+* Ver tabla de ruteo: `ip route`
+
+---
+
+
