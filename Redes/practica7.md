@@ -74,3 +74,17 @@ De esta forma, el host de origen obtiene el número y la identidad de los router
 -- inc --
 
 ---
+
+### 5. ¿Para que se usa el bloque 127.0.0.0/8? ¿Qué PC responde a los siguientes comandos?
+
+El dispositivo de red loopback es una interfaz de red virtual. Las direcciones del rango `127.0.0.0/8` son direcciones de loopback, de las cuales se utiliza, de forma mayoritaria, la `127.0.0.1` por ser la primera de dicho rango, añadiendo '::1' para el caso de IPv6 ('127.0.0.1::1').
+
+#### a. ping 127.0.0.1
+
+`Host local`
+
+#### b. ping 127.0.54.43
+
+`Host local`
+
+---
