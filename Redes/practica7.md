@@ -38,3 +38,9 @@ El dispositivo que solo es considerado de la capa de red es el router (que en re
 * Cantidad de hosts: `254`
 
 ---
+
+### 3. ¿Qué son las subredes? ¿Por qué es importante siempre especificar la máscara de subred asociada?
+
+El concepto de máscara indica en una dirección IP qué bits son de red y qué bits son de host. Con el uso de redes con clases, la máscara estaba implícita en la dirección de clase, pues se conocía a priori los bits para red y los bits para host. Cuando se creó el concepto de subredes también se les asoció una máscara de subred, que resultó de utilizar algunos bits de hosts para crear subredes y de esta manera obtener varias subredes con menos hosts cada una. La subred se obtiene aplicando un “AND” lógico entra la IP y la máscara de subred.
+
+---
