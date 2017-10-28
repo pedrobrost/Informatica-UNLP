@@ -20,4 +20,21 @@ El dispositivo que solo es considerado de la capa de red es el router (que en re
 
 ---
 
+### 2. ¿Cuántas redes clase A, B y C hay? ¿Cuántos hosts como máximo pueden tener cada una?
 
+#### Redes clase A
+
+* Cantidad de redes: `126`
+* Cantidad de hosts: `16777214`
+
+#### Redes clase B
+
+* Cantidad de redes: `16384`
+* Cantidad de hosts: `65534`
+
+#### Redes clase C
+
+* Cantidad de redes: `2097152`
+* Cantidad de hosts: `254`
+
+---
