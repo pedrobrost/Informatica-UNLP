@@ -145,4 +145,31 @@ Actualmente los dos comandos mencionados anteriormente están obsoletos, en su r
 
 ---
 
+### 9. Si usted estuviese a cargo de la administración del bloque IP 195.200.45.0/24
+
+#### a. ¿Qué máscara utilizaría si necesita definir al menos 9 subredes?
+
+`255.255.255.240 -> /28`
+
+#### b. Indique la dirección de subred de las primeras 9 subredes.
+
+* 1º: `195.200.45.0/28`
+* 2º: `195.200.45.16/28`
+* 3º: `195.200.45.32/28`
+* 4º: `195.200.45.48/28`
+* 5º: `195.200.45.64/28`
+* 6º: `195.200.45.80/28`
+* 7º: `195.200.45.96/28`
+* 8º: `195.200.45.112/28`
+* 9º: `195.200.45.128/28`
+
+#### c. Seleccione una e indique dirección de broadcast y rango de direcciones asignables en esa subred.
+
+Dada la subred `195.200.45.80/28`:
+
+* Dirección de broadcast: `195.200.45.95`
+* Rango de direcciones asignables: `195.200.45.81 - 195.200.45.94`
+
+---
+
 
