@@ -120,4 +120,29 @@ Actualmente los dos comandos mencionados anteriormente están obsoletos, en su r
 
 ---
 
+### 8. Su organización cuenta con la dirección de red 128.50.10.0. Indique:
+
+#### a. ¿Es una dirección de red o de host?
+
+`De host`
+
+#### b. Clase a la que pertenece y máscara de clase.
+
+* Clase: `B`
+* Máscara: `255.255.0.0`
+
+#### c. Cantidad de hosts posibles.
+
+`65534`
+
+#### d. Se necesitan crear 513 subredes. Indique:
+
+* Máscara necesaria: `255.255.255.192`
+* Cantidad de redes asignables: `1024`
+* Cantidad de hosts por subred: `62`
+* Dirección de la subred 710: `128.50.177.64`
+* Dirección de broadcast de la subred 710: `128.50.177.127`
+
+---
+
 
