@@ -1,4 +1,4 @@
-# Práctica 7 - Capa de red
+# Práctica 7 - Capa de red - Direccionamiento
 
 ## Introducción
 
@@ -196,4 +196,42 @@ Se tomaron `16` bits, lo cual permite generar `65536` subredes.
 * 10.0.10.0 (clase A): privada
 
 ---
+
+## CIDR
+
+### 11. ¿Qué es CIDR (Class Interdomain routing)? ¿Por qué resulta útil?
+
+El concepto de CIDR (classless inter-domain routing) se definió en la RFC 1519 como una estrategia para frenar algunos problemas que se habían comenzado a manifestar con el crecimiento de Internet. Los mismos son:
+
+* Agotamiento del espacio de direcciones de clase B.
+* Crecimiento de las tablas de enrutamiento más allá de la capacidad del software y hardware disponibles.
+* Eventual agotamiento de las direcciones IP en general.
+
+CIDR consiste básicamente en permitir máscaras de subred de longitud variable (VLSM) para optimizar la asignación de direcciones IP y utilizar resumen de rutas para disminuir el tamaño de las tablas de enrutamiento.
+
+### 12. ¿Cómo publicaría un router las siguientes redes si se aplica CIDR?
+
+* 198.10.1.0/24
+* 198.10.0.0/24
+* 198.10.3.0/24
+* 198.10.2.0/24
+
+`198.10.0.0/22`
+
+---
+
+### 13. Listar las redes involucradas en los siguientes bloques CIDR:
+
+#### 200.56.168.0/21
+
+#### 195.24.0.0/13
+
+#### 195.24/13
+
+---
+
+### 14. El bloque CIDR 128.0.0.0/2 o 128/2, ¿Equivale a listar todas las direcciones de red de clase B? ¿Cuál sería el bloque CIDR que agrupa todas las redes de clase A?
+
+---
+
 
