@@ -36,4 +36,9 @@ Es lanzada cuando el método `Kernel#exit` es invocado para finalizar el proceso
 
 ---
 
+### 2. ¿Cuál es la diferencia entre raise y throw? ¿Para qué usarías una u otra opción?
+
+Catch/throw are not the same as raise/rescue. catch/throw allows you to quickly exit blocks back to a point where a catch is defined for a specific symbol, raise rescue is the real exception handling stuff involving the Exception object.
+
+---
 
