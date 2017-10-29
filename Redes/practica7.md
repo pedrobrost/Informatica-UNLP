@@ -172,4 +172,28 @@ Dada la subred `195.200.45.80/28`:
 
 ---
 
+### 10. Dado el siguiente gráfico:
+
+![Punto 10](https://i.imgur.com/EL511Yz.png)
+
+#### a. Verifique si es correcta la asignación de direcciones IP y, en caso de no serlo, modifique la misma para que lo sea.
+
+Hay dos errores:
+
+* 172.17.10.17 -> No se estaría respetando la subred asignada.
+* 172.26.22.2 -> Dirección de broadcast.
+
+#### b. ¿Cuántos bits se tomaron para hacer subredes en la red 10.0.10.0/24? ¿Cuántas subredes se podrían generar?
+
+Se tomaron `16` bits, lo cual permite generar `65536` subredes.
+
+#### c. Para cada una de las redes utilizadas indique si son públicas o privadas.
+
+* 191.26.145.0 (clase B) : pública
+* 172.26.22.0 (clase B): privada
+* 172.17.10.0 (clase B): privada
+* 192.168.5.0 (clase C): privada
+* 10.0.10.0 (clase A): privada
+
+---
 
