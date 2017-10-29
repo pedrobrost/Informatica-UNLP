@@ -42,3 +42,17 @@ Catch/throw are not the same as raise/rescue. catch/throw allows you to quickly 
 
 ---
 
+### 3. ¿Para qué sirven begin .. rescue .. else y ensure? Pensá al menos 2 casos concretos en que usarías estas sentencias en un script Ruby.
+
+http://rubylearning.com/satishtalim/ruby_exceptions.html
+
+https://stackoverflow.com/questions/2191632/begin-rescue-and-ensure-in-ruby
+
+---
+
+### 4. ¿Para qué sirve retry? ¿Cómo evitarías caer en un loop infinito al usarla?
+
+http://blog.honeybadger.io/how-to-try-again-when-exceptions-happen-in-ruby/
+
+---
+
