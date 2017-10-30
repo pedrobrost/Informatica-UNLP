@@ -173,4 +173,63 @@ end
 
 ---
 
+### 3. Se debe modelar una casa de Comida Rápida, en el cual trabajan 2 cocineros y 3 vendedores. Además hay C clientes que dejan un pedido y quedan esperando a que se lo alcancen.  Los pedidos que hacen los clientes son tomados por cualquiera de los vendedores y se lo pasan a los cocineros para que realicen el plato. Cuando no hay pedidos para atender, los vendedores aprovechan para reponer un pack de bebidas de la heladera (tardan entre 1 y 3 minutos para hacer esto).  Repetidamente cada cocinero toma un pedido pendiente dejado por los vendedores, lo cocina y se lo entrega directamente al cliente correspondiente. Nota: maximizar la concurrencia.
+
+```
+
+process cliente[i=1 to C]
+  string pedido = generarPedido()
+  send llegoCliente(id, pedido)
+  receive pedido[id](comida)
+end
+
+process coordinador
+  string pedido; 
+
+  while (true)
+    receive esperaPedido(id)
+    if (!empty(llegoCliente))
+      receive llegoCliente(cliente, pedido)
+    else
+      pedido = null
+      cliente = null
+    end
+    send tomarPedido[id](cliente, pedido)
+  end
+end
+      
+
+process vendedor[i=1 to 3]
+  
+  string pedido;
+  int cliente;
+
+  while (true)
+    send esperaPedido(i)
+    receive tomarPedido[i](cliente, pedido)
+    
+    if (pedido == null)
+      delay(rand(1,3) * 60)
+    else
+      send cocinarPedido(cliente, pedido)
+    end
+  end
+end
+      
+
+process cocinero[i=1 to 2]
+
+  int cliente
+  string pedido
+  
+  while (true)
+    receive cocinarPedido(cliente, pedido)
+    "cocinero prepara el pedido"
+    send pedido[cliente](pedido)
+  end
+end
+```
+
+---
+
 
