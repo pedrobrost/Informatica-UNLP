@@ -184,7 +184,8 @@ process cliente[i=1 to C]
 end
 
 process coordinador
-  string pedido; 
+  string pedido
+  int id, cliente
 
   while (true)
     receive esperaPedido(id)
