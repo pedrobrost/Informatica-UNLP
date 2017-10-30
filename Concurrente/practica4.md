@@ -127,4 +127,50 @@ end
 
 ---
 
+### 2. Se desea modelar el funcionamiento de un banco en el cual existen 5 cajas para realizar pagos. Existen P personas que desean pagar. Para esto cada una selecciona la caja donde hay menos personas esperando, una vez seleccionada espera a ser atendido. Nota: maximizando la concurrencia, deben usarse los valores actualizados del tamaño de las colas para seleccionar la caja con menos gente esperando.
+
+```
+chan buscalCola(int p);
+chan menorCola[1..P](int cola)
+chan epsera[1..5](int i)
+chan atiende[1..P]()
+chan atendido(int cola)
+
+process caja[i=1 to 5]
+  while(true)
+    receive espera[i](id)
+    "atender persona"
+    send atiende[id]()
+  end
+end
+
+process persona[i=1 to P]
+  int cola;
+  send buscarCola(p)
+  receive menorCola[i](cola)
+  send espera[cola](i)
+  receive atiende[i]()
+  send atendido(cola)
+end
+
+process coordinador
+  int cola[5] = 0;
+  int id;
+  
+  while true
+    if (!empty(buscarCola) and empty(avisarAtendido))
+      receive buscarCola(id)
+      numero = cola.min 
+      send menorCola[id](numero)
+      cola[numero]++
+    end
+    □ (!empty atendido)
+      receive atendido(numero)
+      cola[numero]--
+  end
+end
+```
+
+---
+
 
