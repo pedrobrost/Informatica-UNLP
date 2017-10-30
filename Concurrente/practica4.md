@@ -286,4 +286,52 @@ end
 
 ---
 
+### 5. Suponga que N personas llegan a la cola de un banco. Una vez que la persona se agrega en la cola no espera más de 15 minutos para su atención, si pasado ese tiempo no fue atendida se retira. Para atender a las personas existen 2 empleados que van atendiendo de a una y por orden de llegada a las personas.
+
+```
+chan startTimer[1..N]()
+chan timer[1..N]()
+chan llegaPersona(int id)
+chan estadoPersona[1..N](string estado)
+chan avisarPersona[1..N]()
+
+process persona[i=1 to N]
+  send startTimer[i]()
+  receive timer[i]()
+  send llegaPersona(i) 
+  send estadoPersona[i]('esperando')
+  receive avisarPersona[i]()
+end
+
+process empleado[i=2 to 2]
+  int id
+  string estado
+  
+  while (true)
+    receive llegaPersona(id)
+    receive estadoPersona[id](estado)
+    if (estado == 'esperando')
+      send estadoPersona[id]('atendido')
+      "empleado atiende a la persona"
+      send avisarPersona[id]()
+    end
+  end
+end
+
+process timer[i=2 to N]
+  string estado
+
+  receive startTimer[i]()
+  send timer[i]()
+  delay(15*60)
+  receive estadoPersona[i](estado)
+  if (estado == 'esperando')
+    send estadoPersona[i]('yendo')
+    send avisarPersona[i]()
+  end
+end
+```
+
+---
+
 
