@@ -334,4 +334,16 @@ end
 
 ---
 
+### 6. . Existe una casa de comida rápida que es atendida por 1 empleado. Cuando una persona llega se pone en la cola y espera a lo sumo 10 minutos a que el empleado lo atienda. Pasado ese tiempo se retira sin realizar la compra.
 
+#### a. Implementar una solución utilizando un proceso intermedio entre cada persona y el empleado.
+
+```
+
+process persona[i=1 to n]
+
+
+ 
+process empleado
+
+```
