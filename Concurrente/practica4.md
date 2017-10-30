@@ -334,16 +334,59 @@ end
 
 ---
 
-### 6. . Existe una casa de comida rápida que es atendida por 1 empleado. Cuando una persona llega se pone en la cola y espera a lo sumo 10 minutos a que el empleado lo atienda. Pasado ese tiempo se retira sin realizar la compra.
+### 6. Existe una casa de comida rápida que es atendida por 1 empleado. Cuando una persona llega se pone en la cola y espera a lo sumo 10 minutos a que el empleado lo atienda. Pasado ese tiempo se retira sin realizar la compra.
 
 #### a. Implementar una solución utilizando un proceso intermedio entre cada persona y el empleado.
 
 ```
+```
 
-process persona[i=1 to n]
-
-
- 
-process empleado
+#### b. Implementar una solución sin utilizar un proceso intermedio entre cada persona y el empleado.
 
 ```
+chan startTimer[1..N]()
+chan timer[1..N]()
+chan llegaPersona(int id)
+chan estadoPersona[1..N](string estado)
+chan avisarPersona[1..N]()
+
+process persona[i=1 to N]
+  send startTimer[i]()
+  receive timer[i]()
+  send llegaPersona(i) 
+  send estadoPersona[i]('esperando')
+  receive avisarPersona[i]()
+end
+ 
+process empleado
+  int id
+  string estado
+  
+  while (true)
+    receive llegaPersona(id)
+    receive estadoPersona[id](estado)
+    if (estado == 'esperando')
+      send estadoPersona[id]('atendido')
+      "empleado atiende a la persona"
+      send avisarPersona[id]()
+    end
+  end
+end
+
+process timer[i=2 to N]
+  string estado
+
+  receive startTimer[i]()
+  send timer[i]()
+  delay(15*60)
+  receive estadoPersona[i](estado)
+  if (estado == 'esperando')
+    send estadoPersona[i]('yendo')
+    send avisarPersona[i]()
+  end
+end
+```
+
+---
+
+
