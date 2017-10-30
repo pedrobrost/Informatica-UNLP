@@ -238,4 +238,52 @@ end
 
 ---
 
+### 4. Se desea modelar una competencia de atletismo. Para eso existen dos tipos de procesos: C corredores y un portero. Los corredores deben esperar que se habilite la entrada a la pista, donde deben esperar que lleguen todos los corredores para comenzar. El portero es el encargado de habilitar la entrada a la pista. El proceso portero NO puede contabilizar nada, su única función es habilitar la entrada a la pista; NO se puede suponer ningún orden en la llegada de los corredores al punto de partida.
+
+#### a. Implementar usando un coordinador.
+
+```
+chan llegaCorredor()
+chan puedenLargar()
+chan llegaronTodos()
+
+process corredor[i=1 to C]
+  send llegaCorredor()
+  receive puedenLargar()
+end 
+
+process portero
+  receive llegaronTodos()
+  for i=1 to C
+    send puedenLargar()
+end
+
+process coordinador
+  for i=1 to C
+    receive llegaCorredor()
+  send llegaronTodos()
+end
+```
+
+#### b. Implementar sin usar un coordinador.
+
+```
+chan llegaCorredor()
+chan puedenLargar()
+
+process corredor[i=1 to C]
+  send llegaCorredor()
+  receive puedenLargar()
+end 
+
+process portero
+  for i=1 to C
+    receive llegaCorredor()
+  for i=1 to C
+    send puedenLargar()
+end
+```
+
+---
+
 
