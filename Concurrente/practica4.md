@@ -389,4 +389,43 @@ end
 
 ---
 
+### 7. En una estación de comunicaciones se cuenta con 10 radares y una unidad de procesamiento que se encarga de procesar la información enviada por los radares. Cada radar repetidamente detecta señales de radio durante 15 segundos y le envía esos datos a la unidad de procesamiento para que los analice. Los radares no deben esperar a ser atendidos para continuar trabajando. 
+
+```
+
+process Radar[i=1 to 10]
+  string datos
+
+  while (true)
+    "tiempo?"
+    datos = detectarSeñanles()
+    Buffer!envioDatos(datos)
+  end
+end
+
+process Unidad
+  string datos
+
+  while (true)
+    Buffer!recibirDatos()
+    Buffer?enviarDatos(datos)
+    "Unidad procesa los daots"
+  end
+end
+
+process Buffer
+  queue cola
+  string datos
+
+  while (true)
+    if Buffer?envioDatos(datos) -> cola.encolar(datos)
+       !cola.empty();Unidad?recibirDatos() -> Unidad!enviarDatos(cola.desencolar)
+    end
+  end
+end
+
+```
+
+---
+
 
