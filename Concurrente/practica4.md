@@ -499,4 +499,36 @@ process NiñoA[i=1 to A]
 
 ---
 
+### 9. Se debe modelar la atención en una panadería por parte de 3 empleados. Hay C clientes que ingresan al negocio para ser atendidos por cualquiera de los empleados, los cuales deben atenderse de acuerdo al orden de llegada.
+
+```
+process Coordinador
+  queue cola
+  int id
+
+  while (true)
+    if Cliente[*]?avisarLlegada(id) -> cola.encolar(id)
+    
+       !cola.empty(); Empleado[*]?libre(id) -> Empleado[id]!atender(cola.desencolar)
+end
+
+precess Cliente[i=1 to C]
+  Coordinador!avisarLlegada(i)
+  Empleado[*]?liberar()
+end 
+
+process Empleado[i=1 to 3]
+  int cliente
+  
+  while (true)
+    Coordinador!libre(i)
+    Coordinador?atender(cliente)
+    atender(cliente)
+    Cliente[cliente]!liberar()
+  end
+end
+```
+
+---
+
 
