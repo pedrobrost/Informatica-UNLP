@@ -531,4 +531,80 @@ end
 
 ---
 
+### 10. Existe una casa de comida rápida que es atendida por 1 empleado. Cuando una persona llega se pone en la cola y espera a lo sumo 10 minutos a que el empleado lo atienda. Pasado ese tiempo se retira sin realizar la compra.
 
+#### a. Implementar una solución utilizando un proceso intermedio entre cada persona y el empleado.
+
+```
+process Empleado
+  int persona
+  string estado
+
+  while (true)
+    Coordinador!libre()
+    Coordinador?atender(persona)
+    Estado[persona]!empleadoConsulta()
+    Estado[persona]?check(estado)
+    if (estado == 'esperando')
+      Estado[persona]!estado('atendido')
+      atender(persona)
+      Persona[persona]!irse()
+    else
+      Estado[persona]!estado(estado)
+  end
+end
+
+process Estado[i=1 to N]
+  string estado = 'esperando'
+  int id
+  
+  while (true)
+    if Empleado?empleadoConsulta() -> Empleado!check(estado)
+                                      Empleado?estado(estado)
+       Timer[*]?timerConsulta(id) -> Timer[id]!check(estado)
+                                     Timer[id]?estado(estado)
+  end
+
+  // mismo que coordunador, ver si reemplazar while/if por do
+
+end
+
+process Coordinador
+  queue cola
+  int id
+
+  while (true)
+    if Persona[*]?avisarLlegada(id) -> cola.encolar(id)
+
+       !empty(cola); Empleado?libre() -> Empelado!atender(cola.desencolar)
+  end
+
+//  do Persona[*]?avisarLlegada(id) -> cola.encolar(id)
+//     !empty(cola); Empleado?libre() -> Empelado!atender(cola.desencolar)
+//  end
+
+end
+
+process Persona[i=1 to N]
+  Coordinador!avisarLlegada(i)
+  Timer[i]!avisarLlegada()
+  if Empleado?irse() -> skip()
+     Timer?irse() -> skip()
+end
+
+process Timer[i=1 to N]
+  Persona[i]?avisarLlegada()
+  delay(10*60)
+  Estado[i]!timerConsulta(i)
+  Estado[i]?check(estado)
+  if (estado == 'esperando')
+    Estado[i]!estado('irse')
+    Persona[i]!irse()
+  else
+    Estado[i]!estado(estado)
+end
+```
+
+#### b. Implementar una solución sin utilizar un proceso intermedio entre cada persona y el empleado.
+
+---
