@@ -428,4 +428,75 @@ end
 
 ---
 
+### 8. Supongamos que tenemos una abuela que tiene dos tipos de lápices para dibujar: 10 de colores y 15 negros. Además tenemos tres clases de niños que quieren dibujar con los lápices: los que quieren usar sólo los lápices de colores (tipo C), los que usan sólo los lápices negros (tipo N), y los niños que usan cualquier tipo de lápiz (tipo A).
+
+#### a. Implemente un código para cada clase de niño de manera que ejecute pedido de lápiz, lo use por 10 minutos y luego lo devuelva y además el proceso abuela encargada de asignar los lápices.
+
+```
+
+precess Abuela
+  int color = 10
+  int negro = 15
+  int id
+
+  while (true)
+    if color>0; NiñoC[*]?pedirLapizColor(id) -> NiñoC[id]!recibirLapizColor("color"); color--
+
+    □ negro>0; NiñoN[*]?pedirLapizNegro(id) -> NiñoN[id]!recibirLapizNegro("negro"); negro--
+
+    □ negro>0; NiñoA[*]?pedirLapiz(id) -> NiñoA[id]!recibirLapiz("negro"); negro--
+
+    □ color>0; NiñoA[*]?pedirLapiz(id) -> NiñoA[id]!recibirLapiz("color"); color--
+
+    □ NiñoC[*]?devolverLapizColor() -> color++
+    □ NiñoN[*]?devolverLapizNegro() -> negro++
+    □ NiñoA[*]?devolverLapizColor() -> color++
+    □ NiñoA[*]?devolverLapizNegro() -> negro++
+  end
+end
+
+process NiñoC[i=1 to C]
+  string lapiz
+  
+  while (true)
+    Abuela!pedirLapizColor(i)
+    Abuela?recibirLapizColor()
+    delay(10*60)
+    Abuela!devolverLapizColor()
+  end
+end
+
+process NiñoN[i=1 to N]
+  string lapiz
+  
+  while (true)
+    Abuela!pedirLapizNegro(i)
+    Abuela?recibirLapizNegro()
+    delay(10*60)
+    Abuela!devolverLapizNegro()
+  end
+end
+
+
+process NiñoA[i=1 to A]
+  string lapiz
+  
+  while (true)
+    Abuela!pedirLapiz(i)
+    Abuela?recibirLapiz(lapiz)
+    delay(10*60)
+    if (lapiz == "negro")
+      Abuela!devolverLapizNegro()
+    else
+      Abuela!devolverLapizColor()
+  end
+```
+
+#### b. Modificar el ejercicio para que a los niños de tipo A se les puede asignar un lápiz sólo cuando: hay lápiz negro disponible y ningún pedido pendiente de tipo N, o si hay lápiz de color disponible y ningún pedido pendiente de tipo C.
+
+```
+```
+
+---
+
 
