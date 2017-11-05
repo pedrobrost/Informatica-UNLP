@@ -244,4 +244,10 @@ El bloque CIDR que agrupo todas las redes clase A es: `0/1`.
 
 ---
 
+### 15. ¿Qué es y para qué se usa VLSM?
+
+La técnica de VLSM (variable-length subnet masking) consiste en realizar divisiones en subredes con máscaras de longitud variable y es otra de las técnicas surgidas para frenar el agotamiento de direcciones IPv4. Básicamente, VLSM sugiere hacer varios niveles de división en redes para lograr máscaras más óptimas para cada una de las subredes que se necesiten.
+
+---
+
 
