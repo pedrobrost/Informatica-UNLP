@@ -260,4 +260,19 @@ Los pasos para dividir en subredes utilizando VLSM son:
 
 ---
 
+### 17. Suponga que trabaja en una organización que tiene la red que se ve en el gráfico y debe armar el direccionamiento para la misma, minimizando el desperdicio de direcciones IP. Dicha organización posee la red 205.10.192.0/19, que es la que usted deberá utilizar.
 
+![Punto 17]()
+
+#### a. ¿Es posible asignar las subredes correspondientes a la topología utilizando subnetting sin vlsm? Indique la cantidad de hosts que se desperdicia en cada subred.
+
+Sí, es posible pero se desperdiciarian las siguientes cantidades de hosts en cada subred:
+
+* RED A: 1918
+* RED B: 2026
+* RED C: 516
+* RED D: 2039
+
+#### b. Asigne direcciones a todas las redes de la topología. Tome siempre en cada paso la primer dirección de red posible.
+
+---
