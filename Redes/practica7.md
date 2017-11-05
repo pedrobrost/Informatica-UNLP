@@ -250,4 +250,14 @@ La técnica de VLSM (variable-length subnet masking) consiste en realizar divisi
 
 ---
 
+### 16. Describa, con sus palabras, el mecanismo para dividir subredes utilizando VLSM.
+
+Los pasos para dividir en subredes utilizando VLSM son:
+
+* Subnetear para la red con mayor cantidad de hosts.
+* De las subredes obtenidas, asignar todas las que se puedan con el menor desperdicio posible.
+* Si aún quedan segmentos de red sin una subred asignada volver al paso 1.
+
+---
+
 
