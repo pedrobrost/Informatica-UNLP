@@ -546,11 +546,8 @@ process Empleado
     Estado[persona]!empleadoConsulta()
     Estado[persona]?check(estado)
     if (estado == 'esperando')
-      Estado[persona]!estado('atendido')
       atender(persona)
       Persona[persona]!irse()
-    else
-      Estado[persona]!estado(estado)
   end
 end
 
@@ -558,36 +555,28 @@ process Estado[i=1 to N]
   string estado = 'esperando'
   int id
   
-  while (true)
-    if Empleado?empleadoConsulta() -> Empleado!check(estado)
-                                      Empleado?estado(estado)
-       Timer[*]?timerConsulta(id) -> Timer[id]!check(estado)
-                                     Timer[id]?estado(estado)
+  do Empleado?empleadoConsulta() -> Empleado!check(estado)
+                                    if (estado == 'esperando')
+                                      estado = 'atendido'
+     Timer[*]?timerConsulta(id) -> Timer[id]!check(estado)
+                                   if (estado == 'esperando')
+                                      estado = 'yendo'
   end
-
-  // mismo que coordunador, ver si reemplazar while/if por do
-
 end
 
 process Coordinador
   queue cola
   int id
 
-  while (true)
-    if Persona[*]?avisarLlegada(id) -> cola.encolar(id)
-
-       !empty(cola); Empleado?libre() -> Empelado!atender(cola.desencolar)
+  do Persona[*]?avisarLlegada(id) -> cola.encolar(id)
+     !empty(cola); Empleado?libre() -> Empelado!atender(cola.desencolar)
   end
-
-//  do Persona[*]?avisarLlegada(id) -> cola.encolar(id)
-//     !empty(cola); Empleado?libre() -> Empelado!atender(cola.desencolar)
-//  end
 
 end
 
 process Persona[i=1 to N]
-  Coordinador!avisarLlegada(i)
   Timer[i]!avisarLlegada()
+  Coordinador!avisarLlegada(i)
   if Empleado?irse() -> skip()
      Timer?irse() -> skip()
 end
@@ -598,10 +587,7 @@ process Timer[i=1 to N]
   Estado[i]!timerConsulta(i)
   Estado[i]?check(estado)
   if (estado == 'esperando')
-    Estado[i]!estado('irse')
     Persona[i]!irse()
-  else
-    Estado[i]!estado(estado)
 end
 ```
 
