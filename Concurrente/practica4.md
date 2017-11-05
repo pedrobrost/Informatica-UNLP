@@ -593,4 +593,6 @@ end
 
 #### b. Implementar una solución sin utilizar un proceso intermedio entre cada persona y el empleado.
 
+Una solución a este ejercicio que no invlucre a un proceso coordinador no sería posible ya que necesitamos un proceso que de alguna manera vaya encolando las llegadas de las personas. Esto pasa con PMS ya que si una persona se queda bloqueada en el `send` de que llegó, el timer nunca podría indicarle que se debe ir.
+
 ---
