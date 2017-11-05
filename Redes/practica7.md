@@ -238,6 +238,10 @@ CIDR consiste básicamente en permitir máscaras de subred de longitud variable 
 
 ### 14. El bloque CIDR 128.0.0.0/2 o 128/2, ¿Equivale a listar todas las direcciones de red de clase B? ¿Cuál sería el bloque CIDR que agrupa todas las redes de clase A?
 
+Sí, el bloque CIDR `128/2` equivale a todas las direcciones de red de clase B.
+
+El bloque CIDR que agrupo todas las redes clase A es: `0/1`.
+
 ---
 
 
