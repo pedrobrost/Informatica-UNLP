@@ -397,7 +397,6 @@ process Radar[i=1 to 10]
   string datos
 
   while (true)
-    "tiempo?"
     datos = detectarSeñanles()
     Buffer!envioDatos(datos)
   end
