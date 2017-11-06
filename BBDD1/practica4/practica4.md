@@ -60,7 +60,7 @@ SELECT dniCliente, nombreApellidoCliente FROM cliente ORDER BY dniCliente ASC;
 # 20000 rows in set
 # Time: 0.985s
 
-#reparacion_dn
+# reparacion_dn
 SELECT dniCliente, nombreApellidoCliente FROM reparacion ORDER BY dniCliente ASC;
 # 162252 rows in set
 # Time: 8.350s
@@ -71,13 +71,25 @@ Como se puede ver los resultados no son los mismos, la consulta hecha sobre `rep
 Si sobre `reparacion_db` realizamos una consulta que quite los repetidos obtenemos los siguientes resultados:
 
 ```
-#reparacion_dn
+# reparacion_dn
 SELECT dniCliente, nombreApellidoCliente FROM reparacion GROUP BY dniCliente ORDER BY dniCliente ASC;
 # 162252 rows in set
 # Time: 0.995s
 ```
 
 Como podemos observar estos últimos resultados se asemejan mucho a los realizados sobre la tabla `reparacion`.
+
+---
+
+### 3. Hallar aquellos clientes que para todas sus reparaciones siempre hayan usado su tarjeta de crédito primaria (nunca la tarjeta secundaria). Realice la consulta en ambas bases.
+
+```
+# reparacion
+SELECT dniCliente FROM cliente WHERE NOT EXISTS (SELECT * FROM reparacion WHERE cliente.dniCliente = reparacion.dniCliente AND tarjetaSecundaria = tarjetaReparacion);
+
+# reparacion_dn
+SELECT dniCliente FROM reparacion as r WHERE NOT EXISTS(SELECT * FROM reparacion WHERE r.dniCliente = reparacion.dniCliente and r.tarjetaSecundaria = reparacion.tarjetaReparacion)
+```
 
 ---
 
