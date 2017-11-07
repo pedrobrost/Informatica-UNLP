@@ -197,6 +197,20 @@ CREATE PROCEDURE punto11(IN dni INT(11), IN sucursal INT, IN fechaReparacion DAT
 
 ---
 
+### 12. Ejecutar el stored procedure del punto 11con los siguientes datos:
 
+* dniCliente: 1009443
+* codSucursal: 100
+* fechaReparacion: 2013-12-14 12:20:31
+* empleadoReparacion: ‘Maidana’
+* repuestoReparacion: ‘bomba de combustible’
+* cantDiasReparacion: 4
+* telefonoReparacion: 4243-4255
+
+```
+CALL punto11(1009443, 100, '2017-12-14 12:20:31', 4, '4243-4255', 'Maidana', 'bomba de combustible');
+```
+
+---
 
 
