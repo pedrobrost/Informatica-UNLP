@@ -110,6 +110,58 @@ SELECT DISTINCT dniCliente, codSucursal
 
 ---
 
+### 5. En la base normalizada, hallar los clientes que dejaron vehículos a reparar en todas las sucursales de la ciudad en la que viven.
+
+**Restricción: resolver este ejercicio sin usar la cláusula “NOT EXIST”.**
+
+**Nota: limite su consulta a los primeros 100 resultados, caso contrario el tiempo que tome puede ser excesivo.**
+
+#### a. Realice la consulta sin utilizar la vista creada en el ej 4.
+
+```
+SELECT dniCliente
+FROM cliente
+WHERE
+  (SELECT COUNT(codSucursal)
+    FROM sucursal
+    WHERE cliente.ciudadCliente = sucursal.ciudadSucursal) =
+  (SELECT COUNT(DISTINCT sucursal.codSucursal)
+    FROM reparacion
+      INNER JOIN sucursal
+        ON reparacion.codSucursal = sucursal.codSucursal
+    WHERE cliente.ciudadCliente = sucursal.ciudadSucursal
+      AND cliente.dniCliente = reparacion.dniCliente)
+LIMIT 100;
+```
+
+#### b. Realice la consulta utilizando la vista creada en el ej 4.
+
+```
+SELECT dniCliente
+FROM cliente
+WHERE
+  (SELECT COUNT(codSucursal)
+    FROM sucursalesPorCliente
+    WHERE cliente.dniCliente = sucursalesPorCliente.dniCliente) =
+  (SELECT COUNT(DISTINCT sucursal.codSucursal)
+    FROM reparacion
+      INNER JOIN sucursal
+        ON reparacion.codSucursal = sucursal.codSucursal
+    WHERE cliente.ciudadCliente = sucursal.ciudadSucursal
+      AND cliente.dniCliente = reparacion.dniCliente)
+LIMIT 100;
+```
+
+---
+
+### 6. Hallar los clientes que en alguna de sus reparacioneshayan dejado como dato de contactoel mismo domicilio y ciudad que figura en su DNI.Realice la consulta en ambas bases.
+
+```
+
+```
+
+---
+
 ### 8. Agregar la siguiente tabla:
 
 **REPARACIONESPORCLIENTE**
@@ -166,7 +218,7 @@ CREATE PROCEDURE punto9()
 
 ---
 
-### 10. Crear un triggerde modo que al insertar un dato en la tablaREPARACION, se actualice la cantidadde reparaciones del cliente, la fecha de actualización y el usuario responsable de la misma (actualiza la tabla REPARACIONESPORCLIENTE).
+### 10. Crear un trigger de modo que al insertar un dato en la tablaREPARACION, se actualice la cantidadde reparaciones del cliente, la fecha de actualización y el usuario responsable de la misma (actualiza la tabla REPARACIONESPORCLIENTE).
 
 ```
 CREATE TRIGGER after_reparacion_insert
