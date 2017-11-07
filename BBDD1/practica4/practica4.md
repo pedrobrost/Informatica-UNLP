@@ -95,6 +95,19 @@ SELECT dniCliente FROM reparacion as r WHERE NOT EXISTS(SELECT * FROM reparacion
 
 ### 4. Crear una vista llamada ‘sucursalesPorCliente’ que muestre los dni de los clientes y los códigos de sucursales de la ciudad donde vive el cliente. Cree la vista en ambas bases.
 
+```
+# reparacion
+CREATE VIEW sucursalesPorCliente AS
+SELECT dniCliente, codSucursal
+FROM cliente
+  INNER JOIN sucursal ON ciudadCliente = ciudadSucursal;
+
+# reparacion_dn
+SELECT DISTINCT dniCliente, codSucursal
+  FROM reparacion
+    WHERE ciudadCliente = ciudadSucursal;
+```
+
 ---
 
 ### 8. Agregar la siguiente tabla:
@@ -213,4 +226,4 @@ CALL punto11(1009443, 100, '2017-12-14 12:20:31', 4, '4243-4255', 'Maidana', 'bo
 
 ---
 
-
+### 13. 
