@@ -167,4 +167,36 @@ END;
 
 ---
 
+### 11. Crear un stored procedure que sirva para agregar una reparación, junto con una revisiónde un empleado(REVISIONREPARACION)y un repuesto(REPUESTOREPARACION) relacionados dentro de una sola transacción. El stored procedure debe recibir los siguientes parámetros: dniCliente,codSucursal,fechaReparacion, cantDiasReparacion,telefonoReparacion, empleadoReparacion, repuestoReparacion.
+
+```
+CREATE PROCEDURE punto11(IN dni INT(11), IN sucursal INT, IN fechaReparacion DATETIME, IN dias INT,
+    IN tel VARCHAR(45), IN empleado VARCHAR(30), IN repuesto VARCHAR(30))
+  BEGIN
+
+    DECLARE domicilio VARCHAR(255);
+    DECLARE ciudad VARCHAR(255);
+    DECLARE tarjeta VARCHAR(255);
+
+    SELECT domicilioCliente, ciudadCliente, tarjetaPrimaria INTO domicilio, ciudad, tarjeta FROM cliente WHERE cliente.dniCliente = dni;
+
+    START TRANSACTION;
+    INSERT INTO reparacion (codSucursal, dniCliente, fechaInicioReparacion, cantDiasReparacion, telefonoReparacionCliente,
+                            direccionReparacionCliente, ciudadReparacionCliente, tarjetaReparacion)
+    VALUES (sucursal, dni, fechaReparacion, dias, tel, domicilio, ciudad, tarjeta);
+
+    INSERT INTO revisionreparacion (dniCliente, fechaInicioReparacion, empleadoReparacion)
+    VALUES (dni, fechaReparacion, empleado);
+
+    INSERT INTO repuestoreparacion (dniCliente, fechaInicioReparacion, repuestoReparacion)
+    VALUES (dni, fechaReparacion, repuesto);
+
+    COMMIT;
+  END;
+```
+
+---
+
+
+
 
