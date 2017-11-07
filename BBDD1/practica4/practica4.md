@@ -93,4 +93,26 @@ SELECT dniCliente FROM reparacion as r WHERE NOT EXISTS(SELECT * FROM reparacion
 
 ---
 
+### 4. Crear una vista llamada ‘sucursalesPorCliente’ que muestre los dni de los clientes y los códigos de sucursales de la ciudad donde vive el cliente. Cree la vista en ambas bases.
 
+---
+
+### 8. Agregar la siguiente tabla:
+
+**REPARACIONESPORCLIENTE**
+
+* idRC: int(11) PK AI
+* dniCliente: int(11)
+* cantidadReparaciones: int(11)
+* fechaultimaactualizacion: datetime
+* usuario: char(16)
+
+```
+CREATE TABLE REPARACIONESPORCLIENTE (
+  idRC int(11) PRIMARY KEY AUTO_INCREMENT,
+  dniCliente int(11),
+  cantidadReparaciones int(11),
+  fechaultimaactualizacion datetime,
+  usuario char(16)
+);
+```
