@@ -153,4 +153,18 @@ CREATE PROCEDURE punto9()
 
 ---
 
+### 10. Crear un triggerde modo que al insertar un dato en la tablaREPARACION, se actualice la cantidadde reparaciones del cliente, la fecha de actualización y el usuario responsable de la misma (actualiza la tabla REPARACIONESPORCLIENTE).
+
+```
+CREATE TRIGGER after_reparacion_insert
+    AFTER INSERT ON reparacion
+    FOR EACH ROW BEGIN
+    UPDATE REPARACIONESPORCLIENTE
+    SET cantidadReparaciones = cantidadReparaciones + 1, fechaultimaactualizacion = NOW(), usuario = CURRENT_USER()
+    WHERE NEW.dniCliente = REPARACIONESPORCLIENTE.dniCliente;
+END;
+```
+
+---
+
 
