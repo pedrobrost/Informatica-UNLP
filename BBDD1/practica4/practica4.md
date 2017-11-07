@@ -116,3 +116,41 @@ CREATE TABLE REPARACIONESPORCLIENTE (
   usuario char(16)
 );
 ```
+
+---
+
+### 9. Stored procedures
+
+#### Crear un stored procedureque realice los siguientes pasos dentro de una transacción: 
+
+* Realizar una consulta que para cada cliente(dniCliente), calcule la cantidad de reparaciones que tiene registradas. Registrar la fecha en la que se realiza la consulta y el usuario con el que la realizó.
+* Guardar el resultado de la consulta en un cursor.
+* Iterar el cursor e insertar los valores correspondientes en la tabla REPARACIONESPORCLIENTE.
+
+```
+CREATE PROCEDURE punto9()
+  BEGIN
+
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE cant INT;
+    DECLARE dni INT;
+    DECLARE cur CURSOR FOR SELECT count(*), dniCliente FROM reparacion GROUP BY dniCliente;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    START TRANSACTION;
+    OPEN cur;
+    loop_1: LOOP
+      FETCH cur INTO cant, dni;
+      IF done THEN
+        LEAVE loop_1;
+      END IF;
+      INSERT INTO REPARACIONESPORCLIENTE (dniCliente, cantidadReparaciones, fechaultimaactualizacion, usuario) VALUES (dni, cant, NOW(), CURRENT_USER);
+    END LOOP;
+    CLOSE cur;
+    COMMIT;
+  END;
+```
+
+---
+
+
