@@ -157,7 +157,18 @@ LIMIT 100;
 ### 6. Hallar los clientes que en alguna de sus reparacioneshayan dejado como dato de contactoel mismo domicilio y ciudad que figura en su DNI.Realice la consulta en ambas bases.
 
 ```
+# reparacion
+SELECT DISTINCT c.dniCliente
+FROM cliente AS c
+  INNER JOIN reparacion AS r ON c.dniCliente = r.dniCliente
+    AND c.domicilioCliente = r.direccionReparacionCliente
+    AND c.ciudadCliente = r.ciudadReparacionCliente;
 
+# reparacion_dn
+SELECT DISTINCT dniCliente
+FROM reparacion
+    WHERE domicilioCliente = direccionReparacionCliente
+      AND ciudadCliente = ciudadReparacionCliente;
 ```
 
 ---
