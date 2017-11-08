@@ -42,10 +42,36 @@ FLUSH PRIVILEGES;
 
 ```sql
 CREATE USER 'reparacion_schema'@'localhost' IDENTIFIED BY 'pass';
-GRANT SELECT, DELETE, UPDATE, CREATE, DROP, INSERT, ALTER ON reparacion.* TO 'reparacion_schema'@'localhost';
+GRANT
+  SELECT,
+  DELETE,
+  UPDATE,
+  CREATE,
+  DROP,
+  ALTER,
+  CREATE VIEW,
+  SHOW VIEW,
+  INDEX,
+  CREATE ROUTINE,
+  ALTER ROUTINE,
+  TRIGGER
+  ON reparacion.* TO 'reparacion_schema'@'localhost';
 
 CREATE USER 'reparacion_dn_schema'@'localhost' IDENTIFIED BY 'pass';
-GRANT SELECT, DELETE, UPDATE, CREATE, DROP, INSERT, ALTER ON reparacion_dn.* TO 'reparacion_dn_schema'@'localhost';
+GRANT 
+  SELECT,
+  DELETE,
+  UPDATE,
+  CREATE,
+  DROP,
+  ALTER,
+  CREATE VIEW,
+  SHOW VIEW,
+  INDEX,
+  CREATE ROUTINE,
+  ALTER ROUTINE,
+  TRIGGER
+  ON reparacion_dn.* TO 'reparacion_dn_schema'@'localhost';
 
 FLUSH PRIVILEGES;
 ```
@@ -268,7 +294,7 @@ CREATE TABLE REPARACIONESPORCLIENTE (
 
 ### 9. Stored procedures
 
-#### Crear un stored procedure que realice los siguientes pasos dentro de una transacción: 
+#### a. Crear un stored procedure que realice los siguientes pasos dentro de una transacción: 
 
 * Realizar una consulta que para cada cliente(dniCliente), calcule la cantidad de reparaciones que tiene registradas. Registrar la fecha en la que se realiza la consulta y el usuario con el que la realizó.
 * Guardar el resultado de la consulta en un cursor.
@@ -302,7 +328,7 @@ CREATE PROCEDURE punto9()
 DELIMITER ;
 ```
 
-#### Ejecute el storedprocedure.
+#### b. Ejecute el storedprocedure.
 
 ```sql
 CALL punto9();
@@ -426,3 +452,56 @@ CREATE INDEX empleado_index ON revisionreparacion (empleadoReparacion);
 ### 15. Análisis de permisos.
 
 #### a. Para cada punto de la práctica incluido en el cuadro, ejecutarlo con cada uno de los usuarios creados en el punto 1 e indicar con cuáles fue posible realizar la operación. 
+
+| Usuario              | Permisos asignados     | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9a | 9b | 10 | 11 | 12 | 13 | 14 |
+|----------------------|------------------------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| reparacion           | ALL                    | si | si | si | si | si | si | si | si | si | si | si | si | si | si |
+| reparacion_dn        | ALL                    | si | si | si | si | si | si | si | si | si | si | si | si | si | si |
+| reparacion_select    | SELECT                 | si | si | no | si | si | si | no | no | no | no | no | no | no | no |
+| reparacion_dn_select | SELECT                 | si | si | no | si | si | si | no | no | no | no | no | no | no | no |
+| reparacion_update    | SELECT, DELETE, UPDATE | si | si | no | si | si | si | no | no | no | no | no | no | no | no |
+| reparacion_dn_update | SELECT, DELETE, UPDATE | si | si | no | si | si | si | no | no | no | no | no | no | no | no |
+| reparacion_schema    | *                      | si | si | si | si | si | si | si | si | si | si | si | si | no | si |
+| reparacion_dn_schema | *                      | si | si | si | si | si | si | si | si | si | si | si | si | no | si |
+
+#### *:
+
+* SELECT
+* DELETE
+* UPDATE
+* CREATE
+* DROP
+* ALTER
+* CREATE VIEW
+* SHOW VIEW
+* INDEX
+* CREATE ROUTINE
+* ALTER ROUTINE
+* TRIGGER
+
+#### b. Determine para cada caso, cuál es el conjunto de permisos mínimo.
+
+| Punto | Permisos                |
+|-------|-------------------------|
+| 2     | SELECT                  |
+| 3     | SELECT                  |
+| 4     | CREATE VIEW, SELECT     |
+| 5     | SELECT                  |
+| 6     | SELECT                  |
+| 7     | SELECT                  |
+| 8     | CREATE                  |
+| 9a    | CREATE ROUTINE          |
+| 9b    | EXECUTE, SELECT, INSERT |
+| 10    | TRIGGER                 |
+| 11    | CREATE ROUTINE          |
+| 12    | EXECUTE, SELECT, INSERT |
+| 13    | INSERT                  |
+| 14    | SELECT, INDEX           |
+
+Vale aclarar que los permisos marcados varían segun si triggers definidos, los datos representados en la tabla dan por entendido que no hay triggers creados en la base de datos.
+
+### c. Desde su punto de vista y contemplando lo visto en la materia, explique cuál es la manera óptima de asignar permisos a los usuarios.
+
+Lo importante a tener en cuenta a la hora de asignarle permisos a un usuario de una base de datos es que estos deber ser los minimos y necesarios que éste necesita. De esta manera, un buen uso de la asignación de permisos conlleva a que los problemas de seguridad se disminuyan.
+
+
