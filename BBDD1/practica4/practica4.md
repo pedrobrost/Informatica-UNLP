@@ -83,7 +83,10 @@ Si sobre `reparacion_db` realizamos una consulta que quite los repetidos obtenem
 ```sql
 # reparacion_dn
 
-SELECT dniCliente, nombreApellidoCliente FROM reparacion GROUP BY dniCliente ORDER BY dniCliente ASC;
+SELECT dniCliente, nombreApellidoCliente
+FROM reparacion
+GROUP BY dniCliente
+ORDER BY dniCliente ASC;
 
 # 20000 rows in set
 # Time: 0.995s
@@ -98,7 +101,7 @@ Como podemos observar estos últimos resultados se asemejan mucho a los realizad
 ```sql
 # reparacion
 
-SELECT dniCliente
+SELECT dniCliente, nombreApellidoCliente
 FROM cliente
 WHERE NOT EXISTS 
   (SELECT * 
@@ -110,13 +113,14 @@ WHERE NOT EXISTS
 
 # reparacion_dn
 
-SELECT dniCliente
+SELECT dniCliente, nombreApellidoCliente
 FROM reparacion AS r
 WHERE NOT EXISTS
   (SELECT *
   FROM reparacion
   WHERE r.dniCliente = reparacion.dniCliente
     AND r.tarjetaSecundaria = reparacion.tarjetaReparacion)
+GROUP BY dniCliente;
 ```
 
 ---
@@ -194,7 +198,7 @@ Vale aclarar que la solución de este ejercicio obtiene a aquellos clientes que 
 ```sql
 # reparacion
 
-SELECT DISTINCT c.dniCliente
+SELECT DISTINCT c.dniCliente, nombreapellidocliente
 FROM cliente AS c
   INNER JOIN reparacion AS r ON c.dniCliente = r.dniCliente
     AND c.domicilioCliente = r.direccionReparacionCliente
@@ -204,7 +208,7 @@ FROM cliente AS c
 
 # reparacion_dn
 
-SELECT DISTINCT dniCliente
+SELECT DISTINCT dniCliente, nombreapellidocliente
 FROM reparacion
     WHERE domicilioCliente = direccionReparacionCliente
       AND ciudadCliente = ciudadReparacionCliente;
@@ -217,7 +221,7 @@ FROM reparacion
 ```sql
 # reparacion
 
-SELECT r.dniCliente, r.codSucursal, r.fechaInicioReparacion, count(rr.repuestoReparacion) AS cantidad
+SELECT r.dniCliente, r.fechaInicioReparacion, r.codSucursal, count(rr.repuestoReparacion) AS cantidad
 FROM reparacion AS r
   INNER JOIN repuestoreparacion AS rr
     ON r.dniCliente = rr.dniCliente
@@ -229,7 +233,7 @@ HAVING count(rr.repuestoReparacion) > 3;
 
 # reparacion_dn
 
-SELECT dniCliente, codSucursal, fechaInicioReparacion, count(distinct repuestoReparacion) AS cantidad
+SELECT dniCliente, fechaInicioReparacion, codSucursal, count(distinct repuestoReparacion) AS cantidad
 FROM reparacion
 GROUP BY dniCliente, fechaInicioReparacion
 HAVING count(distinct repuestoReparacion) > 3;
@@ -296,6 +300,12 @@ CREATE PROCEDURE punto9()
   END$$
 
 DELIMITER ;
+```
+
+#### Ejecute el storedprocedure.
+
+```sql
+CALL punto9();
 ```
 
 ---
