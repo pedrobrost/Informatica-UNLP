@@ -445,9 +445,9 @@ where r.dnicliente=c.dnicliente
 
 #### a. ¿Qué atributos del plan de ejecución encuentra relevantes para evaluar la performance de la consulta?
 
-#### b. Observeen particular el atributotype¿cómose están aplicando los JOIN entre las tablasinvolucradas?
+#### b. Observe en particular el atributo type ¿cómo se están aplicando los JOIN entre las tablas involucradas?
 
-#### c. Según lo que observóen lospuntosanteriores, ¿quémejoras se pueden realizar para optimizar la consulta?
+#### c. Según lo que observó en los puntos anteriores, ¿qué mejoras se pueden realizar para optimizar la consulta?
 
 ```sql
 CREATE INDEX empleado_index ON revisionreparacion (empleadoReparacion);
@@ -469,8 +469,8 @@ CREATE INDEX empleado_index ON revisionreparacion (empleadoReparacion);
 | reparacion_dn_select | SELECT                 | si | si | no | si | si | si | no | no | no | no | no | no | no | no |
 | reparacion_update    | SELECT, DELETE, UPDATE | si | si | no | si | si | si | no | no | no | no | no | no | no | no |
 | reparacion_dn_update | SELECT, DELETE, UPDATE | si | si | no | si | si | si | no | no | no | no | no | no | no | no |
-| reparacion_schema    | *                      | si | si | si | si | si | si | si | si | si | si | si | si | no | si |
-| reparacion_dn_schema | *                      | si | si | si | si | si | si | si | si | si | si | si | si | no | si |
+| reparacion_schema    | *                      | si | si | si | si | si | si | si | si | no | si | si | no | no | si |
+| reparacion_dn_schema | *                      | si | si | si | si | si | si | si | si | no | si | si | no | no | si |
 
 #### * Los siguientes permisos se corresponden a los usuarios `reparacion_schema` y `reparacion_dn_schema`:
 
@@ -491,20 +491,21 @@ CREATE INDEX empleado_index ON revisionreparacion (empleadoReparacion);
 
 | Punto | Permisos                |
 |-------|-------------------------|
-| 2     | SELECT                  |
-| 3     | SELECT                  |
-| 4     | CREATE VIEW, SELECT     |
-| 5     | SELECT                  |
-| 6     | SELECT                  |
-| 7     | SELECT                  |
-| 8     | CREATE                  |
-| 9a    | CREATE ROUTINE          |
-| 9b    | EXECUTE, SELECT, INSERT |
-| 10    | TRIGGER                 |
-| 11    | CREATE ROUTINE          |
-| 12    | EXECUTE, SELECT, INSERT |
-| 13    | INSERT                  |
-| 14    | SELECT, INDEX           |
+|   2   | SELECT                  |
+|   3   | SELECT                  |
+|   4   | CREATE VIEW, SELECT     |
+|   5a  | SELECT                  |
+|   5b  | SELECT                  |
+|   6   | SELECT                  |
+|   7   | SELECT                  |
+|   8   | CREATE                  |
+|   9a  | CREATE ROUTINE          |
+|   9b  | EXECUTE, SELECT, INSERT |
+|   10  | TRIGGER                 |
+|   11  | CREATE ROUTINE          |
+|   12  | EXECUTE, SELECT, INSERT |
+|   13  | INSERT                  |
+|   14  | SELECT, INDEX           |
 
 Vale aclarar que los permisos marcados varían segun si triggers definidos, los datos representados en la tabla dan por entendido que no hay triggers creados en la base de datos.
 
