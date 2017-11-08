@@ -443,17 +443,51 @@ where r.dnicliente=c.dnicliente
 
 #### Analice su plan de ejecución mediante el uso de la sentencia EXPLAIN.
 
+![Punto 14](https://i.imgur.com/DrwsYFt.png)
+![Punto 14](https://i.imgur.com/C7Sq0W3.png)
+
 #### a. ¿Qué atributos del plan de ejecución encuentra relevantes para evaluar la performance de la consulta?
+
+A la hora de analizar una consulta con la sentencia `exaplin` es útili prestar atención a varias cosas:
+
+* El orden en que aparecen las tablas utlizadas indica el orden en que estas se unieron.
+
+* La columna `rows` nos muestra la cantidad de filas examinadas.
+
+* La columna `extra` nos muestra diferente información que en ocasiones es útil.
+
+* La columna `key` indica que calve es utilizada.
+
+* La columna `ref` muestra que columnas son utilizadas en las comparaciones con los campos de `key`.
+
+* La columna `type` indica el tipo de unión que se está usando. Desde la mejor hasta la peor, los tipos de uniones son system, const, eq_ref, ref, range, index, y ALL.
+
+En el caso de la consulta que estamos analizando, podemos ver que la columna `rows` indica un valor muy alto, que `ref` indica `null` y que tenemos una tupla con `type` igual a `index`, entre otras cosas.
 
 #### b. Observe en particular el atributo type ¿cómo se están aplicando los JOIN entre las tablas involucradas?
 
+Dentro de los atributos `type` podemos observar los siguientes valores:
+
+* `index`: Escaneo completo de la tabla para cada combinación de filas de las tablas previas, revisando únicamente el índice.
+
+* `eq_ref`: Una fila de la tabla 1 será leída por cada combinación de filas de la tabla 2. Este tipo es usado cuando todas las partes de un índice se usan en la consulta y el índice es UNIQUE o PRIMARY KEY.
+
+* `ref`: Todas las filas con valores en el índice que coincidan serán leídos desde esta tabla por cada combinación de filas de las tablas previas. Similar a eq_ref, pero usado cuando usa sólo un prefijo más a la izquierda de la clave o si la clave no es UNIQUE o PRIMARY KEY. Si la clave que es usada coincide sólo con pocas filas, esta union es buena.
+
 #### c. Según lo que observó en los puntos anteriores, ¿qué mejoras se pueden realizar para optimizar la consulta?
+
+Al al hacer un análisis sobre los datos obtenidos del plan de ejecución tras la ejecución de la sentencia `explain`, podemos deducir que agregar un índice en la tabla `revisionreparacion` para el atributo `empleadoReparacion` hará que la consulta se ejecute de manera mas eficiente.
+
+#### d. Aplique las mejoras propuestas y vuelva a analizar el plande ejecución. ¿Quécambios observa?
 
 ```sql
 CREATE INDEX empleado_index ON revisionreparacion (empleadoReparacion);
 ```
 
-#### d. Aplique las mejoras propuestas y vuelva a analizar el plande ejecución. ¿Quécambios observa?
+![Punto 14](https://i.imgur.com/AF4ssOE.png)
+![Punto 14](https://i.imgur.com/K16Nf2k.png)
+
+Al volver a ejecutar la sentencia exaplin con el índice nuevo agregado, podemos ver que el número de `rows` se redujo considerablemente y que el campo `ref` ya no es `null`.
 
 ---
 
