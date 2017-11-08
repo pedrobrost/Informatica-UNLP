@@ -326,4 +326,33 @@ Los resultados de la tabla `REPARACIONESPORCLIENTE` coinciden con los resultados
 
 ---
 
+### 14. Considerando la siguiente consulta:
+
+```
+select count(r.dniCliente)
+from reparacion r, cliente c, sucursal s, revisionreparacion rv 
+where r.dnicliente=c.dnicliente
+  and r.codsucursal=s.codsucursal
+  and r.dnicliente=rv.dnicliente
+  and r.fechainicioreparacion=rv.fechainicioreparacion
+  and empleadoreparacion = 'Maidana'and s.m2<200
+  and s.ciudadsucursal='La Plata';
+```
+
+#### Analice su plan de ejecución mediante el uso de la sentencia EXPLAIN.
+
+#### a. ¿Qué atributos del plan de ejecución encuentra relevantes para evaluar la performance de la consulta?
+
+#### b. Observeen particular el atributotype¿cómose están aplicando los JOIN entre las tablasinvolucradas?
+
+#### c. Según lo que observóen lospuntosanteriores, ¿quémejoras se pueden realizar para optimizar la consulta?
+
+```
+CREATE INDEX empleado_index ON revisionreparacion (empleadoReparacion);
+```
+
+#### d. Aplique las mejoras propuestas y vuelva a analizar el plande ejecución. ¿Quécambios observa?
+
+---
+
 
