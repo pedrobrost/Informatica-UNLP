@@ -256,9 +256,15 @@ CREATE PROCEDURE punto9()
 CREATE TRIGGER after_reparacion_insert
     AFTER INSERT ON reparacion
     FOR EACH ROW BEGIN
-    UPDATE REPARACIONESPORCLIENTE
-    SET cantidadReparaciones = cantidadReparaciones + 1, fechaultimaactualizacion = NOW(), usuario = CURRENT_USER()
-    WHERE NEW.dniCliente = REPARACIONESPORCLIENTE.dniCliente;
+    IF (NEW.dniCliente IN (SELECT dniCliente FROM REPARACIONESPORCLIENTE)) THEN
+      UPDATE REPARACIONESPORCLIENTE
+      SET cantidadReparaciones = cantidadReparaciones + 1,
+      fechaultimaactualizacion = NOW(), usuario = CURRENT_USER()
+      WHERE NEW.dniCliente = REPARACIONESPORCLIENTE.dniCliente;
+    ELSE
+      INSERT INTO REPARACIONESPORCLIENTE (dniCliente, cantidadReparaciones, fechaultimaactualizacion, usuario)
+      VALUES (NEW.dniCliente, 1, NOW(), CURRENT_USER());
+    END IF;
 END;
 ```
 
