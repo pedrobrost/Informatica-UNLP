@@ -316,4 +316,14 @@ CALL punto11(1009443, 100, '2017-12-14 12:20:31', 4, '4243-4255', 'Maidana', 'bo
 
 ---
 
-### 13. 
+### 13. Realizar las inserciones provistas en el archivo inserciones.sql. Validar mediante una consulta que la tabla REPARACIONESPORCLIENTEse estéactualizando correctamente.
+
+```
+mysql -u reparacion -p reparacion < inserciones.sql;
+```
+
+Los resultados de la tabla `REPARACIONESPORCLIENTE` coinciden con los resultados del archivo `reparacionesxcliente.hasta14.csv`.
+
+---
+
+
