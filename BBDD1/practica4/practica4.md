@@ -173,6 +173,27 @@ FROM reparacion
 
 ---
 
+### 7. Para aquellasreparaciones que tengan registrados mas de 3repuestos, listar el DNI del cliente, el código de sucursal,la fecha de reparacióny la cantidad de repuestos utilizados. Realice la consulta en ambas bases.
+
+```
+# reparacion
+SELECT r.dniCliente, r.codSucursal, r.fechaInicioReparacion, count(rr.repuestoReparacion) AS cantidad
+FROM reparacion AS r
+  INNER JOIN repuestoreparacion AS rr
+    ON r.dniCliente = rr.dniCliente
+    AND r.fechaInicioReparacion = rr.fechaInicioReparacion
+GROUP BY r.dniCliente, r.fechaInicioReparacion
+HAVING count(rr.repuestoReparacion) > 3;
+
+# reparacion_dn
+SELECT dniCliente, codSucursal, fechaInicioReparacion, count(distinct repuestoReparacion) AS cantidad
+FROM reparacion
+GROUP BY dniCliente, fechaInicioReparacion
+HAVING count(distinct repuestoReparacion) > 3;
+```
+
+---
+
 ### 8. Agregar la siguiente tabla:
 
 **REPARACIONESPORCLIENTE**
