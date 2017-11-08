@@ -464,8 +464,7 @@ CREATE INDEX empleado_index ON revisionreparacion (empleadoReparacion);
 | reparacion_schema    | *                      | si | si | si | si | si | si | si | si | si | si | si | si | no | si |
 | reparacion_dn_schema | *                      | si | si | si | si | si | si | si | si | si | si | si | si | no | si |
 
-#### *:
-
+#### *
 * SELECT
 * DELETE
 * UPDATE
