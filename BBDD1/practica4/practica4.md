@@ -464,7 +464,8 @@ CREATE INDEX empleado_index ON revisionreparacion (empleadoReparacion);
 | reparacion_schema    | *                      | si | si | si | si | si | si | si | si | si | si | si | si | no | si |
 | reparacion_dn_schema | *                      | si | si | si | si | si | si | si | si | si | si | si | si | no | si |
 
-#### *
+#### * Los siguientes permisos se corresponden a los usuarios `reparacion_schema` y `reparacion_dn_schema`:
+
 * SELECT
 * DELETE
 * UPDATE
