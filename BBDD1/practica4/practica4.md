@@ -165,10 +165,18 @@ FROM cliente
 
 # reparacion_dn
 
+CREATE VIEW sucursales AS
+  SELECT DISTINCT ciudadSucursal, codSucursal
+  FROM reparacion;
+
+CREATE VIEW clientes AS
+  SELECT DISTINCT dniCliente, ciudadCliente
+  FROM reparacion;
+
 CREATE VIEW sucursalesPorCliente AS
-SELECT DISTINCT dniCliente, codSucursal
-  FROM reparacion
-    WHERE ciudadCliente = ciudadSucursal;
+  SELECT dniCliente, codSucursal 
+  FROM clientes INNER JOIN sucursales 
+      ON ciudadSucursal = ciudadCliente;
 ```
 
 ---
