@@ -58,7 +58,7 @@ http://blog.honeybadger.io/how-to-try-again-when-exceptions-happen-in-ruby/
 
 ### 5. ¿Cuáles son las diferencias entre los siguientes métodos?
 
-```
+```ruby
 def opcion_1
   a = [1, nil, 3, nil, 5, nil, 7, nil, 9, nil]
   b = 3
@@ -102,6 +102,57 @@ def opcion_4
 * `opcion_2`: imprime `0` y retorna `nil`
 * `opcion_3`: imprime `0` y retorna `nil`
 * `opcion_4`: imprime `[3, 0, 9, 0, 15, 0, 21, 0, 27, 0]` y retorna `nil`
+
+---
+
+### 6. Suponé que tenés el siguiente script y se te pide que lo hagas resiliente (tolerante a fallos), intentando siempre que se pueda recuperar la situación y volver a intentar la operación que falló. Realizá las modificaciones que consideres necesarias para lograr que el script sea más robusto.
+
+```ruby
+# Este script lee una secuencia de no menos de 15 números desde teclado y lue go imprime el resultado de la división
+# de cada número por su entero inmediato anterior.
+
+# Como primer paso se pide al usuario que indique la cantidad de números que ingresará.
+
+cantidad = 0
+while cantidad < 15
+  puts '¿Cuál es la cantidad de números que ingresará? Debe ser al menos 15'
+  cantidad = gets.to_i
+end
+
+# Luego se almacenan los números
+numeros = 1.upto(cantidad).map do
+  puts 'Ingrese un número'
+  numero = gets.to_i
+end
+
+# Y finalmente se imprime cada número dividido por su número entero inmediato anterior
+
+resultado = numeros.map { | x| x / (x - 1)  }
+puts 'El resultado es: %s' % resultado.join(', ')
+```
+
+```ruby
+cantidad = 0
+while cantidad < 5
+  puts '¿Cuál es la cantidad de números que ingresará? Debe ser al menos 15'
+  cantidad = gets.to_i
+end
+
+begin
+  # Luego se almacenan los números
+  numeros = 1.upto(cantidad).map do
+    puts 'Ingrese un número'
+    numero = gets.to_i
+  end
+
+  # Y finalmente se imprime cada número dividido por su número entero inmediato anterior
+  resultado = numeros.map { | x| x / (x - 1)  }
+  puts 'El resultado es: %s' % resultado.join(', ')
+rescue ZeroDivisionError
+  puts "Debe ingresar numeros distintos a uno:"
+  retry
+end
+```
 
 ---
 
