@@ -191,4 +191,87 @@ puts 'El resultado es: %s' % resultado.join(', ')
 
 ---
 
+### 8. Sea el siguiente código:
+
+```ruby
+def fun3
+  puts "Entrando a fun3"
+  raise RuntimeError, "Excepción intencional"
+  puts "Terminando fun3"
+rescue NoMethodError => e
+  puts "Tratando excepción por falta de método"
+rescue RuntimeError => e
+  puts "Tratando excepción provocada en tiempo de ejecución"
+rescue
+  puts "Tratando una excepción cualquiera"
+ensure
+  puts "Ejecutando ensure de fun3"
+end
+def fun2(x)
+  puts "Entrando a fun2"
+  fun3  
+  a = 5 / x
+  puts "Terminando fun2"
+end
+def fun1(x)
+  puts "Entrando a fun1"
+  fun2 x
+rescue  
+  puts "Manejador de excepciones de fun1"
+  raise
+ensure  
+  puts "Ejecutando ensure de fun1"
+end
+begin  
+  x = 0
+  begin
+    fun1 x
+  rescue Exception => e
+    puts "Manejador de excepciones de Main"
+    if x == 0
+      puts "Corrección de x"
+      x = 1
+      retry
+    end
+  end
+  puts "Salida"
+end
+```
+
+#### a. Seguí el flujo de ejecución registrando la traza de impresiones que deja el programa y justificando paso a paso.
+
+Salida:
+
+* Entrando a fun1
+* Entrando a fun2
+* Entrando a fun3
+* Tratando excepción provocada en tiempo de ejecución
+* Ejecutando ensure de fun3
+* Manejador de excepciones de fun1
+* Ejecutando ensure de fun1
+* Manejador de excepciones de Main
+* Corrección de x
+* Entrando a fun1
+* Entrando a fun2
+* Entrando a fun3
+* Tratando excepción provocada en tiempo de ejecución
+* Ejecutando ensure de fun3
+* Terminando fun2
+* Ejecutando ensure de fun1
+* Salida
+
+El punto mas importante a tener en cuenta es cuando hace un `raise` para volver a levantar la misma excepcion y al mismo tiempo hay un `ensure` primero ejecuta el código del `ensure` y luego se ejecuta el manejador correspondiente a la nueva excepción levantada por el `raise`.
+
+#### b. ¿Qué pasaría si se permuta, dentro de fun3, el manejador de excepciones para RuntimeError y el manejador de excepciones genérico (el que tiene el rescue vacío)?
+
+Cuando en `fun3` se levante la excepción `RuntimeError` será manejada por el `rescue` genérico (`StandardError`) en vez del específico para `RuntimeError`.
+
+#### c. ¿La palabra reservada retry que función cumple? ¿Afectaría el funcionamiento del programa si se mueve la línea x = 0 dentro del segundo begin (inmediatamente antes de llamar a fun1 con x)?
+
+La palabra reservada `retry` vuelve a ejecutar el bloque actual en el que ocurrió la excepcion manejada. Estos bloques normalmente se definen entre `begin` y `end` (a veces están implícitos como en las definiciones de métodos, clases, etc).
+
+Si movemos la línea `x = 0` como se indica, el script entrará en un bucle infinito porque el `retry` siempre volverá a ejecutar esta linea y por ende siempre se seguirá ejecutando la sentencia `retry`.
+
+---
+
 
