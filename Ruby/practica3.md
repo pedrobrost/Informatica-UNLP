@@ -156,4 +156,39 @@ end
 
 ---
 
+### 7. Partiendo del script del inciso anterior, implementá una nueva clase de excepción que se utilizará para indicar que la entrada del usuario no es un valor numérico entero válido. ¿De qué clase de la jerarquía de Exception heredaría?
+
+```ruby
+class OneInputError < RangeError
+  def message
+    "Se ingresó el número 1, el cual no es correcto."
+  end
+end
+
+cantidad = 0
+while cantidad < 5
+  puts '¿Cuál es la cantidad de números que ingresará? Debe ser al menos 15'
+  cantidad = gets.to_i
+end
+
+begin
+  # Luego se almacenan los números
+  numeros = 1.upto(cantidad).map do
+    puts 'Ingrese un número'
+    numero = gets.to_i
+    raise OneInputError if numero == 1
+    numero
+  end
+rescue OneInputError => e
+  puts e.message
+  retry
+end
+
+# Y finalmente se imprime cada número dividido por su número entero inmediato anterior
+resultado = numeros.map { | x| x / (x - 1)   }
+puts 'El resultado es: %s' % resultado.join(', ')
+```
+
+---
+
 
