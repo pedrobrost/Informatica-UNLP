@@ -56,3 +56,53 @@ http://blog.honeybadger.io/how-to-try-again-when-exceptions-happen-in-ruby/
 
 ---
 
+### 5. ¿Cuáles son las diferencias entre los siguientes métodos?
+
+```
+def opcion_1
+  a = [1, nil, 3, nil, 5, nil, 7, nil, 9, nil]
+  b = 3
+  c = a.map do | x|
+    x * b
+  end
+  puts c.inspect
+rescue
+  0
+end
+
+def opcion_2
+  c = begin
+      a = [1, nil, 3, nil, 5, nil, 7, nil, 9, nil]
+      b = 3
+      a.map do | x|
+        x * b
+      end
+    rescue
+      0
+    end
+  puts c.inspect
+end
+
+def opcion_3
+  a = [1, nil, 3, nil, 5, nil, 7, nil, 9, nil]
+  b = 3
+  c = a.map { | x| x * b } rescue 0
+  puts c.inspect
+end
+
+def opcion_4
+  a = [1, nil, 3, nil, 5, nil, 7, nil, 9, nil]
+  b = 3
+  c = a.map { | x| x * b rescue 0 }
+  puts c.inspect
+  end
+```
+
+* `opcion_1`: retorna 0;
+* `opcion_2`: imprime `0` y retorna `nil`
+* `opcion_3`: imprime `0` y retorna `nil`
+* `opcion_4`: imprime `[3, 0, 9, 0, 15, 0, 21, 0, 27, 0]` y retorna `nil`
+
+---
+
+
