@@ -33,4 +33,10 @@
 
 ---
 
+### 3. Una máquina conectada a una red pero no a Internet, ¿tiene tabla de ruteo?
+
+Sí, porque aunque sea una red local se utiliza la tabla de enrutamiento para comunicarse con los demás dispositivos de la red. Internet es una red con las mismas características que la red privada, simplemente que es pública. Además vimos que en la tabla de enrutamiento hay que tener una entrada por defecto (0.0.0.0) que devuelve a la interface conectada y una entrada para la red donde estamos conectado con el default gateway local (0.0.0.0).
+
+---
+
 
