@@ -92,4 +92,12 @@ Suponga que un usuario de la red doméstica que utiliza el host con la direcció
 
 ---
 
+### 7. ¿Qué especifica la RFC 1918 y cómo se relaciona con NAT?
+
+Este documento especifica unas Mejores Prácticas Actuales, Best Current Practices (BCP), para la comunidad Internet, y solicita su discusión y sugerencias para mejorarlas.
+
+Este documento describe la asignación de direcciones en las redes privadas. La asignación permite la completa conectividad de nivel de red entre todas las máquinas de la empresa, así como entre todas las máquinas públicas de diferentes empresas. El coste de usar un espacio privado de direcciones de Internet es el coste potencial del esfuerzo de reasignar las direcciones de las máquinas y redes de públicos a privados.
+
+---
+
 
