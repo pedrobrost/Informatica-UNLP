@@ -275,4 +275,80 @@ Sí, es posible pero se desperdiciarian las siguientes cantidades de hosts en ca
 
 #### b. Asigne direcciones a todas las redes de la topología. Tome siempre en cada paso la primer dirección de red posible.
 
+* 205.10.192.0/21 -> Red C
+* 205.10.200.0/21 -> Libre
+* 205.10.208.0/21 -> Libre
+* 205.10.2016.0/21 -> Libre
+
+* 205.10.200.0/24 -> Red A
+* 205.10.201.0/24 -> Libre
+* 205.10.202.0/24 -> Libre
+* 205.10.203.0/24 -> Libre
+* 205.10.204.0/24 -> Libre
+* 205.10.205.0/24 -> Libre
+* 205.10.206.0/24 -> Libre
+* 205.10.207.0/24 -> Libre
+
+* 205.10.201.0/27 -> Red B
+* 205.10.201.32/27 -> Libre
+* 205.10.201.64/27 -> Libre
+* 205.10.201.96/27 -> Libre
+* 205.10.201.128/27 -> Libre
+* 205.10.201.160/27 -> Libre
+* 205.10.201.192/27 -> Libre
+* 205.10.201.224/27 -> Libre
+
+* 205.10.201.32/28 -> Red D
+* 205.10.201.48/28 -> Libre
+
+* 205.10.201.48/30 -> Red E
+* 205.10.201.52/30 -> Libre
+* 205.10.201.56/30 -> Libre
+* 205.10.201.60/30 -> Libre
+
+** Resultado: **
+
+* 205.10.200.0/24 -> Red A
+* 205.10.201.0/27 -> Red B
+* 205.10.192.0/21 -> Red C
+* 205.10.201.32/28 -> Red D
+* 205.10.201.48/30 -> Red E
+
+#### c. Para mantener el orden y el inventario de direcciones disponibles, haga un listado de todas las direcciones libres que le quedaron, agrupándolas utilizando CIDR.
+
+** Listado de redes libres: **
+
+* 205.10.208.0/21
+* 205.10.2016.0/21
+
+* 205.10.202.0/24
+* 205.10.203.0/24
+* 205.10.204.0/24
+* 205.10.205.0/24
+* 205.10.206.0/24
+* 205.10.207.0/24
+
+* 205.10.201.64/27
+* 205.10.201.96/27
+* 205.10.201.128/27
+* 205.10.201.160/27
+* 205.10.201.192/27
+* 205.10.201.224/27
+
+* 205.10.201.52/30
+* 205.10.201.56/30
+* 205.10.201.60/30
+
+** Agrupándolas según CIDR: **
+
+* 205.10.208/20
+
+* 205.10.200/21
+
+* 205.10.201.0/24
+
+* 205.10.201.48/28
+
+#### d. Asigne direcciones IP a todas las interfaces de la topología que sea posible.
+
 ---
