@@ -90,6 +90,8 @@ machines.
 You would use bundle update to explicitly update the version of a gem.
 ```
 
+https://www.viget.com/articles/bundler-best-practices
+
 #### g. ¿Qué ocurrió al ejecutar prueba_dos.rb de las distintas formas enunciadas? ¿Por qué? ¿Cómo modificarías el archivo prueba_dos.rb para que funcione correctamente?
 
 * `ruby prueba_dos.rb`: Error debido a que no encuentra la constante `Bundler`.
