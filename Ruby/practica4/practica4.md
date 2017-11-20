@@ -104,4 +104,11 @@ Para que se pueda ejecutar el script de la primer forma, bastaría con agregar l
 
 ---
 
+## Sinatra
+
+### 1. ¿Qué es Rack? ¿Qué define? ¿Qué requisitos impone?
+
+http://codefol.io/posts/What-is-Rack-A-Primer
+
+---
 
