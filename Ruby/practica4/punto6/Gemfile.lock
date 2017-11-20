@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    colorputs (0.2.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  colorputs
+
+BUNDLED WITH
+   1.16.0
