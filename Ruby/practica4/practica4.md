@@ -108,6 +108,8 @@ Para que se pueda ejecutar el script de la primer forma, bastaría con agregar l
 
 ### 1. ¿Qué es Rack? ¿Qué define? ¿Qué requisitos impone?
 
+https://medium.com/whynotio/what-is-rack-in-ruby-7e0615f1d9b6
+
 http://codefol.io/posts/What-is-Rack-A-Primer
 
 ---
