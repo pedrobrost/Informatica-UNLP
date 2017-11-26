@@ -238,9 +238,9 @@ CIDR consiste básicamente en permitir máscaras de subred de longitud variable 
 
 ### 14. El bloque CIDR 128.0.0.0/2 o 128/2, ¿Equivale a listar todas las direcciones de red de clase B? ¿Cuál sería el bloque CIDR que agrupa todas las redes de clase A?
 
-Sí, el bloque CIDR `128/2` equivale a todas las direcciones de red de clase B.
+Sí, el bloque CIDR `128.0.0.0/2` equivale a todas las direcciones de red de clase B.
 
-El bloque CIDR que agrupo todas las redes clase A es: `0/1`.
+El bloque CIDR que agrupo todas las redes clase A es: `0.0.0.0/1`.
 
 ---
 
@@ -266,7 +266,7 @@ Los pasos para dividir en subredes utilizando VLSM son:
 
 #### a. ¿Es posible asignar las subredes correspondientes a la topología utilizando subnetting sin vlsm? Indique la cantidad de hosts que se desperdicia en cada subred.
 
-Sí, es posible pero se desperdiciarian las siguientes cantidades de hosts en cada subred:
+No, no es posible debido a que como minimo necesito 5 redes, y si hago esta división no me alcanzaría la cantidad de hosts para la red C.
 
 * RED A: 1918
 * RED B: 2026
@@ -353,5 +353,7 @@ Sí, es posible pero se desperdiciarian las siguientes cantidades de hosts en ca
 * 205.10.201.56/29
 
 #### d. Asigne direcciones IP a todas las interfaces de la topología que sea posible.
+
+![Punto 17](https://i.imgur.com/kfaedaZ.png)
 
 ---
