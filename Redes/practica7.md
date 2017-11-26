@@ -278,7 +278,7 @@ Sí, es posible pero se desperdiciarian las siguientes cantidades de hosts en ca
 * 205.10.192.0/21 -> Red C
 * 205.10.200.0/21 -> Libre
 * 205.10.208.0/21 -> Libre
-* 205.10.2016.0/21 -> Libre
+* 205.10.216.0/21 -> Libre
 
 * 205.10.200.0/24 -> Red A
 * 205.10.201.0/24 -> Libre
@@ -319,7 +319,7 @@ Sí, es posible pero se desperdiciarian las siguientes cantidades de hosts en ca
 ** Listado de redes libres: **
 
 * 205.10.208.0/21
-* 205.10.2016.0/21
+* 205.10.216.0/21
 
 * 205.10.202.0/24
 * 205.10.203.0/24
@@ -343,11 +343,14 @@ Sí, es posible pero se desperdiciarian las siguientes cantidades de hosts en ca
 
 * 205.10.208/20
 
-* 205.10.200/21
+* 205.10.202/23
+* 205.10.204/22
 
-* 205.10.201.0/24
+* 205.10.201.64/26
+* 205.10.201.128/25
 
-* 205.10.201.48/28
+* 205.10.201.52/30
+* 205.10.201.56/29
 
 #### d. Asigne direcciones IP a todas las interfaces de la topología que sea posible.
 
