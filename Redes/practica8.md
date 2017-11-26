@@ -100,4 +100,66 @@ Este documento describe la asignación de direcciones en las redes privadas. La 
 
 ---
 
+## Ejercicio de parcial 1
+
+### 8. Asigne las redes que faltan utilizando los siguientes bloques y las consideraciones debajo:
+
+* Red C y la Red D deben ser públicas.
+* Los enlaces entre routers deben utilizar redes privadas.
+* Se debe desperdiciar la menor cantidad de IP posibles.
+* Si va a utilizar un bloque para dividir en subredes, asignar primero la red con más cantidad de hosts y luego las que tienen menos.
+* Las redes elegidas deben ser válidas.
+
+**Asignaciones:**
+
+* Red D --> 200.30.55.64/27
+* Red C --> 200.30.55.96/28
+* Libre --> 200.30.55.112/28
+
+* Red A --> 192.68.10.0/25
+* Red B --> 192.68.10.128/26
+* Libre --> 192.68.10.192/26
+
+* Enlace izquierdo --> 192.168.10.192/29
+* Enlace derecho --> 192.168.10.200/30
+* Libre --> 192.168.10.204/30
+* Libre --> 192.168.10.208/29
+* Libre --> 192.168.10.216/29
+* Libre --> 192.168.10.224/29
+* Libre --> 192.168.10.232/29
+* Libre --> 192.168.10.240/29
+* Libre --> 192.168.10.248/29
+
+### 9. Asigne IP a todas las interfaces de las redes listadas a continuación. Nota: Los routers deben tener asignadas las primeras IP de la red. Para enlaces entre routers, asignar en el siguiente orden: RouterA, RouterB, RouterC, RouterD y RouterE
+
+* Red A, Red B, Red C y Red D.
+* Red entre RouterA-RouterB-RouterE.
+* Red entre RouterC-RouterD
+
+![Punto 9](https://i.imgur.com/p41XOfQ.png)
+
+### 10. Realice las tablas de rutas de RouterE y BORDER considerando:
+
+* Siempre se deberá tomar la ruta más corta.
+* Sumarizar siempre que sea posible.
+* El tráfico de Internet a la Red D y viceversa debe atravesar el RouterC.
+* Todos los hosts deben poder conectarse entre sí y a Internet.
+
+**RouterE:**
+
+* default via 10.10.10.6/30
+* 192.68.10.128/26 via 192.168.10.124/29
+* 192.68.10.0/25 via 192.168.10.123/29
+* 200.30.55.64/27 via 10.10.10.2/30
+* 200.30.55.96/28 via 10.10.10.14/30
+
+**BORDER:**
+
+* default via 172.16.0.1/24
+* 192.68.10.128/26 via 10.10.10.5/30
+* 192.68.10.0/25 via 10.10.10.5/30
+* 200.30.55.64/27 via 10.10.10.9/30
+* 200.30.55.96/28 via 10.10.10.9/30
+
+---
 
