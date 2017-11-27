@@ -163,3 +163,60 @@ Este documento describe la asignación de direcciones en las redes privadas. La 
 
 ---
 
+## Ejercicio de parcial 2
+
+### 11. Dado el siguiente bloque: 160.22.0.0/23. Asigne redes IP a las redes A, B, C y DMZ. Considere desperdiciar la menor cantidad de direcciones IP posibles.
+
+* Red B --> 160.22.0.0/24
+* Red DMZ --> 160.22.1.0/25
+* Red A --> 160.22.1.128/26
+* Red C --> 160.22.1.192/27
+
+### 12. Liste las redes IP que quedaron libres luego de la asignación realizada, sumarizando si es posible.
+
+* 160.22.1.224/27
+
+### 13. Asigne redes IP al resto de las redes de la topología no consideradas. Utilice direccionamiento privado y desperdicie la menor cantidad de direcciones posibles.
+
+* R1 - R3 --> 10.0.0.0/30 
+* R1 - R2 --> 10.0.0.4/30
+* R2 - R3 --> 10.0.0.8/30
+* R2 - R4 --> 10.0.0.12/30
+* R3 - R4 --> 10.0.0.16/30
+
+### 14. Asigne direcciones IP a todas las interfaces de todos los dispositivos que corresponda. La primera dirección IP del rango debe utilizarse para la interfaz del router.
+
+![Putno 14](https://i.imgur.com/LKNi8Iq.png)
+
+### 15. Realice las tablas de ruteo de los routers R3 y R4, de manera tal que se cumplan las siguientes condiciones:
+
+* Cada dispositivo pueda conectarse entre sí.
+* Sólo los hosts de la DMZ pueden salir a Internet.
+* Siempre tomar la ruta más corta.
+
+**R3:**
+
+* 160.22.1.192/27 via
+* 160.22.1.0/25 via 10.0.0.18/30
+* 160.22.0.0/24 via 10.0.0.9/30
+* 160.22.1.128/26 via 10.0.0.1/30
+
+**R4:**
+
+* default via ISP eth0
+* 160.22.0.0/24 via 10.0.0.13/30
+* 160.22.1.128/26 via 10.0.0.13/30
+* 160.22.1.192/27 via 10.0.0.17/30
+
+### 16. Considerando las condiciones establecidas en el punto anterior, realice las tablas de ruteo del servidor Mail y del host PC-A.
+
+**Mail:**
+
+* default via 160.22.1.1
+
+
+**PC-a:**
+
+* default via 160.22.1.129
+
+---
