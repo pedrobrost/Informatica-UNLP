@@ -73,6 +73,8 @@ Resuelve:
 
 ### 6. ¿Cuál de las siguientes direcciones IPv6 no son válidas?
 
+![IPv6 ommit zeros](https://image.slidesharecdn.com/megaconfv6-151026012615-lva1-app6892/95/world-ipv6-launch-at-penn-15-638.jpg?cb=1445822828)
+
 * 2001:0:1019:afde::1 --> `si`
 * 2001::1871::4 --> `no`
 * 3ffg:8712:0:1:0000:aede:aaaa:1211 --> `no`
@@ -84,3 +86,40 @@ Resuelve:
 
 ---
 
+### 7. ¿Cuál sería una abreviatura correcta de 3f80:0000:0000:0a00:0000:0000:0000:0845?
+
+`3f80:0:0:a00::845`
+
+---
+
+### 8. Si quisiese que IPv6 soporte una nueva funcionalidad, ¿cómo lo haría?
+
+Habría que basarse las cabeceras opcionales (campo Next Header, que indica el tipo del siguiente header) para extender el protocolo IPv6. Pero previamente, habría que desarrollar un RFC y que este se apruebe como estándar (para que lo implementen todos los dispositivos que soportan IPv6). O implementarlo dentro de todos los dispositivos del sistema autónomo (pero solo funcionaría dentro de este).
+
+---
+
+### 9. Indique si las siguientes direcciones son de link-local, global-address, multicast, etc.
+
+* fe80::1/64 --> `link-local`
+* 3ffe:4543:2:100:4398::1/64 --> `6Bone`
+* :: --> `Any (direccion indefinida)`
+* ::1 --> `Loopback/Localhost`
+* ff02::2 --> `multicast`
+* 2818:edbc:43e1::8721:122 --> `GLOBAL-ADDRESS, UNICAST`
+* ff02::9 --> `multicast`
+
+---
+
+### 10. Dado el siguiente diagrama, ¿qué direcciones IPv6 será capaz de autoconfigurar el nodo A en cada una de sus interfaces?
+
+* Primero genera la fe80::021b:77ff:feb1:49a1 /64 (LINK-LOCAL)
+Manda el router solicitation a la dirección de multicast ff02::2
+Recibe los prefijos de red y arma: 3ffe:8070:1011:100:021b:77ff:feb1:49a1 /64 (GLOBAL)
+El router le puede mandar más de un prefijo.
+
+* Primero genera la fe80::c225:eeff:feba:93e1 /64 (LINK-LOCAL)
+Manda el router solicitation a la dirección de multicast ff02::2
+Recibe los prefijos de red y arma: 2818:4fde:5100::c225:eeff:feba:93e1 /64 (GLOBAL)
+El router le puede mandar más de un prefijo.
+
+---
