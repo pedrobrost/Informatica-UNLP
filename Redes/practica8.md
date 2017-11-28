@@ -117,18 +117,15 @@ Este documento describe la asignación de direcciones en las redes privadas. La 
 * Libre --> 200.30.55.112/28
 
 * Red A --> 192.68.10.0/25
-* Red B --> 192.68.10.128/26
-* Libre --> 192.68.10.192/26
+* Red B --> 192.68.10.128/25
 
-* Enlace izquierdo --> 192.168.10.192/29
-* Enlace derecho --> 192.168.10.200/30
-* Libre --> 192.168.10.204/30
-* Libre --> 192.168.10.208/29
-* Libre --> 192.168.10.216/29
-* Libre --> 192.168.10.224/29
-* Libre --> 192.168.10.232/29
-* Libre --> 192.168.10.240/29
-* Libre --> 192.168.10.248/29
+* Enlace izquierdo --> 10.10.10.16/29
+* Enlace derecho --> 10.10.10.24/30
+* Libre --> 10.10.10.32/29
+* Libre --> 10.10.10.40/29
+* Libre --> 10.10.10.48/29
+* Libre --> 10.10.10.56/29
+* Libre --> 10.10.10.28/30
 
 ### 9. Asigne IP a todas las interfaces de las redes listadas a continuación. Nota: Los routers deben tener asignadas las primeras IP de la red. Para enlaces entre routers, asignar en el siguiente orden: RouterA, RouterB, RouterC, RouterD y RouterE
 
@@ -136,7 +133,7 @@ Este documento describe la asignación de direcciones en las redes privadas. La 
 * Red entre RouterA-RouterB-RouterE.
 * Red entre RouterC-RouterD
 
-![Punto 9](https://i.imgur.com/p41XOfQ.png)
+![Punto 9](https://i.imgur.com/sDa1DXo.png)
 
 ### 10. Realice las tablas de rutas de RouterE y BORDER considerando:
 
@@ -145,21 +142,7 @@ Este documento describe la asignación de direcciones en las redes privadas. La 
 * El tráfico de Internet a la Red D y viceversa debe atravesar el RouterC.
 * Todos los hosts deben poder conectarse entre sí y a Internet.
 
-**RouterE:**
-
-* default via 10.10.10.6/30
-* 192.68.10.128/26 via 192.168.10.124/29
-* 192.68.10.0/25 via 192.168.10.123/29
-* 200.30.55.64/27 via 10.10.10.2/30
-* 200.30.55.96/28 via 10.10.10.14/30
-
-**BORDER:**
-
-* default via 172.16.0.1/24
-* 192.68.10.128/26 via 10.10.10.5/30
-* 192.68.10.0/25 via 10.10.10.5/30
-* 200.30.55.64/27 via 10.10.10.9/30
-* 200.30.55.96/28 via 10.10.10.9/30
+![Punto 10](https://i.imgur.com/4f39zQN.png)
 
 ---
 
@@ -187,36 +170,5 @@ Este documento describe la asignación de direcciones en las redes privadas. La 
 ### 14. Asigne direcciones IP a todas las interfaces de todos los dispositivos que corresponda. La primera dirección IP del rango debe utilizarse para la interfaz del router.
 
 ![Putno 14](https://i.imgur.com/LKNi8Iq.png)
-
-### 15. Realice las tablas de ruteo de los routers R3 y R4, de manera tal que se cumplan las siguientes condiciones:
-
-* Cada dispositivo pueda conectarse entre sí.
-* Sólo los hosts de la DMZ pueden salir a Internet.
-* Siempre tomar la ruta más corta.
-
-**R3:**
-
-* 160.22.1.192/27 via
-* 160.22.1.0/25 via 10.0.0.18/30
-* 160.22.0.0/24 via 10.0.0.9/30
-* 160.22.1.128/26 via 10.0.0.1/30
-
-**R4:**
-
-* default via ISP eth0
-* 160.22.0.0/24 via 10.0.0.13/30
-* 160.22.1.128/26 via 10.0.0.13/30
-* 160.22.1.192/27 via 10.0.0.17/30
-
-### 16. Considerando las condiciones establecidas en el punto anterior, realice las tablas de ruteo del servidor Mail y del host PC-A.
-
-**Mail:**
-
-* default via 160.22.1.1
-
-
-**PC-a:**
-
-* default via 160.22.1.129
 
 ---
