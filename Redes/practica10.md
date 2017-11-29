@@ -100,3 +100,49 @@ Pasos:
 * Después de abortar, el adaptador entra en backoff exponencial: después de la m- ésima colisión, el adaptador elige un K aleatorio entre {0, 1, 2, …, 2^m-1}. El adaptador espera K·512 periodos de 1 bit y retorna al paso 2.
 
 ---
+
+### 6. Investigue los comandos arp e ip neigh. Inicie una topología con CORE, cree una máquina y utilice en ella los comandos anteriores para:
+
+En red de computadoras, el protocolo de resolución de direcciones (ARP, del inglés Address Resolution Protocol) es un protocolo de comunicaciones de la capa de enlace, responsable de encontrar la dirección de hardware (Ethernet MAC) que corresponde a una determinada dirección IP. Para ello se envía un paquete (ARP request) a la dirección de difusión de la red (broadcast, MAC = FF FF FF FF FF FF) que contiene la dirección IP por la que se pregunta, y se espera a que esa máquina (u otra) responda (ARP reply) con la dirección Ethernet que le corresponde.
+
+ARP significa Address Resolution Protocol o protocolo de resolución de direcciones. ARP se utiliza para supervisar y modificar la tabla de asignaciones de direcciones IP y direcciones MAC (Media Access Control). ARP utiliza un cache que consiste en una tabla que almacena las asignaciones entre nivel de enlace de datos y las direcciones IP del nivel de red. El nivel de enlace de datos se encarga de gestionar las direcciones MAC y el nivel de red de las direcciones IP. ARP asocia direcciones IP a las direcciones MAC, justo a la inversa del protocolo RARP que asigna direcciones MAC a las direcciones IP.
+
+Tanto en comando arp (obsoleto) como el ip neighbor muestran y manipulan la tabla cache ARP del sistema.
+
+---
+
+### 7. Dado el siguiente esquema de red, responda:
+
+#### a. Suponiendo que las tablas de los switches están llenas con la información correcta, responda quién escucha el mensaje si:
+
+* La estación 1 envía una trama al servidor 1: Estaciones 2, 3, 4, 5, Servidor 1 y Switch 1.
+* La estación 1 envía una trama a la estación 11: Estaciones 2, 3, 4, 5, 11, Servidor 1 y Switch 1.
+* La estación 1 envía una trama a la estación 9: Estaciones 2, 3, 4, 5, 8, 9, 10, Servidor 1 y Switch 1 y 2.
+* La estación 4 envía una trama a la MAC de broadcast: Todos.
+* La estación 6 envía una trama a la estación 7: Estación 7 y Switch 2.
+* La estación 6 envía una trama a la estación 10: Estaciones 8, 9, 10 y Switch 2.
+
+#### b. ¿En qué situaciones se pueden producir colisiones?
+
+Todas
+
+---
+
+### 9. ¿Cuál es la finalidad del protocolo ARP?
+
+El Protocolo de Resolución de Direcciones (ARP- Address Resolution Protocol) permite la traducción entre los direccionamientos IP de capa de red y MAC de capa de enlace, dentro de una misma LAN. Se implementa con una tabla IP->MAC en cada host, incluyendo un TTL.
+
+Cada nodo IP (Host o Router) de la LAN tiene una tabla ARP (IP Address, MAC Address, TTL). 
+
+Para enviar un datagrama IP de un host a otro, es necesario conocer tanto su dirección IP como su MAC. ARP permite obtener el último, consultando en la tabla. Si no se encuentra en la tabla, hay dos opciones:
+
+* Que el destino sea del mismo segmento/subred: Se averigua la MAC con una consulta ARP al broadcast físico indicando la IP, y el adaptador que reconoce la IP destino responde con su MAC, que es agregada a la tabla del emisor.
+
+* Que esté en un segmento de red diferente (al aplicar la máscara de (sub)red, se obtiene una dirección distinta a la del origen): En este caso se envía el frame al Gateway (router), que luego continúa retransmitiéndolo. El datagrama en el interior del frame contiene la IP del destino, pero el frame contiene la MAC del Gateway (si no la conoce, utiliza ARP para solicitarla). Al enviarse el frame, es recibido por el router, sube a su capa de red y al ver una IP destino distinta de la suya, vuelve a bajar a enlace para ser retransmitida al próximo router que corresponda según la tabla de ruteo. Eventualmente un router conocerá al equipo destino, y le enviará el datagrama con la MAC correcta, si no la conoce, utiliza ARP.
+
+Al utilizar la dirección de broadcast para obtener la información que precisa, ARP es un protocolo plug-and- play (no precisa configuración).
+
+Los nodos crean sus tablas de ARP sin intervención del administrador, por eso se dice que hay un proceso de autoaprendizaje.
+
+---
+
