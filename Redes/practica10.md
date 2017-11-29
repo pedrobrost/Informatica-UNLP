@@ -36,3 +36,15 @@ Muchos de los servicios proporcionados por la capa de enlace presentan notables 
 
 ---
 
+### 3. Direccionamiento Ethernet:
+
+* ¿Cómo se identifican dos máquinas en una red Ethernet?
+* ¿Cómo se llaman y qué características poseen estas direcciones?
+* ¿Cuál es la dirección de broadcast en capa de enlace? ¿Qué función cumple?
+
+Se identifican mediante una dirección MAC (media access control). Esta dirección consta de 6 bytes de longitud, lo que da 2^48 posibles direcciones de MAC. Suelen expresarse en notación hexadecimal, indicándose cada byte de la dirección mediante una pareja de números hexadecimales. Una propiedad de las direcciones MAC es que nunca puede haber dos adaptadores con la misma dirección, para esto la IEEE se encarga de gestionar el espacio de direcciones MAC.
+
+Broadcast  es una forma de transmisión de información donde un nodo emisor envía información a una multitud de nodos receptores de manera simultánea, sin necesidad de reproducir la misma transmisión nodo por nodo. Es posible la difusión de cualquier trama de datos a todas las paradas que se encuentren en el mismo segmento de la red. Para ello, se utiliza una dirección MAC especial. En el caso de Ethernet  realiza la difusión recibiendo tramas con dirección MAC de destino FF.FF.FF.FF.FF.FF.
+
+---
+
