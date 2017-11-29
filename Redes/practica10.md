@@ -81,3 +81,22 @@ Los switches reducen las colisiones y permiten una mejor utilización del ancho 
 
 ---
 
+### 5. Describa el algoritmo de acceso al medio en Ethernet. ¿Es orientado a la conexión? 
+
+LAN Ethernet es una auténtica LAN de difusión; es decir, cuando un adaptador transmite una trama, todos los adaptadores de la LAN reciben esa trama. Dado que Ethernet, puede emplear la comunicación por difusión, necesita un protocolo de acceso múltiple. Utiliza protocolo de acceso múltiple CSMA/CD (Carrier Sense Multiple Access with Colision Detect).
+
+En Ethernet se utiliza un canal simple de difusión compartida, con acceso aleatorio (cualquier nodo puede transmitir en un instante de tiempo, es decir, no está predefinido en ranuras qué nodo puede transmitir): si dos nodos transmiten a la vez hay una colisión de la que deben recuperarse. Deben coordinarse utilizando el mismo canal que para transmitir (es in-line). El algoritmo de acceso al medio es CSMA/CD (Carrier Sense Multiple Access with Colision Detect). Para transmitir, el adaptador sondea el medio compartido (no utiliza ningún &quot;slot”, ranura o partición de tiempo, frecuencia o código), es decir, utiliza un mecanismo de detección de colisiones. Si está ocupado, espera hasta que se libere; si está libre, comienza a transmitir la trama. Durante la transmisión se compara la señal en el medio con la transmitida –otro nodo puede haber sensado el canal libre y comenzado a transmitir, detectándose después de un intervalo por el tiempo de propagación del medio-.
+
+Si se transmite toda la trama sin detectar colisión: se considera transmisión exitosa. Si se detecta colisión: se aborta la transmisión de la trama, se envía al medio una señal de bloqueo (jam), patrón de 48 bits, asegura que todos los nodos detecten la colisión. Y se espera antes de volver a intentar retransmitir la señal un tiempo aleatorio que puede ser mayor según la cantidad de colisiones detectadas -backoff exponencial-.
+
+Ethernet NO es orientado a conexión (no hay handshaking) y NO es confiable (no hay acks/nacks). Eficiente con baja carga -habrá pocas colisiones-. 
+
+Pasos:
+
+* El adaptador recibe un datagrama de la capa de red y crea la trama.
+* Si el adaptador sensa que el canal está libre, éste comienza a transmitir la trama. Si éste sensa canal ocupado, espera hasta que esté libre y transmite.
+* Si el adaptador transmite la trama entera sin detectar colisión, se considera transmisión lograda.
+* Si el adaptador detecta otra transmisión mientras transmite, aborta y envía una señal de bloqueo (jam)
+* Después de abortar, el adaptador entra en backoff exponencial: después de la m- ésima colisión, el adaptador elige un K aleatorio entre {0, 1, 2, …, 2^m-1}. El adaptador espera K·512 periodos de 1 bit y retorna al paso 2.
+
+---
