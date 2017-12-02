@@ -38,3 +38,19 @@ Como la PC B está en otra red, el frame deberá ser enviado al default gateway,
 
 ---
 
+### 2. En la siguiente topología de red indique:
+
+#### a. ¿Cuántos dominios de colisión hay?
+
+`5`
+
+#### b. ¿Cuántos dominios de broadcast hay?
+
+`1`
+
+#### d. . Si la PC E y la PC D hubiesen estado realizando un tcpdump para escuchar todo lo que pasa por su interfaz de red, ¿cuáles de los requerimientos/respuestas anteriores hubiesen escuchado cada una?
+
+Ambas PC hubiesen recibido las tramas enviadas por la PC-A al hacer las consultas por las direcciones MAC de PC-B y PC-C. Además cuando la PC-C envia su respuesta de ARP, al estar conectado a un HUB/Repetidor, dicha trama tambien es recibida por la PC_D.
+
+
+
