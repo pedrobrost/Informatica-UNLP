@@ -169,6 +169,7 @@ Mientras que el trabajo de la capa de enlace es mover frames enteros de un eleme
 
 El modelo OSI se compone de 7 capas:
 
+* Capa de Aplicación
 * Capa de Presentación
 * Capa de Sesión
 * Capa de Transporte
