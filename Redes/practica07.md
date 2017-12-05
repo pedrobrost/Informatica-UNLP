@@ -181,7 +181,7 @@ Dada la subred `195.200.45.80/28`:
 Hay dos errores:
 
 * 172.17.10.17 -> No se estaría respetando la subred asignada.
-* 172.26.22.2 -> Dirección de broadcast.
+* 172.26.22.3 -> Dirección de broadcast.
 
 #### b. ¿Cuántos bits se tomaron para hacer subredes en la red 10.0.10.0/24? ¿Cuántas subredes se podrían generar?
 
