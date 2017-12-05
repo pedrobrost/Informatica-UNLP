@@ -31,7 +31,7 @@ Como la PC B está en otra red, el frame deberá ser enviado al default gateway,
 * MAC origen: `mac-pc-a`
 * MAC destino: `mac gateway`
 
-**ICMP:**
+**IP:**
 
 * ip progen: `ip-pca`
 * ip destino; `ip gateway`
