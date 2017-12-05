@@ -154,4 +154,4 @@ La tercera diferencia entre los formatos de ambas tramas se encuentra en los cam
 * PPP (Point-to-Point Protocol)
 * Bluetooth en el 802.15 (IEEE 802.15).
 
-Los servicios proporcionados por los diferentes protocolos de la capa de enlace a lo largo de la ruta terminal a terminal pueden ser distintos. Ej. Algunos protocolos proporcionan una entrega fiable mientras que otros no (los que son más propenso a errores, por la atenuación de sus señales o interferencias electromagnéticas, suelen tener este servicio).
+Los servicios proporcionados por los diferentes protocolos de la capa de enlace a lo largo de la ruta terminal a terminal pueden ser distintos y por ende proporcionar distintos servicios. Ej. Algunos protocolos proporcionan una entrega fiable mientras que otros no (los que son más propenso a errores, por la atenuación de sus señales o interferencias electromagnéticas, suelen tener este servicio).
