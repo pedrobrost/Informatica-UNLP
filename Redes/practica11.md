@@ -8,7 +8,7 @@ Porque aplica su máscara de red en su propia IP y en la IP destino y obtiene di
 
 #### b. Si la tabla ARP de la PC A esta vacía, ¿que dirección MAC necesita la PC A para poder comunicarse con la PC B?
 
-Como la PC B está en otra red, el frame deberá ser enviado al default gateway, por ende se necesitará esta dirección MAC. Como la table ARP está vacía, se deberá primero encontrar esta dirección enviando un frame con la dirección destino correspondiente a la de broadcast.
+Como la PC B está en otra red, el frame deberá ser enviado al default gateway, por ende se necesitará esta dirección MAC. Como la tabla ARP está vacía, se deberá primero encontrar esta dirección enviando un frame con la dirección destino correspondiente a la de broadcast.
 
 #### c. En base a lo anterior, ¿que dirección IP destino tiene el requerimiento ARP? ¿Es la dirección IP del default gateway o es la dirección IP de la PC B? De ser necesario, ejecute de nuevo el experimento de ser necesario y complete los campos:
 
@@ -31,7 +31,7 @@ Como la PC B está en otra red, el frame deberá ser enviado al default gateway,
 * MAC origen: `mac-pc-a`
 * MAC destino: `mac gateway`
 
-**ICMP:**
+**IP:**
 
 * ip progen: `ip-pca`
 * ip destino; `ip gateway`
@@ -154,4 +154,4 @@ La tercera diferencia entre los formatos de ambas tramas se encuentra en los cam
 * PPP (Point-to-Point Protocol)
 * Bluetooth en el 802.15 (IEEE 802.15).
 
-Los servicios proporcionados por los diferentes protocolos de la capa de enlace a lo largo de la ruta terminal a terminal pueden ser distintos. Ej. Algunos protocolos proporcionan una entrega fiable mientras que otros no (los que son más propenso a errores, por la atenuación de sus señales o interferencias electromagnéticas, suelen tener este servicio).
+Los servicios proporcionados por los diferentes protocolos de la capa de enlace a lo largo de la ruta terminal a terminal pueden ser distintos y por ende proporcionar distintos servicios. Ej. Algunos protocolos proporcionan una entrega fiable mientras que otros no (los que son más propenso a errores, por la atenuación de sus señales o interferencias electromagnéticas, suelen tener este servicio).
