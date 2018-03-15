@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     rack (1.6.8)
-    rack-protection (1.5.3)
+    rack-protection
       rack
     sinatra
       rack (~> 1.5)
