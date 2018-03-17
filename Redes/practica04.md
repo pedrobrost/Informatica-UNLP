@@ -18,7 +18,7 @@ Cuando un usuario desea leer los correos que se almacenan en su servidor de corr
 
 * IMAP: Como POP3, IMAP es un protocolo de acceso de correo. Tiene muchas mas características que POP3, pero también es significativamente mas complejo. Un servidor IMAP asociará cada mensaje con una carpeta; cuando un mensaje arriba al servidor por primera vez, este es asociado con la carpeta INBOX del receptor. Este último puede mover el mensaje a una nueva carpeta, leer el mensaje, eliminarlo y muchas cosas mas. Otra característica importante que posee IMAP es que tiene comandos que le permiten al usuario obtener componentes de mensajes. Por ejemplo, un agente de usuario podría solamente obtener el header del mensaje o solamente una parte de un mensaje MIME. Esta característica es muy útil cuando hay una conexión con un pequeño ancho de banda entre el agente de usuario y su servidor de correo.
 
-* HTTP: Cuando el usuario utiliza su navegador web como agente de usuario para la recepción de correos, éste utilizará el protocolo HTTP para comunicarse con su servidor de correo, y así poder recibir los e-mails.
+* HTTP: Cuando el usuario utiliza su navegador web como agente de usuario para la recepción de correos, en realidad en el servidor qeb que atiende estas peticiones, por detrás utilizará uno de los protocolos mencionados anteriormente.
 
 ---
 
