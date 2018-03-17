@@ -109,9 +109,9 @@ Cada capa define su PDU: Protocol Data Unit.
 
 | Capa | PDU |
 | ------------- | ------------- |
-| Aplicación | Datos |
+| Aplicación | Mensaje |
 | Transporte | Segmento |
-| Red | Paquete |
+| Red | Datagrama |
 | Enlace | Trama |
 | Física | Bit |
 
