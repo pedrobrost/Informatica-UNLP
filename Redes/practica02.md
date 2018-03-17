@@ -189,7 +189,7 @@ Al hacer el request utilizando el protocolo HTTP 1.0, luego de obtener la respue
 
 #### d. ¿Cuál de los dos casos le parece más eficiente? Piense en el ejercicio donde analizó la cantidad de requerimientos necesarios para obtener una página con estilos, javascripts e imágenes. El caso elegido, ¿puede traer asociado algún problema?
 
-HTTP 1.1 permite tener conexiones persistentes, lo cual significa que se puede realizar mas de un request en la misma conexión HTTP.
+HTTP 1.1 permite tener conexiones persistentes, lo cual significa que se puede realizar mas de un request en la misma conexión TCP.
 
 En cambio en HTTP 1.0 se debe abrir una nueva conexión por cada request. Y luego de cada respuesta la conexión debería ser cerrada. Esto claramente lleva a claros problemas de ineficiencia.
 
