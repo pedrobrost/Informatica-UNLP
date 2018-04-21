@@ -80,3 +80,17 @@ Every shell is structured as the following loop:
 * when the child (i.e. the launched program) finishes, the shell repeats the loop by jumping to 1.
 Although most of the commands people type on the prompt are the name of other UNIX programs (such as ls or more), shells recognize some special commands (called internal commands) which are not program names. For example, the exit command terminates the shell, and the cd command changes the current working directory. Shells directly make system calls to execute these commands, instead of forking a child process to handle them.
 ```
+
+## Redes y Sistemas Operativos
+
+### 1. La herramienta netcat provee una forma sencilla de establecer una conexión TCP/IP. En una terminal levante una sesión de netcat en modo servidor, que escuche en la IP 127.0.0.1 (localhost) en un puerto a elección. En otra terminal conéctese, también vía netcat, al servidor recién levantado. Interactúe y experimente con ambas terminales.
+
+* Cliente: `nc -l 8999`
+* Servidor: `nc localhost 8999`
+
+### 2. netcat también es bueno al momento de transmitir archivos sobre una red TCP/IP. Utilizando dos terminales como se hizo en el ejercicio anterior, transmita el archivo /etc/passwd desde una sesión de netcat hacia la otra.
+
+* Cliente: `nc -l 8999 < /etc/passwd`
+* Servidor: `nc localhost 8999`
+
+### 3. 
