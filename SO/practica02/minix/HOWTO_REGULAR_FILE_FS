@@ -1,0 +1,65 @@
+Introducción
+
+Lo que pretendemos hacer, crear un archivo y tratarlo como un disco duro, pudiendolo formatear, montar etc.
+De esta manera, vamos a poder tener el disco duro en un solo archivo, lo cual es muy bueno a la hora de portalo.
+
+Un buen comienzo sería leerse la documentación de: dd, mount y mkfs principalmente.
+En este HOWTO se explicarán los aspectos más importantes, aunque como ya se ha dicho,
+en la documentación de cada comando tendremos información extendida al respecto.
+
+
+Lo que vamos a hacer es crear un sistema de archivos de 650 Megas bajo ext3,
+¿por qué precisamente 650 Megas? pues para hacer un backup de nuestras cosas "confidenciales" sin más que grabar un cd.
+
+Para ello lo primero que vamos a hacer es crear un archivo de 650 Megas lleno de ceros, para ellos usamos 'dd'
+
+$ dd if=/dev/zero of=disk-image count=1331200
+1331200+0 registros leídos
+1331200+0 registros escritos
+681574400 bytes transferred in 83,937876 seconds (8119986 bytes/sec) 
+La razón por la que utilizamos el número 1331200 en el argumento count del comando dd, es simple:
+Si multiplicamos 1331200 * 512, nos da un total de 681574400 bytes, lo qué es quivalente a decir 650 Mb.
+Esto es 1331200 bloques a un total de 512 bytes por bloque (es el tamaño de bloque por defecto del dd si no lo especificamos).
+
+Una vez hecho esto, podemos comprobar que en el directorio actual, tendremos un archivo de 650 Mb., inicializado con 0 (ceros)
+
+
+El siguiente paso consiste en formatear el archivo creado, utilizando algún tipo de File System determinado,
+como por ejemplo minix o ext2, o ext3, ec.
+Para nuestro caso utilizaremos un File System del tipo minix, unque podría ser cualquier otro. Para ello usamos 'mkfs'.
+Como vemos a continuación nos va a preguntar si estamos seguros de lo que hacemos, puesto que el archivo no es dispositivo
+de bloques, logicamente le decimos que si.
+
+$ mkfs -t minix minixFS
+minixFS no es un dispositivo especial de bloques.
+¿Se continúa de todas formas? (s,n) s 
+
+Ahora solo no queda montar el archivo, para poder usarlo como un disco duro.
+Como lo vamos a montar en un loopback, deberíamos comprobar si tenemos alguno montado (aunque lo lógico es que lo sepamos),
+para verlo miramos en /proc/mounts (cat /proc/mounts) o con un simple mount tendríamos que poder verlo.
+Vamos a suponer que no tenemos ningún dispositivo loop, (en caso de tener más cambiaríamos el /dev/loop0 por /dev/loop1 por ejemplo)
+
+$ mount -o loop=/dev/loop0 minixFS /mnt/minix 
+Pâra montarlo, lo tendremos que hacer como root, y lo montamos en /mnt/minix, para lo cual necesitamos tener el directorio creado.
+Utilizamos la opción -o loop para indicerle al comando mount que monta nuestro dispositivo en uno de loop. Si no especificamos
+un dispositivo de loop determinado, entonces se utilizará el primero disponible.
+
+Si ahora miramos en /proc/mounts (o con mount) veremos una línea como esta
+
+/dev/loop0 /data/loop ext3 rw 0 0 
+Si este comando devuelve algún error diciendo algo como que no existe el fichero /dev/loop0, lo podemos crear,
+aunque es posible que el problema sea que no tenemos en el nucleo activado el dispositivo loopback.
+
+En caso de que querer desmontar la "partición", hacemos uso de umount, y como root hacemos:
+
+$ umount /mnt/minix 
+Y si queremos liberar totalmente el dispositivo loop, usamos losetup de la siguiente manera:
+
+$ losetup -d /dev/loop0 
+
+____________________________________________________________________________________________
+
+A quien le interese profundizar sobre el tema y aprender por ejemplo como se crea un dispositivo de loop cifrado y utilizando
+listas de control de acceso, puede acceder a la siguiente URL:
+
+                             http://www.esdebian.org/staticpages/print.php?page=20050508111531180

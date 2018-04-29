@@ -1,0 +1,12 @@
+Felicitaciones!!!
+Completaste la practica 1 de Sistemas Operativos!!!
+Segui asi!!!!!!!!!!!!!!!!!!!!!
+
+Para visualizar los archivos desde Linux, te recomendamos utilizar 
+el programa xpdf. Para usar el mismo, debes contar con una interfaz grafica.
+
+En caso de no contar con interfaz grafica, te recomendamos instalar ssh
+(en debian aptitude install ssh), y luego conectarte a tu sistema Linux desde
+uno Windows, a traves de la aplicacion Winscp. La misma te permitira transferir
+los apuntes y guias de estudio de Linux a windows para visualizarlos con tu
+programa preferido.

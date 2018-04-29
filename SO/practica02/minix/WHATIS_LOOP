@@ -1,0 +1,19 @@
+
+Básicamente son archivos regulares que pueden ser tratados como dispositivos por bloques,
+donde uno puede crear un File System dentro de ellos y montarlos como si montáramos
+cualquier otro dispositivo de bloques como por ejemplo particiones de un disco rígido, 
+unidades de CD-ROM o diskettes.
+
+Los dispositivos de loop son dispositivos especiales de bloques.
+Un tipo de archivos de loopback, or ejemplo son ls imágener ISO de CD-ROMS. En muchas
+ocasiones puede resultar útil la posibilidad de montar estos archivos como si fueran
+dispositivos antes de grabarlos a un CD, o bien podemos utilizarlos directamente sin la
+necesidad de grabarlos.
+
+Los dispositivos de loop, pueden ser utilizados inclusive para "ocular" un sistema de
+archivos en una partición de un disco, un diskette o un archivo regular, inclusive
+utilizado mecanismos de encripción.
+
+Es importante recalcar que los dispositivos de loop de los que estamos hablando
+en este caso, no tienen absolutamente nada que ver con los dispositivos de loopback
+utilizados en los ambientes de networking.
