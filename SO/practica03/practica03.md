@@ -54,3 +54,65 @@ strace es una utilidad de línea de comandos para comprobación de errores en el
 
 Su uso más común consiste en arrancarlo junto al programa al que se le efectúa el trazado, el cual imprime una lista de llamadas al sistema que dicho programa ejecuta. Es útil para averiguar la causa del fallo de un programa determinado porque informa de situaciones en las que por ejemplo, el programa está intentando acceder a un fichero que no existe o que no tiene permiso de lectura.
 
+## Monitoreando System Calls
+
+## Módulos y Drivers
+
+### 1. ¿Cómo se denomina en Gnu/Linux a la porción de código que se agrega al kernel en tiempo de ejecución? ¿Es necesario reiniciar el sistema al cargarlo?. Si no se pudiera utilizar esto. ¿Cómo deberíamos hacer para proveer la misma funcionalidad en Gnu/Linux?
+
+Los módulos del kernel son pedazos de código que han sido compilados sin estar incluídos en el kernel. Cuando se compila el kernel, se puede seleccionar que determinadas funcionalidades no sean incluidas en forma nativa en el kernel, sino como módulos, y luego estos pueden ser cargados en tiempo de ejecución.
+
+Sin módulos el kernel seria 100% monolitico. Las funcionalidades implementadas en estas deberían entonces ser incluidas dentro del código del kernel.
+
+### 2. ¿Qué es un driver? ¿para que se utiliza?
+
+Device drivers take on a special role in the Linux kernel. They are distinct "black boxes" that make a particular piece of hardware respond to a well-defined internal programming interface; they hide completely the details of how the device works. User activities are performed by means of a set of standardized calls that are independent of the specific driver; mapping those calls to device-specific operations that act on real hardware is then the role of the device driver. This programming interface is such that drivers can be built separately from the rest of the kernel and "plugged in" at runtime when needed. This modularity makes Linux drivers easy to write, to the point that there are now hundreds of them available.
+
+### 3. ¿Porque es necesario escribir drivers?
+
+There are a number of reasons to be interested in the writing of Linux device drivers. The rate at which new hardware becomes available (and obsolete!) alone guarantees that driver writers will be busy for the foreseeable future. Individuals may need to know about drivers in order to gain access to a particular device that is of interest to them. Hardware vendors, by making a Linux driver available for their products, can add the large and growing Linux user base to their potential markets. And the open source nature of the Linux system means that if the driver writer wishes, the source to a driver can be quickly disseminated to millions of users.
+
+### 4. ¿Cuál es la relación entre modulo y driver en Gnu/Linux?
+
+A kernel module is a bit of compiled code that can be inserted into the kernel at run-time, such as with insmod or modprobe.
+
+A driver is a bit of code that runs in the kernel to talk to some hardware device. It "drives" the hardware. Most every bit of hardware in your computer has an associated driver.¹ A large part of a running kernel is driver code.²
+
+A driver may be built statically into the kernel file on disk.³ A driver may also be built as a kernel module so that it can be dynamically loaded later. (And then maybe unloaded.)
+
+Standard practice is to build drivers as kernel modules where possible, rather than link them statically to the kernel, since that gives more flexibility. There are good reasons not to, however:
+
+Sometimes a given driver is absolutely necessary to help the system boot up. That doesn't happen as often as you might imagine, due to the initrd feature.
+
+Statically built drivers may be exactly what you want in a system that is statically scoped, such as an embedded system. That is to say, if you know in advance exactly which drivers will always be needed and that this will never change, you have a good reason not to bother with dynamic kernel modules.
+
+If you build your kernel statically and disable Linux's dynamic module loading feature, you prevent run-time modification of the kernel code. This provides additional security and stability at the expense of flexibility.
+
+Not all kernel modules are drivers. For example, a relatively recent feature in the Linux kernel is that you can load a different process scheduler. Another example is that the more complex types of hardware often have multiple generic layers that sit between the low-level hardware driver and userland, such as the USB HID driver, which implements a particular element of the USB stack, independent of the underlying hardware.
+
+### 5. ¿Qué implicancias puede tener un bug en un driver o módulo?
+
+“This design of modules makes it faster to load the Kernel (no need to load and initialize un-needed Modules), as well as developing Drivers (if you have a bug, just unload the Module, fix it, recompile and load it again).”
+
+### 6. ¿Qué tipos de drivers existen en Gnu/Linux?
+
+Podemos clasificar el hard en varios tipos:
+
+* Dispositivos de acceso aleatorio(ej. discos).
+* Dispositivos seriales(ej. Mouse, sonido,etc).
+
+Acorde a esto los drivers se clasifican en:
+
+* Drivers de bloques: son un grupo de bloques de datos persistentes. Leemos y escribimos de a bloques, generalmente de 1024 bytes.
+* Drivers de carácter: Se accede de a 1 byte a la vez y 1 byte solo puede ser leıdo por  única vez.
+* Drivers de red: tarjetas ethernet, WIFI, etc.
+
+### 7. ¿Que hay en el directorio /dev? ¿qué tipos de archivo encontramos en esa ubicación?
+
+/dev is the location of special or device files. It is a very interesting directory that highlights one important aspect of the Linux filesystem - everything is a file or a directory. Look through this directory and you should hopefully see hda1, hda2 etc.... which represent the various partitions on the first master drive of the system. /dev/cdrom and /dev/fd0 represent your CD-ROM drive and your floppy drive. This may seem strange but it will make sense if you compare the characteristics of files to that of your hardware. Both can be read from and written to. Take /dev/dsp, for instance. This file represents your speaker device. Any data written to this file will be re-directed to your speaker. If you try 'cat /boot/vmlinuz > /dev/dsp' (on a properly configured system) you should hear some sound on the speaker. That's the sound of your kernel! A file sent to /dev/lp0 gets printed. Sending data to and reading from /dev/ttyS0 will allow you to communicate with a device attached there - for instance, your modem.
+
+The majority of devices are either block or character devices; however other types of devices exist and can be created. In general, 'block devices' are devices that store or hold data, 'character devices' can be thought of as devices that transmit or transfer data. For example, diskette drives, hard drives and CD-ROM drives are all block devices while serial ports, mice and parallel printer ports are all character devices. There is a naming scheme of sorts but in the vast majority of cases these are completely illogical.
+
+### 8. ¿Para qué sirven el archivos /lib/modules/<version>/modules.dep utilizado por el comando modprobe
+
+modprobe looks through the file /lib/modules/version/modules.dep, to see if other modules must be loaded before the requested module may be loaded. This file is created by depmod -a and contains module dependencies. For example, msdos.ko requires the fat.ko module to be already loaded into the kernel. The requested module has a dependency on another module if the other module defines symbols	(variables or functions) that the requested module uses.
